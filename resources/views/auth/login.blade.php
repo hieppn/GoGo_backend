@@ -50,7 +50,7 @@ body {
                 <input type="password" class="form-control" placeholder="Password" autofocus  name="password"value="{{old('password')}}">
               </div>
               <div class="form-group">
-                <button id="submit" type="submit" name="submit" class="btn btn-block btn-primary" value="Register">Register</button>
+                <button id="submit" type="submit" name="submit" class="btn btn-block btn-primary" value="Login">Login</button>
               </div>
               <br>
               <a href="register">Create a new account!</a>

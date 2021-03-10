@@ -14,11 +14,8 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
-Route::get('login', [LoginController::class,'login']);
-Route::get('register', [LoginController::class,'register']);
-Route::post('create', [LoginController::class,'create'])->name('auth.create');
-Route::post('check', [LoginController::class,'check'])->name('auth.check');
-Route::get('profile', [LoginController::class,'profile']);
-Route::get('logout', [LoginController::class,'logout']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
