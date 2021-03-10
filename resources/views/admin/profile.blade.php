@@ -13,9 +13,9 @@
   <table class="table table-hover">
   <thead>
   </thead>
-  <th>Full name D</th>
+  <th>Full name </th>
   <th>Email</th>
-  <th></th>
+  <th>ID</th>
   <th></th>
   <th></th>
   <th></th>
