@@ -17,10 +17,9 @@ class Orders extends Migration
             $table->increments('id');
             $table->string('send_from');
             $table->string('send_to');
-            $table->time('time_send');
+            $table->timestamp('time_send')->nullable()->useCurrent();
             $table->string('name');
-            $table->Integer('mass');
-            $table->string('unit');
+            $table->Integer('mass');// khoi luong
             $table->string('car_type');
             $table->string('note');
             $table->string('image');
