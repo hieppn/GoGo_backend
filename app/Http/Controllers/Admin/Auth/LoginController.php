@@ -21,4 +21,15 @@ class LoginController extends Controller
 			echo "Failed";
 		}
 	}
+	public function postSignup(registerRequest $Request)
+    {
+        $users = new User();
+        $users->name = $Request->name;
+        $users->email = $Request->email;
+        $users->role = 'user';
+        $users->password = Hash::make($Request->password);
+        $users->save();
+        \Mail::to($users->email)->send(new EmailRegister($Request->name));
+        return redirect('login')->with('message', 'Register successfully');
+    }
 }

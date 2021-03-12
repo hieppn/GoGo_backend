@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\LoginController;
-
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\Admin;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,7 +14,13 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     return view('Admin/Login');
+// });
+// Route::post('/admin/login',[LoginController::class,'login']);
 Route::get('/', function () {
-    return view('Admin/Login');
+    return view('Admin\trangchu');
 });
-Route::post('/admin/login',[LoginController::class,'login']);
+Route::get('/', [ChartController::class, 'index']);
+
+Route::get('OrderManagement',[Admin::class, 'getOrder']);

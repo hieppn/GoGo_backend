@@ -17,8 +17,8 @@ class CreatePromotionsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->timestamp('start_time');
+            $table->timestamp('end_time')->nullable();
             $table->Integer('min_value');
             $table->Integer('max_value');
             $table->Integer('value');

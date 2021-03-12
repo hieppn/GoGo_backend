@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->string('send_from');
             $table->string('send_to');
-            $table->time('time_send');
+            $table->timestamp('time_send');
             $table->string('name');
             $table->Integer('mass');
             $table->string('unit');
@@ -25,9 +25,9 @@ class CreateOrdersTable extends Migration
             $table->string('note');
             $table->string('image');
             $table->string('type')->default("new");
-            $table->integer('id_sender')->unsigned();
-            $table->foreign('id_sender')->references('id')->on('senders');
-            $table->timestamps();
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

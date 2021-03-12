@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBillsTable extends Migration
 {
+    
     /**
      * Run the migrations.
      *
@@ -15,13 +16,16 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->Integer('id_order')->unsigned();
-            $table->Integer('id_trucker')->unsigned();
-            $table->foreign('id_trucker')->references('id')->on('truckers');
+            $table->integer('id_order')->unsigned();
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_order')->references('id')->on('orders');
             $table->timestamps();
         });
     }
+
+    
+    
 
     /**
      * Reverse the migrations.

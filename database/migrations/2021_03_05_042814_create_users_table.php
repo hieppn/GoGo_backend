@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTruckersTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateTruckersTable extends Migration
      */
     public function up()
     {
-        Schema::create('truckers', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('full_name');
             $table->string('id_card')->unique();
             $table->timestamp('birthday');
             $table->string('address');
-            $table->string('driving_license')->unique();
-            $table->string('license_plate')->unique();
             $table->string('email')->unique();
-            $table->Integer('phone');
+            $table->integer('phone');
             $table->string('password');
-            $table->timestamps();
+            $table->string('avatar')->nullable();
+            $table->integer('id_role')->unsigned();
+            $table->foreign('id_role')->references('id')->on('roles');
         });
     }
 
@@ -35,6 +35,6 @@ class CreateTruckersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('truckers');
+        Schema::dropIfExists('users');
     }
 }
