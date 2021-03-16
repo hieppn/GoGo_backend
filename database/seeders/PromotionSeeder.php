@@ -14,7 +14,7 @@ class PromotionSeeder extends Seeder
     public function run()
     {
         
-        DB::table('Promotions')->insert([
+        DB::table('promotions')->insert([
             
             'name'=>'Chuong trinh khuyen maix ddawcj bietj',
             'code'=>'GOGO',
@@ -25,7 +25,7 @@ class PromotionSeeder extends Seeder
             'value'=>'60',
         ]);
 
-        DB::table('Promotions')->insert([
+        DB::table('promotions')->insert([
             
             'name'=>'Chuong trinh khuyen maix ',
             'code'=>'HUhu',
