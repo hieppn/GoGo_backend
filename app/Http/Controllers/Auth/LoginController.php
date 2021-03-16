@@ -80,7 +80,14 @@ class LoginController extends Controller
             'phone'=>'required|regex:/[0-9]{10}/|digits:10',
         ]);
         $user = User::where('phone','=',$request->phone)->first();
-        if($user){
+        if(!$user){
+            $data = array(
+                "error"=> ' Not match with your phone!'  ,
+            );     
+            return response()->json($data, 400);    
+        }
+        else
+        {
             $email=$user->email;
             $password= $request->password;
             if(Auth::attempt(['email'=>$email,'password'=>$password])){
@@ -96,11 +103,6 @@ class LoginController extends Controller
                 
                 return response()->json($data, 400);  
             }
-        }else{
-            $data = array(
-                "error"=> ' Not match with your phone!'  ,
-            );     
-            return response()->json($data, 400);    
         }
     }
     public function profile($id){

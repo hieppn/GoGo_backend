@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\MessageController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,3 +26,5 @@ Route::get('logout', [LoginController::class,'logout']);
 
 Route::post('add-new-order', [OrderController::class,'addNewOrder']);
 Route::post('get-all-orders', [OrderController::class,'getAllOrders']);
+Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
+Route::get('getMess', [MessageController::class,'index']);
