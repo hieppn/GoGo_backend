@@ -16,9 +16,9 @@ use App\Http\Controllers\Admin;
 |
 */
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('get-user', [PassportAuthController::class, 'userInfo']);
-});
+// Route::middleware('auth:api')->group(function () {
+//     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
+// });
 // Route::post('/register', [PassportAuthController::class, 'register']);
 // Route::post('login', [PassportAuthController::class, 'login']);
 //order

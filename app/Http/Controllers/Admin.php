@@ -14,21 +14,16 @@ class Admin extends Controller
 {
 
     // Order
-    public function getOrder(){
-        $bill = Bill::all();
-        $order= Order::all();
-        $user=User::all(); 
-        return view('Admin/order',compact('order','user','bill'));
-    }
 
     public function get_Order(){
-        
+            
             return response()->json(Order::get(),200);
     
     }
 
     public function deleteOrder(Request $request,  $id){
         $order = Order::find($id);
+        $bill= Bill::where('id_order', $id)->delete();
         if(is_null($order)){
             return response()->json(["message"=>"Record Order not found!"],404);
         }
@@ -67,27 +62,11 @@ class Admin extends Controller
             return response()->json($promotion,200);
            
             }
-            // }
-            // $promotion = Promotion::create($request->all());
-            // return response()->json($promotion,201);
-
 
 
         public function PromotionUpdate(Request $request,$id){
             
            $promotion = Promotion::find($id);
-           
-        //     $promotion->name =$request->name;
-        //     $promotion->code=$request->code;
-        //     $promotion->start_time=$request->start_time;
-        //     $promotion->end_time=$request->end_time;
-        //     $promotion->min_value=$request->max_value;
-        //     $promotion->max_value=$request->max_value;
-        //     $promotion->value=$request->value;
-
-        //     $promotion->save();
-      
-        // // return response()->json($products);
             
             if(is_null($promotion)){
                 return response()->json(["message"=>"Record not found!"],404);
@@ -105,7 +84,6 @@ class Admin extends Controller
 
     public function deleteUser(Request $request,  $id){
         $user = User::find($id);
-        // $user = User::where('account_id', $id)->delete();
         $order= Order::where('id_user', $id)->delete();
         $bill= Bill::where('id_order', $id)->delete();
         if(is_null($user)){
@@ -118,6 +96,11 @@ class Admin extends Controller
 
     
     function getSender(){
+        // $user = User::all();
+        // $role = Role::all();
+        // foreach($user as $user){
+        //     $product->category;
+        // }
         return response()->json(User:: where('id_role','1')->get() ,200);  
  
      }
