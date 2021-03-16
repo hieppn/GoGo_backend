@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Messages extends Migration
+class CreateBillsTable extends Migration
 {
+    
     /**
      * Run the migrations.
      *
@@ -13,16 +14,18 @@ class Messages extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_send')->unsigned();  
-            $table->integer('id_receive')->unsigned();
-            $table->string('message');
+            $table->integer('id_order')->unsigned();
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_order')->references('id')->on('orders');
             $table->timestamps();
-            $table->foreign('id_send')->references('id')->on('users');
-            $table->foreign('id_receive')->references('id')->on('users');
         });
     }
+
+    
+    
 
     /**
      * Reverse the migrations.
@@ -31,6 +34,6 @@ class Messages extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('bills');
     }
 }

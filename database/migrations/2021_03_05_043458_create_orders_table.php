@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Orders extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,16 +17,17 @@ class Orders extends Migration
             $table->increments('id');
             $table->string('send_from');
             $table->string('send_to');
-            $table->timestamp('time_send')->nullable()->useCurrent();
+            $table->timestamp('time_send');
             $table->string('name');
-            $table->Integer('mass');// khoi luong
+            $table->Integer('mass');
+            $table->string('unit');
             $table->string('car_type');
             $table->string('note');
             $table->string('image');
             $table->string('type')->default("new");
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

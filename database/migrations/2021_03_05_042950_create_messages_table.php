@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Bills extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class Bills extends Migration
      */
     public function up()
     {
-        Schema::create('bills', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_order')->unsigned();
-            $table->Integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_order')->references('id')->on('orders');
+            $table->integer('id_send')->unsigned();  
+            $table->integer('id_receive')->unsigned();
+            $table->string('message');
             $table->timestamps();
+            $table->foreign('id_send')->references('id')->on('users');
+            $table->foreign('id_receive')->references('id')->on('users');
         });
     }
 
@@ -30,6 +31,6 @@ class Bills extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('messages');
     }
 }
