@@ -27,35 +27,33 @@ Route::post('login', [LoginController::class,'login'])->name('auth.login');
 Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::get('logout', [LoginController::class,'logout']);
 
-Route::post('add-new-order', [OrderController::class,'addNewOrder']);
-Route::post('get-all-orders', [OrderController::class,'getAllOrders']);
+Route::post('order/create', [OrderController::class,'addNewOrder']);
+Route::post('order/list', [OrderController::class,'getAllOrders']);
 Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
 Route::get('getMess', [MessageController::class,'index']);
 Route::middleware('auth:api')->group(function () {
     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
 });
- Route::get('list_order',[Admin::class,'get_Order']);
-Route::delete('delete_order/{id}',[Admin::class,'deleteOrder']);
+ Route::get('order/list',[Admin::class,'get_Order']);
+Route::delete('order/delete/{id}',[Admin::class,'deleteOrder']);
 
 //promotion
-Route::get('list_promotion',[Admin::class,'getPromotion']);
-Route::delete('delete_promotion/{id}',[Admin::class,'deletePromotion']);
+Route::get('promotion/list',[Admin::class,'getPromotion']);
+Route::delete('promotion/delete/{id}',[Admin::class,'deletePromotion']);
 Route::get('promotion/{id}',[Admin::class,'PromotionByID']);
-// Route::put('promotion/{id}',[Admin::class,'PromotionByID']);
 
-Route::post('addPromotion',[Admin::class,'PromotionSave']);
- Route::PUT('editPromotion/{id}',[Admin::class,'PromotionUpdate']);
+Route::post('promotion/create',[Admin::class,'PromotionSave']);
+ Route::PUT('promotion/edit/{id}',[Admin::class,'PromotionUpdate']);
 
 
 //User
-Route::get('list_sender',[Admin::class,'getSender']);
-Route::get('list_trucker',[Admin::class,'getTrucker']);
-Route::delete('delete_user/{id}',[Admin::class,'deleteUser']);
+Route::get('sender/list',[Admin::class,'getSender']);
+Route::get('trucker/list',[Admin::class,'getTrucker']);
+Route::delete('user/delete/{id}',[Admin::class,'deleteUser']);
 
 
 //countDashBoard
-Route::get('count/{id}',[Admin::class,'getCountAccount']);
+
 Route::get('count-order',[Admin::class,'countOrder']);
-// Route::middleware('auth:api')->group(function () {
-//     Route::resource('posts', PostController::class);
-// });
+Route::get('count-sender',[Admin::class,'countSender']);
+Route::get('count-trucker',[Admin::class,'countTrucker']);
