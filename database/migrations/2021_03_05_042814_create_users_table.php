@@ -25,8 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->integer('id_role')->unsigned();
             $table->foreign('id_role')->references('id')->on('roles');
-            $table->timestamp('create_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

@@ -20,8 +20,8 @@ class CreateMessagesTable extends Migration
             $table->string('message');
             $table->foreign('id_send')->references('id')->on('users');
             $table->foreign('id_receive')->references('id')->on('users');
-            $table->timestamp('create_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
