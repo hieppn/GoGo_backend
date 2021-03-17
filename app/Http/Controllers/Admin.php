@@ -18,7 +18,7 @@ class Admin extends Controller
 
     public function get_Order(){
         
-            return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
+         return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
     }
 
     public function deleteOrder(Request $request,  $id){
@@ -109,7 +109,7 @@ class Admin extends Controller
 
 public function getCountAccount(){
     
-    $count_account= User::count(); 
+    $count_account=Order::count(); 
     return $count_account;
 } 
 }

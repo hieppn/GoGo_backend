@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

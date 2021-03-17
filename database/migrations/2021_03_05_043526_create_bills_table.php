@@ -20,7 +20,8 @@ class CreateBillsTable extends Migration
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_order')->references('id')->on('orders');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

@@ -21,6 +21,8 @@ class CreateMessagesTable extends Migration
             $table->timestamps();
             $table->foreign('id_send')->references('id')->on('users');
             $table->foreign('id_receive')->references('id')->on('users');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
