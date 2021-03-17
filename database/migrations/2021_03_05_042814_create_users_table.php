@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 class CreateUsersTable extends Migration
 {
     /**
@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->integer('id_role')->unsigned();
             $table->foreign('id_role')->references('id')->on('roles');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('create_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('update_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

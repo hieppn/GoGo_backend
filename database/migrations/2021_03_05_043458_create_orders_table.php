@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 class CreateOrdersTable extends Migration
 {
     /**
@@ -27,7 +27,8 @@ class CreateOrdersTable extends Migration
             $table->string('type')->default("new");
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->timestamps()->useCurrent();
+            $table->timestamp('create_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('update_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
