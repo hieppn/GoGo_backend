@@ -8,9 +8,6 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function getAllOrder(){
-        return Order::all();
-    }
     public function addNewOrder( Request $request){
         $newOrder = Order::create($request->all());
         if($newOrder){

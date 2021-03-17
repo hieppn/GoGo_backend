@@ -17,13 +17,13 @@ class AdminSeeder extends Seeder
             'name' => 'Hàm Hương',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
-            'phone' => '0982178362',
+            'phone' => '0353956450',
         ]);
         DB::table('admins')->insert([
             'name' => 'Hàm Hương Em',
             'email' => 'admin1@gmail.com',
             'password' => Hash::make('admin'),
-            'phone' => '0982178361',
+            'phone' => '0981536770',
         ]);
     }
 }

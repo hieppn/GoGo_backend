@@ -19,7 +19,7 @@ class PassportAuthController extends Controller
         ]);
  
         $trucker = User::create([
-            'fullname' => $request->fullname,
+            'full_name' => $request->full_name,
             'id_card'=>$request->id_card,
             'birthday'=>$request->birthday,
             'address'=>$request->address,

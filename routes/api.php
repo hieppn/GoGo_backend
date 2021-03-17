@@ -54,7 +54,8 @@ Route::delete('delete_user/{id}',[Admin::class,'deleteUser']);
 
 
 //countDashBoard
-Route::get('numberUser',[Admin::class,'getCountAccount']);
+Route::get('count/{id}',[Admin::class,'getCountAccount']);
+Route::get('count-order',[Admin::class,'countOrder']);
 // Route::middleware('auth:api')->group(function () {
 //     Route::resource('posts', PostController::class);
 // });

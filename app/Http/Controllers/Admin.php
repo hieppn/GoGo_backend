@@ -108,10 +108,13 @@ class Admin extends Controller
 
 // Count in DASHBOARD
 
-public function getCountAccount(){
+public function getCountAccount($id_role){
     
-    $count_account= User::count(); 
+    $count_account= User::where('id_role',$id_role)->count(); 
     return $count_account;
 } 
+public function countOrder(){
+    return Order::count();
+}
 }
     
