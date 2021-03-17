@@ -18,8 +18,7 @@ class Admin extends Controller
 
     public function get_Order(){
         
-            return response()->json(Order::get(),200);
-    
+            return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
     }
 
     public function deleteOrder(Request $request,  $id){
@@ -82,7 +81,7 @@ class Admin extends Controller
 
 //User
     public function getTrucker(){  
-        return response()->json(User:: where('id_role','2')->get() ,200);  
+        return response()->json(Db::select('select r.name_role, u.* from users as u, roles as r where u.id_role = r.id and r.id = 2') ,200);  
     }
 
     public function deleteUser(Request $request,  $id){
@@ -100,7 +99,7 @@ class Admin extends Controller
 
     
     function getSender(){
-        return response()->json(User:: where('id_role','1')->get() ,200);  
+        return response()->json(Db::select('select r.name_role, u.* from users as u, roles as r where u.id_role = r.id and r.id = 1') ,200);  
  
      }
 
