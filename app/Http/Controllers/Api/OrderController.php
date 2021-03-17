@@ -9,12 +9,39 @@ use App\Models\Order;
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
-        $newOrder = Order::create($request->all());
-        if($newOrder){
-            return response()->json($newOrder,200);
+        $request->validate([
+            "send_from"=> "required",
+            "send_to"=> "required",
+            "time_send"=> "required",
+            "name"=> "required",
+            "mass"=> "required",
+            "car_type"=> "required",
+            "note"=> "required",
+            "image"=> "required",
+        ]);
+        $order = new Order;
+        $order->send_from = $request->send_from;
+        $order->send_to = $request->send_to;
+        $order->time_send = $request->time_send;
+        $order->name = $request->name;
+        $order->mass = $request->mass;
+        $order->car_type = $request->car_type;
+        $order->note = $request->note;
+        $order->image = $request->image;
+        $order->id_user = $request->id_user;
+        $query = $order->save();
+
+        if($query){
+            $data = array(
+                "order"=>$order->id,
+            );
+            return response()->json($data, 200);
         }else{
-            return response()->json(400);
-        }  
+            $data = array(
+                "error"=>'Something went wrong!',
+            );
+            return response()->json($data, 400);  
+        }
     }
     public function getAllOrders(){
         return Order::all();
