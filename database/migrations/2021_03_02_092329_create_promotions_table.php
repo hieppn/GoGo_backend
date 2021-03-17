@@ -22,7 +22,7 @@ class CreatePromotionsTable extends Migration
             $table->Integer('min_value');
             $table->Integer('max_value');
             $table->Integer('value');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

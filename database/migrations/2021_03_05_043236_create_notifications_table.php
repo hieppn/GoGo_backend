@@ -18,7 +18,7 @@ class CreateNotificationsTable extends Migration
             $table->string('message');
             $table->integer('id_user')->unsigned();
             $table->foreign('id_user')->references('id')->on('users');
-            $table->timestamps();
+            $table->timestamps()->useCurrent();
         });
     }
 

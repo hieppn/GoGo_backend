@@ -40,8 +40,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'full_name' => 'Hàm Hương',
             'email' => 'trucker1@gmail.com',
-            'password' => Hash::make('trucker'),
-            'phone' => '0982178312',
+            'password' => Hash::make('huong'),
+            'phone' => '0353956450',
             'id_card' => '217832233',
             'birthday' => '2010-01-03',
             'address' => '103/5 E Town 2, Cộng Hòa',
