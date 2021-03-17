@@ -88,11 +88,10 @@ class LoginController extends Controller
         }
         else
         {
-            $email=$user->email;
             $password= $request->password;
-            if(Auth::attempt(['email'=>$email,'password'=>$password])){
+            if(Hash::check($password,$user->password)){
                 $data = array(
-                    "user_id"=>Auth::user()->id,
+                    "user_id"=>$user->id,
                     "error"=>null,
                 );
                 return response()->json($data, 200);
