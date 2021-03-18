@@ -1,4 +1,4 @@
-<?php
+<?php   
 
 namespace App\Http\Controllers\Api;
 
@@ -47,5 +47,19 @@ class OrderController extends Controller
     }
     public function getAllOrders(){
         return Order::all();
+    }
+    public function getOrderByIdUser($id){
+        $orders = Order::where('is_user',$id)->get();
+        if($orders){
+            $data = array(
+                "ordersByUser"=>$orders,
+            );
+            return response()->json($data, 200);
+        }else{
+            $data = array(
+                "error"=>'Something went wrong!',
+            );
+            return response()->json($data, 400);  
+        }
     }
 }

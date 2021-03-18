@@ -28,7 +28,6 @@ Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::get('logout', [LoginController::class,'logout']);
 
 Route::post('order/create', [OrderController::class,'addNewOrder']);
-Route::post('order/list', [OrderController::class,'getAllOrders']);
 Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
 Route::get('getMess', [MessageController::class,'index']);
 Route::middleware('auth:api')->group(function () {
@@ -57,3 +56,4 @@ Route::delete('user/delete/{id}',[Admin::class,'deleteUser']);
 Route::get('count-order',[Admin::class,'countOrder']);
 Route::get('count-sender',[Admin::class,'countSender']);
 Route::get('count-trucker',[Admin::class,'countTrucker']);
+Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
