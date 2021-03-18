@@ -21,10 +21,13 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->Integer('mass');
             $table->string('car_type');
-            $table->string('note');
             $table->string('image');
             $table->string('type')->default("new");
-            $table->integer('id_user')->unsigned();
+            $table->boolean('export_data')->default('false');
+            $table->text('sender_info');
+            $table->text('receiver_info');
+            $table->integer('price');
+            $table->integer('id_user')->unsigned()->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

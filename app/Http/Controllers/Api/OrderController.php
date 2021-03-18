@@ -26,7 +26,9 @@ class OrderController extends Controller
         $order->name = $request->name;
         $order->mass = $request->mass;
         $order->car_type = $request->car_type;
-        $order->note = $request->note;
+        $order->export_data = $request->export_data;
+        $order->sender_info = $request->sender_info;
+        $order->receiver_info = $request->receiver_info;
         $order->image = $request->image;
         $order->id_user = $request->id_user;
         $query = $order->save();
