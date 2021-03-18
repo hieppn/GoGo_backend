@@ -30,6 +30,7 @@ class OrderController extends Controller
         $order->receiver_info = $request->receiver_info;
         $order->image = $request->image;
         $order->id_user = $request->id_user;
+        $order->price = $request->price;
         $query = $order->save();
 
         if($query){
