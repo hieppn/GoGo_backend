@@ -49,7 +49,7 @@ class OrderController extends Controller
         return Order::all();
     }
     public function getOrderByIdUser($id){
-        $orders = Order::where('is_user',$id)->get();
+        $orders = Order::where('id_user',$id)->get();
         if($orders){
             $data = array(
                 "ordersByUser"=>$orders,
