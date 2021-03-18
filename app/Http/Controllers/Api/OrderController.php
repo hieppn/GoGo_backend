@@ -34,11 +34,10 @@ class OrderController extends Controller
         $query = $order->save();
 
         if($query){
-            echo $order;
-            // $data = array(
-            //     "order"=>$order->id,
-            // );
-            // return response()->json($data, 200);
+            $data = array(
+                "order"=>$order->id,
+            );
+            return response()->json($data, 200);
         }else{
             $data = array(
                 "error"=>'Something went wrong!',
