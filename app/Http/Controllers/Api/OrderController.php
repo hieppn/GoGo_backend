@@ -16,7 +16,6 @@ class OrderController extends Controller
             "name"=> "required",
             "mass"=> "required",
             "car_type"=> "required",
-            "note"=> "required",
             "image"=> "required",
         ]);
         $order = new Order;
