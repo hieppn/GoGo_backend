@@ -18,8 +18,8 @@ class CreateMessagesTable extends Migration
             $table->integer('id_send')->unsigned();  
             $table->integer('id_receive')->unsigned();
             $table->string('message');
-            $table->foreign('id_send')->references('id')->on('users');
-            $table->foreign('id_receive')->references('id')->on('users');
+            $table->foreign('id_send')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_receive')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

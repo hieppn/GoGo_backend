@@ -16,7 +16,7 @@ class CreateTruckerInformationTable extends Migration
         Schema::create('trucker_information', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_trucker')->unsigned();
-            $table->foreign('id_trucker')->references('id')->on('users');
+            $table->foreign('id_trucker')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });

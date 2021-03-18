@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'full_name' => 'Nguyen Van Thuan',
             'email' => 'sender2@gmail.com',
-            'password' => Hash::make('sender'),
-            'phone' => '0989178313',
+            'password' => Hash::make('123456'),
+            'phone' => '0985582807',
             'id_card' => '207832234',
             'birthday' => '2010-01-04',
             'address' => '103/2 E Town 2, Cộng Hòa',
