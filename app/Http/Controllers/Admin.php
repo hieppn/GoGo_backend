@@ -7,13 +7,19 @@ use App\Models\Order;
 use App\Models\Promotion;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\TruckerInformation;
 
 use Illuminate\Http\Request;
 
 class Admin extends Controller
 {
-
-    // Order
+public function registerTruckerInfo(Request $request){
+    $data = TruckerInformation::create($request->all());
+    if($data)
+    return response()->json($data,200);
+    else
+    return response()->json($data,400);
+}
     
 
     public function get_Order(){
