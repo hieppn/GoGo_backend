@@ -92,6 +92,7 @@ class LoginController extends Controller
             if(Hash::check($password,$user->password)){
                 $data = array(
                     "user_id"=>$user->id,
+                    "role"=>$user->id_role,
                     "error"=>null,
                 );
                 return response()->json($data, 200);
