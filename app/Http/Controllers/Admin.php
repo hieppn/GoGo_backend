@@ -14,11 +14,26 @@ use Illuminate\Http\Request;
 class Admin extends Controller
 {
 public function registerTruckerInfo(Request $request){
-    $data = TruckerInformation::create($request->all());
-    if($data)
-    return response()->json($data,200);
-    else
-    return response()->json($data,400);
+    $trucker_info = new TruckerInformation;
+    $trucker_info->id_trucker = $request->id_trucker;
+    $trucker_info->id_card_front = $request->id_card_front;
+    $trucker_info->id_card_back = $request->id_card_back;
+    $trucker_info->license_front = $request->license_front;
+    $trucker_info->license_back = $request->license_back;
+    $trucker_info->license_plate = $request->license_plate;
+    $query = $trucker_info->save();
+
+        if($query){
+            $data = array(
+                "trucker_info"=>$trucker_info,
+            );
+            return response()->json($data, 200);
+        }else{
+            $data = array(
+                "error"=>'Something went wrong!',
+            );
+            return response()->json($data, 400);  
+        }
 }
     
 
