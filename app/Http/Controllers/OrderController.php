@@ -1,10 +1,11 @@
 <?php   
 
-namespace App\Http\Controllers\Api;
-
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+use App\Models\Bill;
 use App\Models\Order;
+
+use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -45,9 +46,21 @@ class OrderController extends Controller
             return response()->json($data, 400);  
         }
     }
-    public function getAllOrders(){
-        return Order::all();
+
+    public function getOrder(){     
+        return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
+   }
+
+    public function deleteOrder(Request $request,  $id){
+        $order = Order::find($id);
+        $bill= Bill::where('id_order', $id)->delete();
+        if(is_null($order)){
+            return response()->json(["message"=>"Record Order not found!"],404);
+        }
+        $order->delete();
+        return response()->json(null,204);
     }
+
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
         if($orders){

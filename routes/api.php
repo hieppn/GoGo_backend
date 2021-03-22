@@ -3,10 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Api\OrderController;
-use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PassportAuthController;
-use App\Http\Controllers\Admin;
+use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\SenderController;
+use App\Http\Controllers\TruckerController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,34 +31,36 @@ Route::post('login', [LoginController::class,'login'])->name('auth.login');
 Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::get('logout', [LoginController::class,'logout']);
 
-Route::post('order/create', [OrderController::class,'addNewOrder']);
+
 // Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
 // Route::get('getMess', [MessageController::class,'index']);
 // Route::middleware('auth:api')->group(function () {
 //     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
 // });
- Route::get('order/list',[Admin::class,'get_Order']);
-Route::delete('order/delete/{id}',[Admin::class,'deleteOrder']);
+
+//ORDER 
+Route::post('order/create', [OrderController::class,'addNewOrder']);
+ Route::get('order/list',[OrderController::class,'getOrder']);
+Route::delete('order/delete/{id}',[OrderController::class,'deleteOrder']);
+Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
 
 //promotion
-Route::get('promotion/list',[Admin::class,'getPromotion']);
-Route::delete('promotion/delete/{id}',[Admin::class,'deletePromotion']);
-Route::get('promotion/{id}',[Admin::class,'PromotionByID']);
-
-Route::post('promotion/create',[Admin::class,'PromotionSave']);
- Route::PUT('promotion/edit/{id}',[Admin::class,'PromotionUpdate']);
-
+Route::get('promotion/list',[PromotionController::class,'getPromotion']);
+Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
+Route::get('promotion/{id}',[PromotionController::class,'PromotionByID']);
+Route::post('promotion/create',[PromotionController::class,'PromotionSave']);
+Route::PUT('promotion/edit/{id}',[PromotionController::class,'PromotionUpdate']);
 
 //User
-Route::get('sender/list',[Admin::class,'getSender']);
-Route::get('trucker/list',[Admin::class,'getTrucker']);
-Route::delete('user/delete/{id}',[Admin::class,'deleteUser']);
-Route::post('trucker/create',[Admin::class,'registerTruckerInfo']);
+Route::get('sender/list',[SenderController::class,'getSender']);
+Route::get('trucker/list',[TruckerController::class,'getTrucker']);
+Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
+Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
+Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
 
 
 //countDashBoard
 
-Route::get('count-order',[Admin::class,'countOrder']);
-Route::get('count-sender',[Admin::class,'countSender']);
-Route::get('count-trucker',[Admin::class,'countTrucker']);
-Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
+Route::get('count-order',[DashboardController::class,'countOrder']);
+Route::get('count-sender',[DashboardController::class,'countSender']);
+Route::get('count-trucker',[DashboardController::class,'countTrucker']);
