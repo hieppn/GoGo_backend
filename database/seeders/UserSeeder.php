@@ -49,13 +49,13 @@ class UserSeeder extends Seeder
             'id_role'=>'2',
         ]);
         DB::table('users')->insert([
-            'full_name' => 'Lương An',
-            'email' => 'admin1@gmail.com',
+            'full_name' => 'Bùi Hữu Hiệp',
+            'email' => 'buihuuhiepdev@gmail.com',
             'password' => Hash::make('admin'),
             'phone' => '0981536770',
-            'id_card' => '217832232',
-            'birthday' => '2010-01-04',
-            'address' => '103/45 E Town 2, Cộng Hòa',
+            'id_card' => '215485709',
+            'birthday' => '2010-06-25',
+            'address' => '101B Lê Hữu Trác, Phước Mỹ, Sơn Trà, Đà Nẵng',
             'avatar' => 'https://scontent.fhan5-3.fna.fbcdn.net/v/t1.0-9/144683952_522331092073739_5616458164495207025_o.jpg?_nc_cat=106&ccb=3&_nc_sid=09cbfe&_nc_ohc=NW9fJbQ8P9EAX85Nzo5&_nc_ht=scontent.fhan5-3.fna&oh=b747dd90ff6333d621afa9fb10b971e9&oe=606605C8',
             'id_role'=>'3',
         ]);
