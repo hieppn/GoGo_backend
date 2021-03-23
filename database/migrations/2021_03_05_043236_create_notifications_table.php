@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class Notifications extends Migration
+use Illuminate\Support\Facades\DB;
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,9 @@ class Notifications extends Migration
             $table->increments('id');
             $table->string('message');
             $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->timestamps();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

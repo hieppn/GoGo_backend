@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 class CreateUsersTable extends Migration
 {
     /**
@@ -20,12 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('birthday');
             $table->string('address');
             $table->string('email')->unique();
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->integer('id_role')->unsigned();
-            $table->foreign('id_role')->references('id')->on('roles');
-            $table->timestamps();
+            $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

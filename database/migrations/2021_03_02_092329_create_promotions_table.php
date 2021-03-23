@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class Promotions extends Migration
+use Illuminate\Support\Facades\DB;
+class CreatePromotionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,12 +17,13 @@ class Promotions extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('code');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->timestamp('start_time');
+            $table->timestamp('end_time')->nullable();
             $table->Integer('min_value');
             $table->Integer('max_value');
             $table->Integer('value');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 

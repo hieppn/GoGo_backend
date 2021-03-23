@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Support\Facades\DB;
@@ -8,9 +7,44 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller
 {
+<<<<<<< HEAD
     function register(Request $request){
+=======
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
+
+    use AuthenticatesUsers;
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+    public function register(Request $request){
+>>>>>>> 5de64ca91e631fa43f13ed046f814a62d4553e73
         //return $request->input();
         $request->validate([
             'full_name'=>'required',
@@ -44,16 +78,37 @@ class LoginController extends Controller
             return response()->json($data, 400);  
         }
     }
+<<<<<<< HEAD
     function login(Request $request){
+=======
+    public function login(Request $request){
+>>>>>>> 5de64ca91e631fa43f13ed046f814a62d4553e73
         $request->validate([  
             'password'=>'required|min:5|max:12',
             'phone'=>'required|regex:/[0-9]{10}/|digits:10',
         ]);
         $user = User::where('phone','=',$request->phone)->first();
+<<<<<<< HEAD
         if($user){
             if(Hash::check($request->password, $user->password)){
                 $data = array(
                     "user_id"=>$user->id,
+=======
+        if(!$user){
+            $data = array(
+                "error"=> ' Not match with your phone!'  ,
+            );     
+            return response()->json($data, 400);    
+        }
+        else
+        {
+            $password= $request->password;
+            if(Hash::check($password,$user->password)){
+                $data = array(
+                    "user_id"=>$user->id,
+                    "role"=>$user->id_role,
+                    "error"=>null,
+>>>>>>> 5de64ca91e631fa43f13ed046f814a62d4553e73
                 );
                 return response()->json($data, 200);
             }else{
@@ -63,6 +118,7 @@ class LoginController extends Controller
                 
                 return response()->json($data, 400);  
             }
+<<<<<<< HEAD
         }else{
             $data = array(
                 "error"=> ' Not match with your phone!'  ,
@@ -73,13 +129,23 @@ class LoginController extends Controller
         }
     }
     function profile($id){
+=======
+        }
+    }
+    public function profile($id){
+>>>>>>> 5de64ca91e631fa43f13ed046f814a62d4553e73
         $user=User::find($id);
         $data = array(
             "user"=> $user,
         );
         return response()->json($data, 200);  
     }
+<<<<<<< HEAD
     function logout($id){
         return User::destroy($id);
+=======
+    public function logout(){  
+        //Auth::logout();
 }
+>>>>>>> 5de64ca91e631fa43f13ed046f814a62d4553e73
 }

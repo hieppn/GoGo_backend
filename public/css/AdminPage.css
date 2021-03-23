@@ -1,0 +1,197 @@
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 1000px;
+}
+
+footer {
+    background-color: black;
+    color: whitesmoke;
+    padding: 25px;
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+.tablinks {
+    border: none;
+    text-align: left;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+}
+
+.tab {
+    float: left;
+    width: 100%;
+    height: auto;
+}
+
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: whitesmoke;
+    padding: 10px 10px 0px 10px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+    height:40px;
+}
+.tab button:hover {
+    color:orangered;
+}
+.tab button.active {
+  color:orangered;
+}
+.tabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 99%;
+    border-left: none;
+    height: auto;
+}
+.piechart{
+  margin-top:20px;
+  margin-left: 300px;
+}
+
+.col-sm-2 {
+    color:rgb(248, 246, 246);
+    height:100%;
+    background-color: rgb(17, 17, 17);
+}
+
+.tabcontent>table{
+  text-align: center;
+  border: 1px solid;
+  background-color: mintcream;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+}
+.tabcontent>h1{
+  position: relative;
+  margin: auto;
+  text-align: center;
+  color:darkred;
+  font-family: cursive;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.tabcontent>table>thead{
+background-color: darkred;
+color:whitesmoke;
+position: relative;
+margin: auto;
+text-align: center;
+}
+.col-sm-10{
+  background: linear-gradient(rgb(247, 243, 243),#dfdedc 80%);
+  background-size: cover;
+}
+canvas{
+  background-color: mintcream;
+  margin-top: 30px;
+}
+.navbar-inverse{
+  font-weight: bold;
+}
+.dropdown-container {
+  display: none;
+  padding-left: 50px;
+}
+.static{
+  padding: 40px;
+  width:80%;
+  display:flex;
+}
+.Orders{
+   font-size: 22px;
+   background: linear-gradient(#02D0DB,#9CDDF0 40%);
+  border-radius:20px;
+  width:250px;
+  height:150px;
+  margin-left: 120px;
+  display:flex;
+}
+.Orders a{  
+  width:180px;
+  margin-left:40px;
+  margin-top: 45px;
+}
+.Orders i{
+  margin-top:50px;
+  font-size:50px;
+  position :center;
+  margin-right:10px; 
+}
+.Sender{
+   font-size: 22px;
+  border-radius:20px;
+  width:250px;
+  height:150px;
+  margin-left:70px;
+  display:flex;
+  background: linear-gradient(yellow,#EAF29D 40%);
+}
+.Sender a{   
+  width:180px;
+  margin-left:40px;
+  margin-top: 45px;
+}
+.Sender i{
+  margin-top:50px;
+  font-size:50px;
+  position :center;
+  margin-right:10px; 
+}
+.Trucker{
+  background: linear-gradient(red,#EBCAD7 40%);
+  background-size: cover;
+   font-size: 22px;
+  /* background-color:#f85353 ; */
+  border-radius:20px;
+  width:250px;
+  height:150px;
+  margin-left:15%;
+  display:flex;
+}
+.Trucker a{   
+  width:180px;
+  margin-left:40px;
+  margin-top: 45px;
+}
+.Trucker i{
+  margin-top:50px;
+  font-size:50px;
+  position :center;
+  margin-right: 10px;
+}
+.Trucker:hover{
+  background: linear-gradient(RED);
+}
+#container{
+  padding:30px;
+}

@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -17,7 +16,6 @@ return [
         'guard' => 'api',
         'passwords' => 'users',
     ],
-    
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
