@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->Integer('mass');
             $table->string('car_type');
             $table->string('image');
-            $table->string('type')->default("new");
+            $table->integer('type')->default(1);
             $table->boolean('export_data')->default(false);
             $table->text('sender_info');
             $table->text('receiver_info');

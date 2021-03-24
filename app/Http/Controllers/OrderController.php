@@ -66,11 +66,11 @@ class OrderController extends Controller
             return response()->json(["message"=>"Record not found!"],404);
         }
             else{
+                // $id_user = $order->id_user;
                 $order->type = $request->type;
-                $order->save();
-                $id_user = $order->id_user;
-                //echo $id_user;
-            $orders = $this->getOrderByIdUser($id_user);
+            $order->save();
+            // $orders = $this->getOrderByIdUser($id_user);
+        return response()->json($order,200);
     }
 }
     public function getOrderByIdUser($id){
