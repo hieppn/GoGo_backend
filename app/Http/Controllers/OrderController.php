@@ -65,10 +65,14 @@ class OrderController extends Controller
         if(!$order){
             return response()->json(["message"=>"Record not found!"],404);
         }
-            $order->type = $request->type;
-            $order->save();
-        return response()->json($order,200);
+            else{
+                $order->type = $request->type;
+                $order->save();
+                $id_user = $order->id_user;
+                //echo $id_user;
+            $orders = $this->getOrderByIdUser($id_user);
     }
+}
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
         if($orders){
