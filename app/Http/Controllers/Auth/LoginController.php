@@ -60,6 +60,18 @@ class LoginController extends Controller
         $user->address = $request->address;
         $user->id_card = $request->id_card;
         $user->id_role = $request->id_role;
+        if($request->id_role == 2){
+            if(!$request->avatar){
+                $data = array(
+                    "error"=>'You must update your avatar!',
+                );
+                return response()->json($data, 400); 
+            }else{
+            $user->avatar = $request->avatar;
+            }
+        }else{
+            $user->avatar = "https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-4.png";
+        }
         $query = $user->save();
 
         if($query){
@@ -120,6 +132,14 @@ class LoginController extends Controller
         }
             $user->avatar = $request->avatar;
             $user->save();
+        return response()->json($user,200);
+    }
+    public function updateUser($id, Request $request){
+        $user = User::find($id);    
+        if(is_null($user)){
+            return response()->json(["message"=>"Record not found!"],404);
+        }
+            $user->update($request->all());
         return response()->json($user,200);
     }
     public function logout(){  

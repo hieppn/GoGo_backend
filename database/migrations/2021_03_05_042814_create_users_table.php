@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('password');
-            $table->string('avatar')->nullable();
+            $table->string('avatar');
             $table->integer('id_role')->unsigned();
             $table->foreign('id_role')->references('id')->on('roles')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
