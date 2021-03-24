@@ -112,6 +112,16 @@ class LoginController extends Controller
         );
         return response()->json($data, 200);  
     }
+    public function updateImage($id, Request $request){
+        $user = User::find($id);
+        
+        if(!$user){
+            return response()->json(["message" =>"Record not found!"],404);
+        }
+            $user->avatar = $request->avatar;
+            $user->save();
+        return response()->json($user,200);
+    }
     public function logout(){  
         //Auth::logout();
 }

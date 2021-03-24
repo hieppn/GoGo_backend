@@ -60,7 +60,15 @@ class OrderController extends Controller
         $order->delete();
         return response()->json(null,204);
     }
-
+    public function updateStatus(Request $request,$id){
+        $order = Order::find($id);
+        if(!$order){
+            return response()->json(["message"=>"Record not found!"],404);
+        }
+            $order->type = $request->type;
+            $order->save();
+        return response()->json($order,200);
+    }
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
         if($orders){
