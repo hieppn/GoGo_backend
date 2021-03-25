@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             BillSeeder::class,
             PromotionSeeder::class,
             TruckerInformation::class,
+            TruckerTemptSeeder::class,
         ]);
     }
 }

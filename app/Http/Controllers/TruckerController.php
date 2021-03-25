@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Bill;
 use App\Models\Order;
+use App\Models\TruckerTempt;
 use Illuminate\Support\Facades\DB;
 
 class TruckerController extends Controller
@@ -50,5 +51,37 @@ class TruckerController extends Controller
                 );
                 return response()->json($data, 400);  
             }
+    }
+    public function acceptTrucker($id){
+        $tempt = TruckerTempt::find($id);
+        if(is_null($tempt)){
+            return response()->json(["message"=>"Record Promotion not found!"],404);
+        }
+        $user = new User;
+        $trucker_info = new TruckerInformation;
+        $user = new User;
+        $user->full_name = $tempt->full_name;
+        $user->email = $tempt->email;
+        $user->password = $tempt->password;
+        $user->phone = $tempt->phone;
+        $user->birthday = $tempt->birthday;
+        $user->address = $tempt->address;
+        $user->id_card = $tempt->id_card;
+        $user->id_role = $tempt->id_role;
+        $user->avatar = $tempt->avatar;
+        $user->save();
+        $trucker_info->id_trucker = $user->id;
+        $trucker_info->id_card_front = $tempt->id_card_front;
+        $trucker_info->id_card_back = $tempt->id_card_back;
+        $trucker_info->license_front = $tempt->license_front;
+        $trucker_info->license_back = $tempt->license_back;
+        $trucker_info->license_plate = $tempt->license_plate;
+        $trucker_info->save();
+        $data = array(
+            "user"=>$user,
+            "info"=>$trucker_info
+
+        );
+        return response()->json($data, 200); 
     }
 }

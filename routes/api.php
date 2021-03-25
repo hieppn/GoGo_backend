@@ -57,6 +57,7 @@ Route::get('trucker/list',[TruckerController::class,'getTrucker']);
 Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
+Route::post('trucker/register/{id}',[TruckerController::class,'acceptTrucker']);
 Route::put('user/updateImage/{id}',[LoginController::class,'updateImage']);
 Route::put('user/update/{id}',[LoginController::class,'updateUser']);
 
