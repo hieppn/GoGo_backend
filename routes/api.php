@@ -10,6 +10,8 @@ use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\SenderController;
 use App\Http\Controllers\TruckerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ChartController;
 
 
 /*
@@ -43,6 +45,7 @@ Route::post('order/create', [OrderController::class,'addNewOrder']);
  Route::get('order/list',[OrderController::class,'getOrder']);
 Route::delete('order/delete/{id}',[OrderController::class,'deleteOrder']);
 Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
+Route::get('order/new',[OrderController::class,'getOrderNew']);
 
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
@@ -64,3 +67,12 @@ Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
 Route::get('count-order',[DashboardController::class,'countOrder']);
 Route::get('count-sender',[DashboardController::class,'countSender']);
 Route::get('count-trucker',[DashboardController::class,'countTrucker']);
+
+//Chart
+Route::get('chart',[ChartController::class,'index']);
+///Notification
+Route::get('notification/list',[NotificationController::class,'getNotification']);
+Route::get('profile/{id}',[NotificationController::class,'deletenotification']);
+Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
+
+

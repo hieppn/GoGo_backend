@@ -65,6 +65,11 @@ class OrderController extends Controller
         $order->delete();
         return response()->json(null,204);
     }
+    
+    public function getOrderNew(){
+        return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id and o.type="new"' ) ,200);
+        
+    }
 
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
