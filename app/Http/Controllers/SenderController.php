@@ -28,4 +28,5 @@ class SenderController extends Controller
     function getSender(){
         return response()->json(Db::select('select r.name_role, u.* from users as u, roles as r where u.id_role = r.id and r.id = 1') ,200);  
      }
+
 }

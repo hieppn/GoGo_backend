@@ -14,6 +14,17 @@ class DashboardController extends Controller
     public function countOrder(){
         return Order::count();
     }
+
+    public function countUser(){
+        $users = DB::table('users')
+                    ->where('id_role', 1)
+                    ->orWhere('id_role', 2)
+                    ->count();
+        
+        return  $users;
+        
+    }
+
     public function getCountAccount($id_role){
         
         $count_account= User::where('id_role',$id_role)->count(); 
@@ -31,7 +42,6 @@ class DashboardController extends Controller
         $count_trucker= User::where('id_role',2)->count(); 
         return $count_trucker;
     }
-
 
     // Chart
     public function Chart(){

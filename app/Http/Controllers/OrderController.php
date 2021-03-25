@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Bill;
 use App\Models\Order;
+use App\Models\Notification;
 
 use Illuminate\Http\Request;
 
@@ -35,6 +36,10 @@ class OrderController extends Controller
         $query = $order->save();
 
         if($query){
+            $notification = new Notification;
+            $notification->message = "Thêm mới order thành công";
+            $notification->id_user = 3;
+            $notification->save();
             $data = array(
                 "order"=>$order->id,
             );
@@ -73,6 +78,12 @@ class OrderController extends Controller
         return response()->json($order,200);
     }
 }
+    
+    public function getOrderNew(){
+        return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id and o.type=1' ) ,200);
+        
+    }
+
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
         if($orders){

@@ -21,7 +21,7 @@ class ChartController extends Controller
                     ->groupBy(\DB::raw("Month(created_at)"))
                     ->pluck('count');
 
-        return view('Admin/trangchu', compact('order'));
+        return response()->json($order,200);
     }
     /**
      * Show the form for creating a new resource.
