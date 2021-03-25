@@ -83,4 +83,8 @@ class TruckerController extends Controller
         );
         return response()->json($data, 200); 
     }
+
+    public function truckerTempt(){
+        return response()->json(TruckerTempt::get(),200);
+    }
 }

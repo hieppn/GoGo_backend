@@ -58,6 +58,7 @@ Route::PUT('promotion/edit/{id}',[PromotionController::class,'PromotionUpdate'])
 //User
 Route::get('sender/list',[SenderController::class,'getSender']);
 Route::get('trucker/list',[TruckerController::class,'getTrucker']);
+Route::get('trucker/tempt',[TruckerController::class,'truckerTempt']);
 Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
