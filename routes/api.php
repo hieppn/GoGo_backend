@@ -60,7 +60,7 @@ Route::get('trucker/list',[TruckerController::class,'getTrucker']);
 Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
-
+Route::put('user/updateImage/{id}',[LoginController::class,'updateImage']);
 
 //countDashBoard
 Route::get('count-user',[DashboardController::class,'countUser']);
