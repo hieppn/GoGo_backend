@@ -63,7 +63,7 @@ Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
 
 
 //countDashBoard
-
+Route::get('count-user',[DashboardController::class,'countUser']);
 Route::get('count-order',[DashboardController::class,'countOrder']);
 Route::get('count-sender',[DashboardController::class,'countSender']);
 Route::get('count-trucker',[DashboardController::class,'countTrucker']);
