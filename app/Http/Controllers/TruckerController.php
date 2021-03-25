@@ -80,7 +80,6 @@ class TruckerController extends Controller
         $data = array(
             "user"=>$user,
             "info"=>$trucker_info
-
         );
         return response()->json($data, 200); 
     }
