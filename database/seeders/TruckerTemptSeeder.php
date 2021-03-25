@@ -28,7 +28,10 @@ class TruckerTemptSeeder extends Seeder
             'license_front' => 'https://timviec365.vn/pictures/images/giay-phep-lai-xe-hang-d1.jpg',
             'license_back' => 'https://photo-cms-plo.zadn.vn/w653/Uploaded/2021/chuobun/2018_10_25/giay-phep-lai-xe-b1_qprp_thumb.png',
             'license_plate' => '77 H1 5678',
-            'id_role' => 2
+            'id_role' => 2,
+            'registration_paper' => 'https://cdn.baogiaothong.vn/files/tung.le/2017/09/29/092924-chup-anh-khi-dang-kiem.jpg',
+            'car_type'=>'Xe 3 bánh',
+            'payload' => '3.6'
         ]);
     }
 }
