@@ -30,6 +30,14 @@ class TruckerController extends Controller
         return response()->json(null,204);
     }
 
+
+    public function truckerTemptByID($id){
+        $truckerTempt = truckerTempt::find($id);
+        if(is_null($truckerTempt)){
+            return response()->json(["message"=>"Record not found!"],404);
+        }
+        return response()->json($truckerTempt,200);
+    }
     public function registerTruckerInfo(Request $request){
         $trucker_info = new TruckerInformation;
         $trucker_info->id_trucker = $request->id_trucker;
