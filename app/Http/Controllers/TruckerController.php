@@ -15,7 +15,7 @@ class TruckerController extends Controller
 {
     //User
     public function getTrucker(){  
-        return response()->json(Db::select('select r.name_role, u.* from users as u, roles as r where u.id_role = r.id and r.id = 2') ,200);  
+        return response()->json(Db::select('select r.name_role, ti.*,u.* from users as u, roles as r, trucker_information as ti where u.id_role = r.id and r.id = 2 and u.id=ti.id_trucker') ,200);  
     }
 
     public function deleteTrucker(Request $request,  $id){
