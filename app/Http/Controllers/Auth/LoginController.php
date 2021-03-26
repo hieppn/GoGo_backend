@@ -123,7 +123,7 @@ class LoginController extends Controller
         $user = User::where('phone','=',$request->phone)->first();
         if(!$user){
             $data = array(
-                "error"=> ' Not match with your phone!'  ,
+                "error"=> ' Not match with your phone!',
             );     
             return response()->json($data, 400);    
         }
