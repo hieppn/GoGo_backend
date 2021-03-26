@@ -34,7 +34,7 @@ Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::get('logout', [LoginController::class,'logout']);
 
 
-// Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
+Route::post('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
 // Route::get('getMess', [MessageController::class,'index']);
 // Route::middleware('auth:api')->group(function () {
 //     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
@@ -63,6 +63,7 @@ Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
 Route::post('trucker/register/{id}',[TruckerController::class,'acceptTrucker']);
+Route::post('trucker/refuse/{id}',[TruckerController::class,'refuseTrucker']);
 Route::put('user/updateImage/{id}',[LoginController::class,'updateImage']);
 Route::put('user/update/{id}',[LoginController::class,'updateUser']);
 

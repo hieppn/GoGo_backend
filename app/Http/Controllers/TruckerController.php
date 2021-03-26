@@ -91,4 +91,12 @@ class TruckerController extends Controller
     public function truckerTempt(){
         return response()->json(TruckerTempt::get(),200);
     }
+    public function refuseTrucker($id){
+        $trucker = TruckerTempt::find($id);
+        if(is_null($trucker)){
+            return response()->json(["message"=>"Record not found!"],404);
+        }
+        $trucker->delete();
+        return response()->json(null,204);
+    }
 }
