@@ -55,7 +55,7 @@ class TruckerController extends Controller
     public function acceptTrucker($id){
         $tempt = TruckerTempt::find($id);
         if(is_null($tempt)){
-            return response()->json(["message"=>"Record Promotion not found!"],404);
+            return response()->json(["message"=>"Record not found!"],404);
         }
         $user = new User;
         $trucker_info = new TruckerInformation;
