@@ -76,6 +76,9 @@ class TruckerController extends Controller
         $trucker_info->license_front = $tempt->license_front;
         $trucker_info->license_back = $tempt->license_back;
         $trucker_info->license_plate = $tempt->license_plate;
+        $trucker_info->registration_paper = $tempt->registration_paper;
+        $trucker_info->car_type = $tempt->car_type;
+        $trucker_info->payload = $tempt->payload;
         $trucker_info->save();
         $tempt->delete();
         $data = array(
