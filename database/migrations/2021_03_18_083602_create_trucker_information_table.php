@@ -21,6 +21,9 @@ class CreateTruckerInformationTable extends Migration
             $table->string('license_front');
             $table->string('license_back');
             $table->string('license_plate');
+            $table->string('registration_paper');
+            $table->string('car_type');
+            $table->float('payload');
             $table->foreign('id_trucker')->references('id')->on('users')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
