@@ -67,6 +67,9 @@ class LoginController extends Controller
             $tempt->license_front = $request->license_front;
             $tempt->license_back = $request->license_back;
             $tempt->license_plate = $request->license_plate;
+            $tempt->registration_paper = $request->registration_paper;
+            $tempt->car_type = $request->car_type;
+            $tempt->payload = $request->payload;
             if(!$request->avatar){
                 $data = array(
                     "error"=>'You must update your avatar!',
@@ -120,7 +123,7 @@ class LoginController extends Controller
         $user = User::where('phone','=',$request->phone)->first();
         if(!$user){
             $data = array(
-                "error"=> ' Not match with your phone!'  ,
+                "error"=> ' Not match with your phone!',
             );     
             return response()->json($data, 400);    
         }

@@ -85,6 +85,7 @@ class TruckerController extends Controller
         $trucker_info->license_back = $tempt->license_back;
         $trucker_info->license_plate = $tempt->license_plate;
         $trucker_info->save();
+        $tempt->delete();
         $data = array(
             "user"=>$user,
             "info"=>$trucker_info
