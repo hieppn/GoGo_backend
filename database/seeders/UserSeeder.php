@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
             'email' => 'trancongdung12@gmail.com',
             'password' => Hash::make('123456'),
             'phone' => '0985582806',
-            'id_card' => '217832233',
+            'id_card' => '215498705',
             'birthday' => '2000-01-01',
             'address' => 'Lệ Thủy, Quảng Bình',
             'avatar' => 'https://scontent-itm1-1.xx.fbcdn.net/v/t1.0-9/160568005_2981102682124691_103298220570549948_o.jpg?_nc_cat=104&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=ViDhRsQX4bgAX8IsNGz&_nc_ht=scontent-itm1-1.xx&oh=b723e91deb33880e5ab980104babc08e&oe=60817460',
