@@ -12,6 +12,7 @@ use App\Http\Controllers\TruckerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\TruckController;
 
 
 /*
@@ -54,6 +55,13 @@ Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromoti
 Route::get('promotion/{id}',[PromotionController::class,'PromotionByID']);
 Route::post('promotion/create',[PromotionController::class,'PromotionSave']);
 Route::PUT('promotion/edit/{id}',[PromotionController::class,'PromotionUpdate']);
+
+//truck
+Route::get('truck/list',[TruckController::class,'getAllTruck']);
+Route::delete('truck/delete/{id}',[TruckController::class,'deleteTruck']);
+Route::get('truck/{id}',[TruckController::class,'getTruckById']);
+Route::post('truck/create',[TruckController::class,'createTruck']);
+Route::PUT('truck/edit/{id}',[TruckController::class,'updateTruck']);
 
 //User
 Route::get('sender/list',[SenderController::class,'getSender']);
