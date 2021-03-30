@@ -5,53 +5,61 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Bill;
 use App\Models\Order;
 use App\Models\Notification;
-
+use App\Models\Truck;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
-        $request->validate([
-            "send_from"=> "required",
-            "send_to"=> "required",
-            "time_send"=> "required",
-            "name"=> "required",
-            "mass"=> "required",
-            "car_type"=> "required",
-            "image"=> "required",
-        ]);
-        $order = new Order;
-        $order->send_from = $request->send_from;
-        $order->send_to = $request->send_to;
-        $order->time_send = $request->time_send;
-        $order->name = $request->name;
-        $order->mass = $request->mass;
-        $order->car_type = $request->car_type;
-        $order->export_data = $request->export_data;
-        $order->sender_info = $request->sender_info;
-        $order->receiver_info = $request->receiver_info;
-        $order->image = $request->image;
-        $order->id_user = $request->id_user;
-        $order->price = $request->price;
-        $query = $order->save();
+        // $request->validate([
+        //     "send_from"=> "required",
+        //     "send_to"=> "required",
+        //     "time_send"=> "required",
+        //     "name"=> "required",
+        //     "mass"=> "required",
+        //     "car_type"=> "required",
+        //     "image"=> "required",
+        // ]);
+        // $order = new Order;
+        // $order->send_from = $request->send_from;
+        // $order->send_to = $request->send_to;
+        // $order->time_send = $request->time_send;
+        // $order->name = $request->name;
+        // $order->mass = $request->mass;
+        // $order->insurance_fee = $request->insurance_fee;
+        // $order->id_truck = $request->id_truck;
+        // $order->distance = $request->distance;
+        // $order->export_data = $request->export_data;
+        // $order->sender_info = $request->sender_info;
+        // $order->receiver_info = $request->receiver_info;
+        // $order->image = $request->image;
+        // $order->id_user = $request->id_user;
+        // $truck = Truck::find($request->id_truck);
+        // $truck = 
 
-        if($query){
-            $notification = new Notification;
-            $notification->message = "Thêm mới order thành công";
-            $notification->id_user = 3;
-            $notification->save();
-            $data = array(
-                "order"=>$order->id,
-            );
-            return response()->json($data, 200);
-        }else{
-            $data = array(
-                "error"=>'Something went wrong!',
-            );
-            return response()->json($data, 400);  
-        }
+        // $order->price = $request->price;
+        // $query = $order->save();
+
+        // if($query){
+        //     $notification = new Notification;
+        //     $notification->message = "Thêm mới order thành công";
+        //     $notification->id_user = 3;
+        //     $notification->save();
+        //     $data = array(
+        //         "order"=>$order->id,
+        //     );
+        //     return response()->json($data, 200);
+        // }else{
+        //     $data = array(
+        //         "error"=>'Something went wrong!',
+        //     );
+        //     return response()->json($data, 400);  
+        // }
+        return $request->time_send;
     }
-
+    public function getPrice($id_truck, $distance, $time, $insurance_fee){
+        $truck = Truck::find($id_truck);
+    }
     public function getOrder(){     
         return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
    }
