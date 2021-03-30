@@ -11,54 +11,69 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
-        // $request->validate([
-        //     "send_from"=> "required",
-        //     "send_to"=> "required",
-        //     "time_send"=> "required",
-        //     "name"=> "required",
-        //     "mass"=> "required",
-        //     "car_type"=> "required",
-        //     "image"=> "required",
-        // ]);
-        // $order = new Order;
-        // $order->send_from = $request->send_from;
-        // $order->send_to = $request->send_to;
-        // $order->time_send = $request->time_send;
-        // $order->name = $request->name;
-        // $order->mass = $request->mass;
-        // $order->insurance_fee = $request->insurance_fee;
-        // $order->id_truck = $request->id_truck;
-        // $order->distance = $request->distance;
-        // $order->export_data = $request->export_data;
-        // $order->sender_info = $request->sender_info;
-        // $order->receiver_info = $request->receiver_info;
-        // $order->image = $request->image;
-        // $order->id_user = $request->id_user;
-        // $truck = Truck::find($request->id_truck);
-        // $truck = 
+        $request->validate([
+            "send_from"=> "required",
+            "send_to"=> "required",
+            "time_send"=> "required",
+            "name"=> "required",
+            "mass"=> "required",
+            "car_type"=> "required",
+            "image"=> "required",
+        ]);
+        $order = new Order;
+        $order->send_from = $request->send_from;
+        $order->send_to = $request->send_to;
+        $order->time_send = $request->time_send;
+        $order->name = $request->name;
+        $order->mass = $request->mass;
+        $order->insurance_fee = $request->insurance_fee;
+        $order->id_truck = $request->id_truck;
+        $order->distance = $request->distance;
+        $order->export_data = $request->export_data;
+        $order->sender_info = $request->sender_info;
+        $order->receiver_info = $request->receiver_info;
+        $order->image = $request->image;
+        $order->id_user = $request->id_user;
+        $order->price = $request->price;
+        $query = $order->save();
 
-        // $order->price = $request->price;
-        // $query = $order->save();
-
-        // if($query){
-        //     $notification = new Notification;
-        //     $notification->message = "Thêm mới order thành công";
-        //     $notification->id_user = 3;
-        //     $notification->save();
-        //     $data = array(
-        //         "order"=>$order->id,
-        //     );
-        //     return response()->json($data, 200);
-        // }else{
-        //     $data = array(
-        //         "error"=>'Something went wrong!',
-        //     );
-        //     return response()->json($data, 400);  
-        // }
-        return $request->time_send;
+        if($query){
+            $notification = new Notification;
+            $notification->message = "Thêm mới order thành công";
+            $notification->id_user = 3;
+            $notification->save();
+            $data = array(
+                "order"=>$order->id,
+            );
+            return response()->json($data, 200);
+        }else{
+            $data = array(
+                "error"=>'Something went wrong!',
+            );
+            return response()->json($data, 400);  
+        }
     }
-    public function getPrice($id_truck, $distance, $time, $insurance_fee){
+    public function getPrice(Request $request){
+        $id_truck = $request->id_truck;
+        $distance = $request->distance;
+        $time = $request->time;
+        $from = $request->from;
+        $to = $request->to;
         $truck = Truck::find($id_truck);
+        $unit_price = $truck->unit_price;
+        $bonus_price = 0;
+        if($distance > 4 && $from!=$to){
+            $bonus_price = ($distance-4)*$truck->bonus_price;
+        }
+        (int)$hour = (int)substr($time,13,2);
+        $on_day = substr($time,19);
+        if((($hour >= 9) && ($on_day == "tối")) || (($hour <= 2) && ($on_day == "sáng"))){
+            $price = $unit_price + $bonus_price + ($unit_price + $bonus_price)*0.3;
+        }
+        else{
+            $price = $unit_price + $bonus_price;
+        }
+        return $price;
     }
     public function getOrder(){     
         return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);

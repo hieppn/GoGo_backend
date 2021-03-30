@@ -14,13 +14,14 @@ class CreateTrucksTable extends Migration
     public function up()
     {
         Schema::create('trucks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->string('description');
             $table->integer('unit_price');
             $table->integer('bonus_price');
             $table->string('image');
             $table->float('payload');
+            $table->boolean('isCheck');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
