@@ -74,6 +74,7 @@ Route::get('count-trucker',[DashboardController::class,'countTrucker']);
 
 //Chart
 Route::get('chart',[ChartController::class,'index']);
+Route::get('chart/line/user',[ChartController::class,'getLineUser']);
 ///Notification
 Route::get('notification/list',[NotificationController::class,'getNotification']);
 // Route::get('profile/{id}',[NotificationController::class,'deletenotification']);

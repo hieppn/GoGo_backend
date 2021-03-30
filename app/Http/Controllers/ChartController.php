@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -16,12 +17,39 @@ class ChartController extends Controller
      */
     public function index()
     {
-        $order = Order::select(\DB::raw("COUNT(*) as count"))
-                    ->whereYear('created_at', date('Y'))
-                    ->groupBy(\DB::raw("Month(created_at)"))
-                    ->pluck('count');
+        // $order = Order::select(\DB::raw("COUNT(*) as count"))
+        //             ->whereYear('created_at', date('Y'))
+        //             ->groupBy(\DB::raw("Month(created_at)"))
+        //             ->pluck('count') ;
 
-        return response()->json($order,200);
+        //             return response()->json($order,200);
+            $post=Order::select(Order::raw('MONTH(created_at) as month'),Order::raw('COUNT(id) as sum'))
+            ->groupBy('month')->get(); 
+            $postmonth=[0,0,0,0,0,0,0,0,0,0,0,0];
+            foreach($post as $post){
+            for($i=1;$i<=12;$i++){
+              if($i==$post["month"]){
+                $postmonth[$i-1]=$post["sum"];
+              }
+            } 
+            }   
+            return $postmonth;
+    }
+
+    public function getLineUser(){
+      
+            $user=User::select(User::raw('MONTH(created_at) as month'),User::raw('COUNT(id) as sum'))
+            ->groupBy('month')->get();   
+            $user_month=[0,0,0,0,0,0,0,0,0,0,0,0];
+            foreach($user as $user){
+            for($i=1;$i<=12;$i++){
+              if($i==$user["month"]){
+                $user_month[$i-1]=$user["sum"];
+              }
+            } 
+            }   
+            return $user_month;
+        
     }
     /**
      * Show the form for creating a new resource.
