@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Bill;
 use App\Models\Order;
 use App\Models\Notification;
-
+use App\Models\Truck;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -26,7 +26,9 @@ class OrderController extends Controller
         $order->time_send = $request->time_send;
         $order->name = $request->name;
         $order->mass = $request->mass;
-        $order->car_type = $request->car_type;
+        $order->insurance_fee = $request->insurance_fee;
+        $order->id_truck = $request->id_truck;
+        $order->distance = $request->distance;
         $order->export_data = $request->export_data;
         $order->sender_info = $request->sender_info;
         $order->receiver_info = $request->receiver_info;
@@ -51,7 +53,28 @@ class OrderController extends Controller
             return response()->json($data, 400);  
         }
     }
-
+    public function getPrice(Request $request){
+        $id_truck = $request->id_truck;
+        $distance = $request->distance;
+        $time = $request->time;
+        $from = $request->from;
+        $to = $request->to;
+        $truck = Truck::find($id_truck);
+        $unit_price = $truck->unit_price;
+        $bonus_price = 0;
+        if($distance > 4 && $from!=$to){
+            $bonus_price = ($distance-4)*$truck->bonus_price;
+        }
+        (int)$hour = (int)substr($time,13,2);
+        $on_day = substr($time,19);
+        if((($hour >= 9) && ($on_day == "tối")) || (($hour <= 2) && ($on_day == "sáng"))){
+            $price = $unit_price + $bonus_price + ($unit_price + $bonus_price)*0.3;
+        }
+        else{
+            $price = $unit_price + $bonus_price;
+        }
+        return $price;
+    }
     public function getOrder(){     
         return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
    }

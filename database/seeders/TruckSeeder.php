@@ -21,6 +21,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>15000,
             'image' => "https://khocontainer.com/wp-content/uploads/2017/04/Suzuki-super-carry-truck-650kg.jpg",
             'payload' =>"650",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '2',
@@ -30,6 +31,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>18000,
             'image' => "https://www.xetaidanang.com.vn/Hinh%20CTSP/Hinhduan/5924xe-tai-hoa-khanh.jpg",
             'payload' =>"750",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '3',
@@ -39,6 +41,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>20000,
             'image' => "https://xetaicenter.com/wp-content/uploads/2018/06/gi-xe-tai-1-tan.jpg",
             'payload' =>"1000",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '4',
@@ -48,6 +51,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>20000,
             'image' => "https://oto3.namdinhweb.com/wp-content/uploads/2017/12/xe-tai-isuzu-QKR55F.jpg",
             'payload' =>"1400",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '5',
@@ -57,6 +61,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>22000,
             'image' => "http://www.xetaithegioi.com/upload/product/166834532070.jpg",
             'payload' =>"1900",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '6',
@@ -66,6 +71,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>23000,
             'image' => "https://xetaihyundaivn.com/wp-content/uploads/2015/04/2a.jpg",
             'payload' =>"2500",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '7',
@@ -75,6 +81,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>25000,
             'image' => "https://isuzu24h.com/wp-content/uploads/2019/04/tong-quat-Xe-tai-isuzu-5t-NQR-550-thung-kin-inox-isuzu24h.com_.jpg",
             'payload' =>"5000",
+            'isCheck' => false
         ]);
         DB::table('trucks')->insert([
             'id' => '8',
@@ -84,6 +91,7 @@ class TruckSeeder extends Seeder
             'bonus_price' =>28000,
             'image' => "https://xetaihovo.com/Content/Uploads/files/Xe%20t%E1%BA%A3i%20tmt%208%20t%E1%BA%A5n%20th%C3%B9ng%20d%C3%A0i%209_3m-%20c%C3%B3%20th%C3%B9ng.JPG",
             'payload' =>"8000",
+            'isCheck' => false
         ]);
        
     }
