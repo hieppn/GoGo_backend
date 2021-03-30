@@ -98,4 +98,16 @@ class OrderController extends Controller
             return response()->json($data, 400);  
         }
     }
+    public function acceptOrder($id){
+        $order = Order::find($id);
+        $order->type = 2;
+        $order->save();
+        return response()->json($order,200);
+    }
+    public function canceledOrder($id){
+        $order = Order::find($id);
+        $order->type = 4;
+        $order->save();
+        return response()->json($order,200);
+    }
 }
