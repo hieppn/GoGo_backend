@@ -13,7 +13,7 @@ class MessageController extends Controller
         $message->user;
     }
   $array = array("message" => $messages);
-return response()->json($array,200);
+    return response()->json($array,200);
     }
     public function index()
     {

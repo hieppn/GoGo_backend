@@ -77,7 +77,7 @@ class OrderSeeder extends Seeder
             'car_type'=>'Xe 4 bánh',
             'export_data'=>true,
             'image'=>'ord1.png',
-            'type'=>1,
+            'type'=>1, 
             'price'=>'12000000',
             'sender_info'=>'Huong 101',
             'receiver_info'=>'Huong 102',

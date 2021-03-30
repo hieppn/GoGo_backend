@@ -171,7 +171,7 @@ class LoginController extends Controller
             $user->update($request->all());
         return response()->json($user,200);
     }
-    public function logout(){  
-        //Auth::logout();
+    public function lockUser($id){  
+        $user = User::find($id);
 }
 }

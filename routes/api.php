@@ -12,6 +12,7 @@ use App\Http\Controllers\TruckerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ChartController;
+use App\Http\Controllers\TruckController;
 
 
 /*
@@ -34,7 +35,7 @@ Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::get('logout', [LoginController::class,'logout']);
 
 
-// Route::get('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
+Route::post('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
 // Route::get('getMess', [MessageController::class,'index']);
 // Route::middleware('auth:api')->group(function () {
 //     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
@@ -55,6 +56,13 @@ Route::get('promotion/{id}',[PromotionController::class,'PromotionByID']);
 Route::post('promotion/create',[PromotionController::class,'PromotionSave']);
 Route::PUT('promotion/edit/{id}',[PromotionController::class,'PromotionUpdate']);
 
+//truck
+Route::get('truck/list',[TruckController::class,'getAllTruck']);
+Route::delete('truck/delete/{id}',[TruckController::class,'deleteTruck']);
+Route::get('truck/{id}',[TruckController::class,'getTruckById']);
+Route::post('truck/create',[TruckController::class,'createTruck']);
+Route::PUT('truck/edit/{id}',[TruckController::class,'updateTruck']);
+
 //User
 Route::get('sender/list',[SenderController::class,'getSender']);
 Route::get('trucker/list',[TruckerController::class,'getTrucker']);
@@ -63,6 +71,7 @@ Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
 Route::post('trucker/register/{id}',[TruckerController::class,'acceptTrucker']);
+Route::delete('trucker/refuse/{id}',[TruckerController::class,'refuseTrucker']);
 Route::put('user/updateImage/{id}',[LoginController::class,'updateImage']);
 Route::put('user/update/{id}',[LoginController::class,'updateUser']);
 
@@ -79,5 +88,5 @@ Route::get('chart/line/user',[ChartController::class,'getLineUser']);
 Route::get('notification/list',[NotificationController::class,'getNotification']);
 // Route::get('profile/{id}',[NotificationController::class,'deletenotification']);
 Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
-
+Route::post('notification/sendMessage',[NotificationController::class,'testSend']);
 
