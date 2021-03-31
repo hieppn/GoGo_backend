@@ -9,6 +9,7 @@ class TruckController extends Controller
    public function getAllTruck(){
        return response()->json(Truck::all(),200);
    }
+   
    public function deleteTruck(Request $request,  $id){
     $truck = Truck::find($id);
     if(is_null($truck)){
@@ -17,6 +18,7 @@ class TruckController extends Controller
     $truck->delete();
     return response()->json(null,204);
 }
+
 
 public function getTruckById($id){
     $truck = Truck::find($id);

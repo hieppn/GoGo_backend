@@ -39,6 +39,8 @@ class ChartController extends Controller
     public function getLineUser(){
       
             $user=User::select(User::raw('MONTH(created_at) as month'),User::raw('COUNT(id) as sum'))
+            ->where('id_role', 1)
+            ->orWhere('id_role', 2)
             ->groupBy('month')->get();   
             $user_month=[0,0,0,0,0,0,0,0,0,0,0,0];
             foreach($user as $user){
