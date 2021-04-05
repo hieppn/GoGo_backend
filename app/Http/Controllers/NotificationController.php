@@ -19,6 +19,13 @@ class NotificationController extends Controller
         $notification->delete();
         return response()->json(null,204);
     }
+    public function getNotificationById(Request $request,  $id){
+        $notification = Notification::where('id_user', $id)->get();
+        if(is_null($notification)){
+            return response()->json(["message"=>"Record Promotion not found!"],404);
+        }
+        return response()->json($notification,200);
+    }
     public function sendCloudMessageToAndroid(Request $request){ 
         $message = $request->message; 
         $push_data = $request->push_data;   

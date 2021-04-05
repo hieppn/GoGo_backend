@@ -87,7 +87,7 @@ Route::get('chart',[ChartController::class,'index']);
 Route::get('chart/line/user',[ChartController::class,'getLineUser']);
 ///Notification
 Route::get('notification/list',[NotificationController::class,'getNotification']);
-// Route::get('profile/{id}',[NotificationController::class,'deletenotification']);
+Route::get('notification/{id}',[NotificationController::class,'getNotificationById']);
 Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
 Route::post('notification/sendMessage',[NotificationController::class,'testSend']);
 
