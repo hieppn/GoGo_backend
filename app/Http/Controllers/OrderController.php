@@ -38,7 +38,7 @@ class OrderController extends Controller
         if($query){
             $notification = new Notification;
             $notification->message = "Thêm mới order thành công";
-            $notification->id_user = 3;
+            $notification->id_user = $id_user;
             $notification->save();
             $data = array(
                 "order"=>$order->id,
