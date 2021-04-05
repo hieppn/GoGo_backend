@@ -17,8 +17,10 @@ class CreateBillsTable extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_order')->unsigned();
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('id_sender')->unsigned();
+            $table->integer('id_trucker')->unsigned();
+            $table->foreign('id_sender')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_trucker')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

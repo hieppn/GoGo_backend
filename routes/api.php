@@ -13,7 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TruckController;
-
+use App\Http\Controllers\BillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,3 +91,6 @@ Route::get('notification/{id}',[NotificationController::class,'getNotificationBy
 Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
 Route::post('notification/sendMessage',[NotificationController::class,'testSend']);
 
+//Bill
+Route::get('bill/list',[BillController::class,'getAllBill']);
+Route::get('bill/by/{id}',[BillController::class,'getBillById']);

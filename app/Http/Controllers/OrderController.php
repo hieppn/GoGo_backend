@@ -91,15 +91,21 @@ class OrderController extends Controller
         $order = Order::find($id);
         if(!$order){
             return response()->json(["message"=>"Record not found!"],404);
-        }
-            else{
-                // $id_user = $order->id_user;
-                $order->type = $request->type;
+        }else if($request->type == 2){
+            $bill = new Bill;
+            $bill->id_order = $order->id;
+            $bill->id_sender = $order->id_user;
+            $bill->id_trucker = $request->id_trucker;
+            $bill->save();
+            $order->type = $request->type;
             $order->save();
-            // $orders = $this->getOrderByIdUser($id_user);
+        }else{
+                $order->type = $request->type;
+                $order->save();
+        }
         return response()->json($order,200);
     }
-}
+
     
     public function getOrderNew(){
         return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id and o.type=1' ) ,200);
