@@ -47,5 +47,12 @@ class PromotionController extends Controller
             $promotion->update($request->all());
         return response()->json($promotion,200);
     }
-
+    public function PromotionByCode(Request $request, $code){
+        $promotion = Promotion::where('code', $code)->get();
+        
+        if(is_null($promotion)){
+            return response()->json(["message"=>"Record not found!"],404);
+        }
+        return response()->json($promotion,200);
+    }
 }

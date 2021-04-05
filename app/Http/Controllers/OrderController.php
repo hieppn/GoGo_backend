@@ -17,7 +17,6 @@ class OrderController extends Controller
             "time_send"=> "required",
             "name"=> "required",
             "mass"=> "required",
-            "car_type"=> "required",
             "image"=> "required",
         ]);
         $order = new Order;
@@ -28,7 +27,6 @@ class OrderController extends Controller
         $order->mass = $request->mass;
         $order->insurance_fee = $request->insurance_fee;
         $order->id_truck = $request->id_truck;
-        $order->distance = $request->distance;
         $order->export_data = $request->export_data;
         $order->sender_info = $request->sender_info;
         $order->receiver_info = $request->receiver_info;

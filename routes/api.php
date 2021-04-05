@@ -53,6 +53,7 @@ Route::post('get-price',[OrderController::class,'getPrice']);
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
 Route::get('promotion/{id}',[PromotionController::class,'PromotionByID']);
+Route::get('promotion/by/{code}',[PromotionController::class,'PromotionByCode']);
 Route::post('promotion/create',[PromotionController::class,'PromotionSave']);
 Route::PUT('promotion/edit/{id}',[PromotionController::class,'PromotionUpdate']);
 
