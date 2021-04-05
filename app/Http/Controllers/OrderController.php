@@ -73,7 +73,7 @@ class OrderController extends Controller
         return $price;
     }
     public function getOrder(){     
-        return response()->json(Db::select('select u.full_name, o.* from orders as o, users as u where o.id_user = u.id') ,200);
+        return response()->json(Db::select('select u.full_name, o.*, t.name as truck from orders as o, users as u, trucks as t where o.id_user = u.id and o.id_truck = t.id;') ,200);
    }
 
     public function deleteOrder(Request $request,  $id){
@@ -105,21 +105,23 @@ class OrderController extends Controller
     }
 
     public function getOrderByIdUser($id){
-        $orders = Order::where('id_user',$id)->get();
-        foreach ($orders as $order) {
-            $order->truck;
-        }
-        if($orders){
-            $data = array(
-                "ordersByUser"=>$orders,
-            );
-            return response()->json($data, 200);
-        }else{
-            $data = array(
-                "error"=>'Something went wrong!',
-            );
-            return response()->json($data, 400);  
-        }
+        
+        return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id) ,200);
+        // $orders = Order::where('id_user',$id)->get();
+        // foreach ($orders as $order) {
+        //     $order->truck;
+        // }
+        // if($orders){
+        //     $data = array(
+        //         "ordersByUser"=>$orders,
+        //     );
+        //     return response()->json($data, 200);
+        // }else{
+        //     $data = array(
+        //         "error"=>'Something went wrong!',
+        //     );
+        //     return response()->json($data, 400);  
+        // }
     }
     public function acceptOrder($id){
         $order = Order::find($id);
