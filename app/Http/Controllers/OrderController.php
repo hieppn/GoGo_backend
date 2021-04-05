@@ -17,7 +17,6 @@ class OrderController extends Controller
             "time_send"=> "required",
             "name"=> "required",
             "mass"=> "required",
-            "image"=> "required",
         ]);
         $order = new Order;
         $order->send_from = $request->send_from;
@@ -38,7 +37,7 @@ class OrderController extends Controller
         if($query){
             $notification = new Notification;
             $notification->message = "Thêm mới order thành công";
-            $notification->id_user = $id_user;
+            $notification->id_user = 3;
             $notification->save();
             $data = array(
                 "order"=>$order->id,

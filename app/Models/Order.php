@@ -15,7 +15,7 @@ class Order extends Model
             'name',
             'mass',
             'unit',
-            'car_type',
+            'id_truck',
             'note',
             'image',
             'type',

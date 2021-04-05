@@ -28,7 +28,6 @@ class CreateOrdersTable extends Migration
             $table->integer('price');
             $table->boolean('insurance_fee');
             $table->integer('id_truck')->unsigned();
-            $table->float('distance');
             $table->integer('id_user')->unsigned()->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_truck')->references('id')->on('trucks')->onDelete('cascade');
