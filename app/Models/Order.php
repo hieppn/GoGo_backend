@@ -21,4 +21,7 @@ class Order extends Model
             'type',
            'id_user',
     ];
+    public function truck() {
+        return $this->hasOne(Truck::class,"id","id");
+    }
 }

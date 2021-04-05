@@ -106,6 +106,9 @@ class OrderController extends Controller
 
     public function getOrderByIdUser($id){
         $orders = Order::where('id_user',$id)->get();
+        foreach ($orders as $order) {
+            $order->truck;
+        }
         if($orders){
             $data = array(
                 "ordersByUser"=>$orders,
