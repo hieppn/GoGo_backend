@@ -97,4 +97,5 @@ Route::post('notification/sendMessage',[NotificationController::class,'testSend'
 //Bill
 Route::get('bill/list',[BillController::class,'getAllBill']);
 Route::get('bill/by/{id}',[BillController::class,'getBillById']);
+Route::get('bill/trucker/{id}',[BillController::class,'getBillByIdTruck']);
 

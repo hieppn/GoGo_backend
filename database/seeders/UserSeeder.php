@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             'id_role'=>'2',
         ]);
         DB::table('users')->insert([
-            'full_name' => 'Trần Công Dũng',
+            'full_name' => 'Anh Dũng',
             'email' => 'trancongdung12@gmail.com',
             'password' => Hash::make('123456'),
             'phone' => '0985582806',

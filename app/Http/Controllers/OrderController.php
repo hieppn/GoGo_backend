@@ -6,6 +6,7 @@ use App\Models\Bill;
 use App\Models\Order;
 use App\Models\Notification;
 use App\Models\Truck;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -99,6 +100,22 @@ class OrderController extends Controller
             $bill->save();
             $order->type = $request->type;
             $order->save();
+            //notify for user
+            $users = User::find($request->id_trucker);
+            $notification = new Notification;
+            $notification->title = "Tài xế ".$users->full_name." đã nhận đơn hàng #".$order->id." của bạn!";
+            $notification->message = "Bạn hãy chuẩn bị đơn hàng, Tài xế sẽ đến sau vài phút nữa thôi";
+            $notification->isRead = false;
+            $notification->id_user = $order->id_user;
+            $notification->save();
+             //notify for trucker
+            $notification = new Notification;
+            $notification->title = "Chúc mừng bạn đã nhận đơn hàng thành công!";
+            $notification->message = "Hãy chuẩn bị xe và đến địa điểm lấy hàng";
+            $notification->isRead = false;
+            $notification->id_user = $order->id_user;
+            $notification->save();
+            return response()->json('Success', 200);
         }else{
                 $order->type = $request->type;
                 $order->save();
@@ -113,23 +130,7 @@ class OrderController extends Controller
     }
 
     public function getOrderByIdUser($id){
-        
         return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id) ,200);
-        // $orders = Order::where('id_user',$id)->get();
-        // foreach ($orders as $order) {
-        //     $order->truck;
-        // }
-        // if($orders){
-        //     $data = array(
-        //         "ordersByUser"=>$orders,
-        //     );
-        //     return response()->json($data, 200);
-        // }else{
-        //     $data = array(
-        //         "error"=>'Something went wrong!',
-        //     );
-        //     return response()->json($data, 400);  
-        // }
     }
     public function acceptOrder($id){
         $order = Order::find($id);
