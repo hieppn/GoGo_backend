@@ -22,6 +22,6 @@ class BillController extends Controller
         return response()->json(Bill::all(),200);
     }
     public function getBillById(Request $request,$id){
-        return response()->json(Bill::where("id_sender", $id)->get(),200);
+        return response()->json(Db::select('select o.*,u.full_name as trucker_name,u.phone, (SELECT t.license_plate FROM trucker_information as t WHERE t.id_trucker = b.id_trucker ) as plate from bills as b, orders as o, users as u where b.id_order = o.id and b.id_trucker = u.id;'),200);
     }
 }
