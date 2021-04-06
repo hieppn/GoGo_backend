@@ -88,9 +88,13 @@ Route::get('chart/line/user',[ChartController::class,'getLineUser']);
 ///Notification
 Route::get('notification/list',[NotificationController::class,'getNotification']);
 Route::get('notification/{id}',[NotificationController::class,'getNotificationById']);
+Route::get('notification/count/{id}',[NotificationController::class,'countNotificationById']);
+Route::put('notification/read/{id}',[NotificationController::class,'updateNotificationRead']);
+Route::put('notification/all-read/{id}',[NotificationController::class,'updateAllNotificationReadByIdUser']);
 Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
 Route::post('notification/sendMessage',[NotificationController::class,'testSend']);
 
 //Bill
 Route::get('bill/list',[BillController::class,'getAllBill']);
 Route::get('bill/by/{id}',[BillController::class,'getBillById']);
+

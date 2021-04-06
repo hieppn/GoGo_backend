@@ -14,7 +14,7 @@ class NotificationController extends Controller
     public function deleteNotification(Request $request,  $id){
         $notification = Notification::find($id);
         if(is_null($notification)){
-            return response()->json(["message"=>"Record Promotion not found!"],404);
+            return response()->json(["message"=>"Record Notification not found!"],404);
         }
         $notification->delete();
         return response()->json(null,204);
@@ -22,9 +22,30 @@ class NotificationController extends Controller
     public function getNotificationById(Request $request,  $id){
         $notification = Notification::where('id_user', $id)->get();
         if(is_null($notification)){
-            return response()->json(["message"=>"Record Promotion not found!"],404);
+            return response()->json(["message"=>"Record Notification not found!"],404);
         }
         return response()->json($notification,200);
+    }
+    public function countNotificationById(Request $request,  $id){
+        $notification = Notification::where('id_user', $id)->where('isRead', false)->count();
+        if(is_null($notification)){
+            return response()->json(["message"=>"Record Notification not found!"],404);
+        }
+        return response()->json($notification,200);
+    }
+    public function updateNotificationRead(Request $request,$id){
+        $notification = Notification::find($id);
+        if(!$notification){
+            return response()->json(["message"=>"Record not found!"],404);
+        }else{
+                $notification->isRead = true;
+                $notification->save();
+        }
+        return response()->json($notification,200);
+    }
+    public function updateAllNotificationReadByIdUser(Request $request,$id){
+            Db::select('UPDATE notifications SET notifications.isRead = true WHERE notifications.id_user = '.$id);
+            return response()->json(["Update successfully"],200);
     }
     public function sendCloudMessageToAndroid(Request $request){ 
         $message = $request->message; 
