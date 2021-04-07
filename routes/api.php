@@ -92,8 +92,7 @@ Route::get('notification/count/{id}',[NotificationController::class,'countNotifi
 Route::put('notification/read/{id}',[NotificationController::class,'updateNotificationRead']);
 Route::put('notification/all-read/{id}',[NotificationController::class,'updateAllNotificationReadByIdUser']);
 Route::delete('notification/delete/{id}',[NotificationController::class,'deletenotification']);
-Route::post('notification/sendMessage',[NotificationController::class,'testSend']);
-
+Route::post('notification/create',[NotificationController::class,'create']);
 //Bill
 Route::get('bill/list',[BillController::class,'getAllBill']);
 Route::get('bill/by/{id}',[BillController::class,'getBillById']);
