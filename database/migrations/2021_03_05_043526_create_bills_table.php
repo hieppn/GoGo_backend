@@ -19,6 +19,8 @@ class CreateBillsTable extends Migration
             $table->integer('id_order')->unsigned();
             $table->integer('id_sender')->unsigned();
             $table->integer('id_trucker')->unsigned();
+            $table->integer('id_truck')->unsigned();
+            $table->foreign('id_truck')->references('id')->on('trucks')->onDelete('cascade');
             $table->foreign('id_sender')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_trucker')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_order')->references('id')->on('orders')->onDelete('cascade');

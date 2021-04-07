@@ -96,6 +96,7 @@ class OrderController extends Controller
             $bill = new Bill;
             $bill->id_order = $order->id;
             $bill->id_sender = $order->id_user;
+            $bill->id_truck = $order->id_truck;
             $bill->id_trucker = $request->id_trucker;
             $bill->save();
             $order->type = $request->type;
