@@ -113,7 +113,7 @@ class OrderController extends Controller
             $notification->title = "Chúc mừng bạn đã nhận đơn hàng thành công!";
             $notification->message = "Hãy chuẩn bị xe và đến địa điểm lấy hàng";
             $notification->isRead = false;
-            $notification->id_user = $order->id_user;
+            $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);
         }else{
