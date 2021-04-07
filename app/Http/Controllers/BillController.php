@@ -21,6 +21,6 @@ class BillController extends Controller
         WHERE b.id_order = o.id AND b.id_trucker = u.id;'),200);
     }
     public function getBillByIdTruck(Request $request,$id){
-        return response()->json(DB::select('select b.id_trucker, o.* from bills as b, orders as o where  o.id = b.id_order and b.id_trucker = '.$id),200);
+        return response()->json(DB::select('select b.id_trucker, o.* from bills as b, orders as o where  o.id = b.id_order  and o.type = 2 and b.id_trucker = '.$id),200);
     }
 }
