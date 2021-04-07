@@ -117,6 +117,31 @@ class OrderController extends Controller
             $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);
+        }else if($request->type == 3){
+            $bill = new Bill;
+            $bill->id_order = $order->id;
+            $bill->id_sender = $order->id_user;
+            $bill->id_truck = $order->id_truck;
+            $bill->id_trucker = $request->id_trucker;
+            $bill->save();
+            $order->type = $request->type;
+            $order->save();
+            //notify for user
+            $users = User::find($request->id_trucker);
+            $notification = new Notification;
+            $notification->title = "Đơn hàng của bạn đã được giao thành công!";
+            $notification->message = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
+            $notification->isRead = false;
+            $notification->id_user = $order->id_user;
+            $notification->save();
+            //notify for trucker
+            $notification = new Notification;
+            $notification->title = "Chúc mừng bạn đã giao đơn hàng thành công!";
+            $notification->message = "Tìm một đơn mới nữa đi nào";
+            $notification->isRead = false;
+            $notification->id_user = $request->id_trucker;
+            $notification->save();
+            return response()->json('Success', 200);
         }else{
                 $order->type = $request->type;
                 $order->save();
