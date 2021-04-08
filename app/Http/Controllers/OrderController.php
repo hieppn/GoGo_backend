@@ -93,8 +93,8 @@ class OrderController extends Controller
         if(!$order){
             return response()->json(["message"=>"Record not found!"],404);
         }else if($request->type == 2){
-            $billTrucker = Bill::where('id_trucker', $request->id_trucker)->count();
-            if($billTrucker !== 0){
+            $billTrucker = DB::select('SELECT COUNT(*) as count FROM bills, orders WHERE orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
+            if($billTrucker[0]->count !== 0){
                 return response()->json('Trucker exist', 400);
             }else {
             $bill = new Bill;
