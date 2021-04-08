@@ -39,6 +39,7 @@ class OrderController extends Controller
             $notification = new Notification;
             $notification->title = "Chúc mừng bạn đã thêm đơn hàng thành công";
             $notification->message = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
+            $notification->type = 1;
             $notification->isRead = false;
             $notification->id_user = $request->id_user;
             $notification->save();
