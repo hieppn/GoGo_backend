@@ -19,7 +19,7 @@ class TruckSeeder extends Seeder
             'description' =>"- Thùng kín - Kích thước thùng xe: D 2m x R 1.4m x C1.5m",
             'unit_price' =>300000,
             'bonus_price' =>15000,
-            'image' => "https://khocontainer.com/wp-content/uploads/2017/04/Suzuki-super-carry-truck-650kg.jpg",
+            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617867833-cZCbrKKQY9606eb439d5b2d",
             'payload' =>"650",
             'isCheck' => false
         ]);
@@ -29,7 +29,7 @@ class TruckSeeder extends Seeder
             'description' =>"- Thùng kín  - Kích thước thùng xe: D2.1m x R 1.5mx C 1.5m",
             'unit_price' =>350000,
             'bonus_price' =>18000,
-            'image' => "https://www.xetaidanang.com.vn/Hinh%20CTSP/Hinhduan/5924xe-tai-hoa-khanh.jpg",
+            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617867868-yNnFvKCrUy606eb45c94118",
             'payload' =>"750",
             'isCheck' => false
         ]);
