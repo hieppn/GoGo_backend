@@ -93,6 +93,10 @@ class OrderController extends Controller
         if(!$order){
             return response()->json(["message"=>"Record not found!"],404);
         }else if($request->type == 2){
+            $billTrucker = Bill::where('id_trucker', $request->id_trucker)->get();
+            if($billTrucker){
+                return response()->json('Trucker exist', 400);
+            }else {
             $bill = new Bill;
             $bill->id_order = $order->id;
             $bill->id_sender = $order->id_user;
@@ -117,6 +121,7 @@ class OrderController extends Controller
             $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);
+            }
         }else if($request->type == 3){
             $bill = new Bill;
             $bill->id_order = $order->id;
