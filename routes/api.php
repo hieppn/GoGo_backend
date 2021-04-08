@@ -14,7 +14,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TruckController;
 use App\Http\Controllers\BillController;
-
+use App\Http\Controllers\SearchHistoryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -98,3 +98,7 @@ Route::get('bill/list',[BillController::class,'getAllBill']);
 Route::get('bill/by/{id}',[BillController::class,'getBillById']);
 Route::get('bill/trucker/{id}',[BillController::class,'getBillByIdTruck']);
 
+//Search History
+Route::post('search-history/create',[SearchHistoryController::class,'create']);
+Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);
+Route::delete('search-history/{id}',[SearchHistoryController::class,'delete']);
