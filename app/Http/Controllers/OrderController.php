@@ -111,6 +111,7 @@ class OrderController extends Controller
             $notification->title = "Tài xế ".$users->full_name." đã nhận đơn hàng #".$order->id." của bạn!";
             $notification->message = "Bạn hãy chuẩn bị đơn hàng, Tài xế sẽ đến sau vài phút nữa thôi";
             $notification->isRead = false;
+            $notification->type = 1;
             $notification->id_user = $order->id_user;
             $notification->save();
              //notify for trucker
@@ -118,6 +119,7 @@ class OrderController extends Controller
             $notification->title = "Chúc mừng bạn đã nhận đơn hàng thành công!";
             $notification->message = "Hãy chuẩn bị xe và đến địa điểm lấy hàng";
             $notification->isRead = false;
+            $notification->type = 1;
             $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);
@@ -137,6 +139,7 @@ class OrderController extends Controller
             $notification->title = "Đơn hàng của bạn đã được giao thành công!";
             $notification->message = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
             $notification->isRead = false;
+            $notification->type = 2;
             $notification->id_user = $order->id_user;
             $notification->save();
             //notify for trucker
@@ -144,6 +147,7 @@ class OrderController extends Controller
             $notification->title = "Chúc mừng bạn đã giao đơn hàng thành công!";
             $notification->message = "Tìm một đơn mới nữa đi nào";
             $notification->isRead = false;
+            $notification->type = 2;
             $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);

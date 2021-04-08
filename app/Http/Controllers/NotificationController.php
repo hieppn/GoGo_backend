@@ -11,6 +11,7 @@ class NotificationController extends Controller
         $notification = new Notification;
         $notification->title = $request->title;
         $notification->message = $request->message;
+        $notification->type = $request->type;;
         $notification->isRead = false;
         $notification->id_user = $request->id_user;
         $notification->save();
