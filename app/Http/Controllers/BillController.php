@@ -24,4 +24,7 @@ class BillController extends Controller
     public function getBillByIdTruck(Request $request,$id){
         return response()->json(DB::select('select b.id_trucker, o.* from bills as b, orders as o where  o.id = b.id_order  and o.type = 2 and b.id_trucker = '.$id),200);
     }
+    public function getCompleteBillTruck(Request $request,$id){
+        return response()->json(DB::select('select b.id_trucker, o.* from bills as b, orders as o where  o.id = b.id_order  and o.type = 3 and b.id_trucker = '.$id. ' ORDER BY b.id DESC'),200);
+    }
 }

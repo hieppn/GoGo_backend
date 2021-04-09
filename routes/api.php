@@ -97,7 +97,7 @@ Route::post('notification/create',[NotificationController::class,'create']);
 Route::get('bill/list',[BillController::class,'getAllBill']);
 Route::get('bill/by/{id}',[BillController::class,'getBillById']);
 Route::get('bill/trucker/{id}',[BillController::class,'getBillByIdTruck']);
-
+Route::get('bill/trucker/complete/{id}',[BillController::class,'getCompleteBillTruck']);
 //Search History
 Route::post('search-history/create',[SearchHistoryController::class,'create']);
 Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);
