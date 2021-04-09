@@ -18,8 +18,12 @@ class SearchHistoryController extends Controller
         return response()->json($searchHistory,200);
     }
     public function delete(Request $request, $id){
-        SearchHistory::find($id)->delete();
-        return response()->json("Success",200);
+        
+        $search = SearchHistory::find($id);
+        $id_user = $search->id_user;
+        $search->delete();
+        $result = SearchHistory::where('id_user',$id_user)->get();
+        return response()->json($result,200);
     }
 }
 
