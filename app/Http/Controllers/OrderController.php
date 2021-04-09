@@ -91,9 +91,7 @@ class OrderController extends Controller
     }
     public function updateStatus(Request $request,$id){
         $order = Order::find($id);
-        if(!$order){
-            return response()->json(["message"=>"Record not found!"],404);
-        }else if($request->type == 2){
+        if($request->type == 2){
             $billTrucker = DB::select('SELECT COUNT(*) as count FROM bills, orders WHERE orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
             if($billTrucker[0]->count !== 0){
                 return response()->json('Trucker exist', 400);
@@ -152,9 +150,6 @@ class OrderController extends Controller
             $notification->id_user = $request->id_trucker;
             $notification->save();
             return response()->json('Success', 200);
-        }else{
-                $order->type = $request->type;
-                $order->save();
         }
         return response()->json($order,200);
     }
