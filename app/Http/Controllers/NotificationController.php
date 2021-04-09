@@ -31,7 +31,7 @@ class NotificationController extends Controller
         return response()->json(null,204);
     }
     public function getNotificationById(Request $request,  $id){
-        $notification = Notification::where('id_user', $id)->get();
+        $notification = Notification::where('id_user', $id)->orderBy('id', 'DESC')->get();
         if(is_null($notification)){
             return response()->json(["message"=>"Record Notification not found!"],404);
         }
