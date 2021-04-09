@@ -55,7 +55,7 @@ class NotificationController extends Controller
         return response()->json($notification,200);
     }
     public function updateAllNotificationReadByIdUser(Request $request,$id){
-            Db::select('UPDATE notifications SET notifications.isRead = true WHERE notifications.id_user = '.$id);
+        Notification::where('id_user', $id)->update(['isRead' => true]);
             return response()->json(["Update successfully"],200);
     }
     
