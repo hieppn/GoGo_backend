@@ -77,7 +77,7 @@ class OrderController extends Controller
         return $price;
     }
     public function getOrder(){     
-        return response()->json(Db::select('select u.full_name, o.*, t.name as truck from orders as o, users as u, trucks as t where o.id_user = u.id and o.id_truck = t.id;') ,200);
+        return response()->json(Db::select('select u.full_name ,t.name, o.*, t.name as truck from orders as o, users as u, trucks as t where o.id_user = u.id and o.id_truck = t.id;pull') ,200);
    }
 
     public function deleteOrder(Request $request,  $id){
