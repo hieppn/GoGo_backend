@@ -59,11 +59,11 @@ class NotificationController extends Controller
         Notification::where('id_user', $id)->update(['isRead' => true]);
             return response()->json(["Update successfully"],200);
     }
-    public function pushNotification ($topic, $title, $body, $token) {
+    public function pushNotification ($type, $title, $body, $token) {
         PushNotificationJob::dispatch('sendBatchNotification', [
             $token,
             [
-                'topicName' => $topic,
+                'type' => $type,
                 'title' => $title,
                 'body' => $body,
             ],
