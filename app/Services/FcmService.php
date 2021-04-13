@@ -19,7 +19,7 @@
 				public function sendBatchNotification($deviceTokens, $data)
 				{
 					self::subscribeTopic($deviceTokens, $data['topicName']);
-					self::sendNotification($data, $data['topicName']);
+					self::sendNotificationByToken($data, $deviceTokens);
 					self::unsubscribeTopic($deviceTokens, $data['topicName']);
 				}
 
@@ -36,7 +36,7 @@
 						'notification' => [
 							'body' => $data['body'] ?? '',
 							'title' => $data['title'] ?? '',
-							'image' => $data['image'] ?? null,
+							'image' => $data['image'] ?? null,	
 						],
 						'data' => [
 							// Cục data em muốn truyền vào để bên RN nhận
@@ -45,6 +45,36 @@
 							'type' => $data['type'] ?? null,
 							'orderId' => $data['orderId'] ?? null,
 						],
+						'apns' => [
+							'payload' => [
+								'aps' => [
+									'mutable-content' => 1,
+								],
+							],
+							'fcm_options' => [
+								'image' => $data['image'] ?? null,
+							], 
+						],
+					];
+					$this->execute($url, $data);
+				}
+				public function sendNotificationByToken($data, $deviceTokens)
+				{
+					$url = 'https://fcm.googleapis.com/fcm/send';
+					$data = [
+						'to' => $deviceTokens,
+						'notification' => [
+							'body' => $data['body'] ?? '',
+							'title' => $data['title'] ?? '',
+							'image' => $data['image'] ?? null,	
+						],
+						'data' => [
+							// Cục data em muốn truyền vào để bên RN nhận
+							// Ví dụ:
+							'status' => $data['status'] ?? null,
+							'type' => $data['type'] ?? null,
+							'orderId' => $data['orderId'] ?? null,
+						],	
 						'apns' => [
 							'payload' => [
 								'aps' => [

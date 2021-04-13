@@ -59,16 +59,16 @@ class NotificationController extends Controller
         Notification::where('id_user', $id)->update(['isRead' => true]);
             return response()->json(["Update successfully"],200);
     }
-    public function pushNotification () {
-        $token = "cDeBQCXmRSG0A1PV-phkQY:APA91bFMozkpGRXyme1TdfBleFnhOQlsZiytUbey611pshtk3J7R73N6FgL52ZBxJqT3gX69iajEoP2jB1zFw5kHwesIRVjq4z5dNh1QR79keCVs8zK9tuSQR-aLp1m0hlHRPJbOEojb";
+    public function pushNotification ($topic, $title, $body, $token) {
         PushNotificationJob::dispatch('sendBatchNotification', [
             $token,
             [
-                'topicName' => 'test',
-                'title' => 'Tài xế đã nhận đơn hàng của bạn',
-                'body' => 'Call tài xế ngay',
+                'topicName' => $topic,
+                'title' => $title,
+                'body' => $body,
             ],
         ]);
+        return response()->json('success',200);
     }
     
 }

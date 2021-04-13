@@ -34,10 +34,14 @@ class OrderController extends Controller
         $order->id_user = $request->id_user;
         $order->price = $request->price;
         $query = $order->save();
+        $title = "Chúc mừng bạn đã thêm đơn hàng thành công";
+        $body = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
+        $token = "clq5Kop4T86ewqivUU88Cw:APA91bGkZMZ22P_9iFRnhT5judkQR9ZJ0WLOFW1yuXRlN_H4czs57USR3CX_vwXVfAICcUhNFmcyncAQvpnkzq9D6llgWMJaEYwjcVz140tSIzPHSLnW4n-FF2CF_Ho2-jOFDsh56KSs";
+        app('App\Http\Controllers\NotificationController')->pushNotification('order',$title, $body, $token); 
         if($query){
             $notification = new Notification;
-            $notification->title = "Chúc mừng bạn đã thêm đơn hàng thành công";
-            $notification->message = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
+            $notification->title = $title;
+            $notification->message = $body;
             $notification->type = 1;
             $notification->isRead = false;
             $notification->id_user = $request->id_user;
@@ -45,15 +49,7 @@ class OrderController extends Controller
             $data = array(
                 "order"=>$order->id,
             );
-            $token = "cDeBQCXmRSG0A1PV-phkQY:APA91bFMozkpGRXyme1TdfBleFnhOQlsZiytUbey611pshtk3J7R73N6FgL52ZBxJqT3gX69iajEoP2jB1zFw5kHwesIRVjq4z5dNh1QR79keCVs8zK9tuSQR-aLp1m0hlHRPJbOEojb";
-            PushNotificationJob::dispatch('sendBatchNotification', [
-                    $token,
-                    [
-                        'topicName' => 'order',
-                        'title' => 'Tài xế đã nhận đơn hàng của bạn',
-                        'body' => 'Call tài xế ngay',
-                    ],
-                ]);
+            
             return response()->json($data, 200);
         }else{
             $data = array(
