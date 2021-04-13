@@ -153,14 +153,12 @@ class LoginController extends Controller
         }
     }
     public function logout(Request $request){
-        $devices = TokenDevice::where('token', $request->token)->get();
-        
-        if(is_array($devices)){
-           TokenDevice::where('token', $request->token)->delete();
-           return response()->json("Delete success token", 200);
+        $devices = TokenDevice::where('token', $request->token)->first();
+        if(is_null($devices)){
+           return response()->json("Delete failed token", 400);
         }else{
-            
-            return response()->json("Delete failed token", 400);
+           TokenDevice::where('token', $request->token)->delete();
+            return response()->json("Delete success token", 200);
         }
         
     }
