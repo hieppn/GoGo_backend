@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\TruckerTempt;
+use App\Models\TokenDevice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -120,6 +121,7 @@ class LoginController extends Controller
             'password'=>'required|min:5|max:12',
             'phone'=>'required|regex:/[0-9]{10}/|digits:10',
         ]);
+        $token = $request->token;
         $user = User::where('phone','=',$request->phone)->first();
         if(!$user){
             $data = array(
@@ -136,6 +138,10 @@ class LoginController extends Controller
                     "role"=>$user->id_role,
                     "error"=>null,
                 );
+                $tokenDevice = new TokenDevice ;
+                $tokenDevice->id_user = $user->id;
+                $tokenDevice->token = $token;
+                $tokenDevice->save();
                 return response()->json($data, 200);
             }else{
                 $data = array(
