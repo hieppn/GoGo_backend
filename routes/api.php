@@ -25,14 +25,14 @@ use App\Http\Controllers\SearchHistoryController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+//Auth
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('register', [LoginController::class,'register'])->name('auth.register');
 Route::post('login', [LoginController::class,'login'])->name('auth.login');
 Route::get('profile/{id}', [LoginController::class,'profile']);
-Route::get('logout', [LoginController::class,'logout']);
+Route::delete('logout', [LoginController::class,'logout']);
 
 
 Route::post('get-all-message/{id}', [MessageController::class,'getAllMessageById']);
