@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Notification;
 use App\Models\Truck;
 use App\Models\User;
+use App\Models\TokenDevice;
 use Illuminate\Http\Request;
 use App\Jobs\PushNotificationJob;
 class OrderController extends Controller
@@ -34,9 +35,10 @@ class OrderController extends Controller
         $order->id_user = $request->id_user;
         $order->price = $request->price;
         $query = $order->save();
+        $devices = TokenDevice::where('id_user',$request->id_user)->first();
         $title = "Chúc mừng bạn đã thêm đơn hàng thành công";
         $body = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
-        $token = "clq5Kop4T86ewqivUU88Cw:APA91bGkZMZ22P_9iFRnhT5judkQR9ZJ0WLOFW1yuXRlN_H4czs57USR3CX_vwXVfAICcUhNFmcyncAQvpnkzq9D6llgWMJaEYwjcVz140tSIzPHSLnW4n-FF2CF_Ho2-jOFDsh56KSs";
+        //$token = "clq5Kop4T86ewqivUU88Cw:APA91bGkZMZ22P_9iFRnhT5judkQR9ZJ0WLOFW1yuXRlN_H4czs57USR3CX_vwXVfAICcUhNFmcyncAQvpnkzq9D6llgWMJaEYwjcVz140tSIzPHSLnW4n-FF2CF_Ho2-jOFDsh56KSs";
         if($query){
             $notification = new Notification;
             $notification->title = $title;
@@ -46,7 +48,7 @@ class OrderController extends Controller
             $notification->id_user = $request->id_user;
             $notification->save();
             $value = Notification::where('id_user', $request->id_user)->where('isRead', false)->count();
-            app('App\Http\Controllers\NotificationController')->pushNotification('order',$value,$title, $body, $token); 
+            app('App\Http\Controllers\NotificationController')->pushNotification('order',$value,$title, $body, $devices->token); 
             $data = array(
                 "order"=>$order->id,
             );
