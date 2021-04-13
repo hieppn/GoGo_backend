@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Notification;
+use App\Jobs\PushNotificationJob;
 class NotificationController extends Controller
 {
     public function create(Request $request){
@@ -57,6 +58,17 @@ class NotificationController extends Controller
     public function updateAllNotificationReadByIdUser(Request $request,$id){
         Notification::where('id_user', $id)->update(['isRead' => true]);
             return response()->json(["Update successfully"],200);
+    }
+    public function pushNotification () {
+        $token = "cDeBQCXmRSG0A1PV-phkQY:APA91bFMozkpGRXyme1TdfBleFnhOQlsZiytUbey611pshtk3J7R73N6FgL52ZBxJqT3gX69iajEoP2jB1zFw5kHwesIRVjq4z5dNh1QR79keCVs8zK9tuSQR-aLp1m0hlHRPJbOEojb";
+        PushNotificationJob::dispatch('sendBatchNotification', [
+            $token,
+            [
+                'topicName' => 'test',
+                'title' => 'Tài xế đã nhận đơn hàng của bạn',
+                'body' => 'Call tài xế ngay',
+            ],
+        ]);
     }
     
 }

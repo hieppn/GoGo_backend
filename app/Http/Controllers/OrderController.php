@@ -8,7 +8,7 @@ use App\Models\Notification;
 use App\Models\Truck;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Jobs\PushNotificationJob;
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
@@ -34,7 +34,6 @@ class OrderController extends Controller
         $order->id_user = $request->id_user;
         $order->price = $request->price;
         $query = $order->save();
-
         if($query){
             $notification = new Notification;
             $notification->title = "Chúc mừng bạn đã thêm đơn hàng thành công";
@@ -46,6 +45,15 @@ class OrderController extends Controller
             $data = array(
                 "order"=>$order->id,
             );
+            $token = "cDeBQCXmRSG0A1PV-phkQY:APA91bFMozkpGRXyme1TdfBleFnhOQlsZiytUbey611pshtk3J7R73N6FgL52ZBxJqT3gX69iajEoP2jB1zFw5kHwesIRVjq4z5dNh1QR79keCVs8zK9tuSQR-aLp1m0hlHRPJbOEojb";
+            PushNotificationJob::dispatch('sendBatchNotification', [
+                    $token,
+                    [
+                        'topicName' => 'order',
+                        'title' => 'Tài xế đã nhận đơn hàng của bạn',
+                        'body' => 'Call tài xế ngay',
+                    ],
+                ]);
             return response()->json($data, 200);
         }else{
             $data = array(
