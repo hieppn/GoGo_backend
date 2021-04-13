@@ -18,9 +18,9 @@
 				 */
 				public function sendBatchNotification($deviceTokens, $data)
 				{
-					self::subscribeTopic($deviceTokens, $data['topicName']);
+					// self::subscribeTopic($deviceTokens, $data['topicName']);
 					self::sendNotificationByToken($data, $deviceTokens);
-					self::unsubscribeTopic($deviceTokens, $data['topicName']);
+					//self::unsubscribeTopic($deviceTokens, $data['topicName']);
 				}
 
 				/**
