@@ -38,7 +38,6 @@ class OrderController extends Controller
         $devices = TokenDevice::where('id_user',$request->id_user)->first();
         $title = "Chúc mừng bạn đã thêm đơn hàng thành công";
         $body = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
-        //$token = "clq5Kop4T86ewqivUU88Cw:APA91bGkZMZ22P_9iFRnhT5judkQR9ZJ0WLOFW1yuXRlN_H4czs57USR3CX_vwXVfAICcUhNFmcyncAQvpnkzq9D6llgWMJaEYwjcVz140tSIzPHSLnW4n-FF2CF_Ho2-jOFDsh56KSs";
         if($query){
             $notification = new Notification;
             $notification->title = $title;
@@ -114,18 +113,28 @@ class OrderController extends Controller
             $order->type = $request->type;
             $order->save();
             //notify for user
+            
             $users = User::find($request->id_trucker);
+            $devices = TokenDevice::where('id_user',$order->id_user)->first();
+            $title = "Tài xế ".$users->full_name." đã nhận đơn hàng #".$order->id." của bạn!";
+            $body = "Bạn hãy chuẩn bị đơn hàng, Tài xế sẽ đến sau vài phút nữa thôi";
+            app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devices->token); 
             $notification = new Notification;
-            $notification->title = "Tài xế ".$users->full_name." đã nhận đơn hàng #".$order->id." của bạn!";
-            $notification->message = "Bạn hãy chuẩn bị đơn hàng, Tài xế sẽ đến sau vài phút nữa thôi";
+            $notification->title = $title;
+            $notification->message =  $body;
             $notification->isRead = false;
             $notification->type = 1;
             $notification->id_user = $order->id_user;
             $notification->save();
+         
              //notify for trucker
+             $devices_2 = TokenDevice::where('id_user',$request->id_trucker)->first();
+             $title_2 = "Chúc mừng bạn đã nhận đơn hàng thành công!";
+             $body_2 = "Hãy chuẩn bị xe và đến địa điểm lấy hàng";
+             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devices_2->token); 
             $notification = new Notification;
-            $notification->title = "Chúc mừng bạn đã nhận đơn hàng thành công!";
-            $notification->message = "Hãy chuẩn bị xe và đến địa điểm lấy hàng";
+            $notification->title = $title_2;
+            $notification->message = $body_2;
             $notification->isRead = false;
             $notification->type = 1;
             $notification->id_user = $request->id_trucker;
@@ -136,22 +145,31 @@ class OrderController extends Controller
             $order->type = $request->type;
             $order->save();
             //notify for user
+            $devices = TokenDevice::where('id_user',$order->id_user)->first();
+            $title = "Đơn hàng của bạn đã được giao thành công!";
+            $body = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
             $users = User::find($request->id_trucker);
             $notification = new Notification;
-            $notification->title = "Đơn hàng của bạn đã được giao thành công!";
-            $notification->message = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
+            $notification->title =  $title;
+            $notification->message = $body;
             $notification->isRead = false;
             $notification->type = 2;
             $notification->id_user = $order->id_user;
             $notification->save();
+            app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devices->token); 
             //notify for trucker
+            $devices_2 = TokenDevice::where('id_user',$request->id_trucker)->first();
+            $title_2 = "Chúc mừng bạn đã giao đơn hàng thành công!";
+            $body_2 = "Tìm một đơn mới nữa đi nào";
             $notification = new Notification;
-            $notification->title = "Chúc mừng bạn đã giao đơn hàng thành công!";
-            $notification->message = "Tìm một đơn mới nữa đi nào";
+            $notification->title = $title_2;
+            $notification->message = $body_2;
             $notification->isRead = false;
             $notification->type = 2;
             $notification->id_user = $request->id_trucker;
             $notification->save();
+            
+            app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devices_2->token); 
             return response()->json('Success', 200);
         }
         return response()->json($order,200);
