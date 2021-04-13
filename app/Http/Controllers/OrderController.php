@@ -37,7 +37,6 @@ class OrderController extends Controller
         $title = "Chúc mừng bạn đã thêm đơn hàng thành công";
         $body = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
         $token = "clq5Kop4T86ewqivUU88Cw:APA91bGkZMZ22P_9iFRnhT5judkQR9ZJ0WLOFW1yuXRlN_H4czs57USR3CX_vwXVfAICcUhNFmcyncAQvpnkzq9D6llgWMJaEYwjcVz140tSIzPHSLnW4n-FF2CF_Ho2-jOFDsh56KSs";
-        app('App\Http\Controllers\NotificationController')->pushNotification('order',$title, $body, $token); 
         if($query){
             $notification = new Notification;
             $notification->title = $title;
@@ -46,6 +45,8 @@ class OrderController extends Controller
             $notification->isRead = false;
             $notification->id_user = $request->id_user;
             $notification->save();
+            $value = Notification::where('id_user', $request->id_user)->where('isRead', false)->count();
+            app('App\Http\Controllers\NotificationController')->pushNotification('order',$value,$title, $body, $token); 
             $data = array(
                 "order"=>$order->id,
             );
@@ -81,7 +82,9 @@ class OrderController extends Controller
         return $price;
     }
     public function getOrder(){     
-        return response()->json(Db::select('select u.full_name, o.*, t.name as truck from orders as o, users as u, trucks as t where o.id_user = u.id and o.id_truck = t.id;') ,200);
+        return response()->json(Db::select('SELECT u.full_name, o.*, t.name AS truck FROM orders as o, users as u, trucks as t 
+        WHERE o.id_user = u.id AND o.id_truck = t.id 
+        ORDER BY o.id DESC') ,200);
    }
 
     public function deleteOrder(Request $request,  $id){

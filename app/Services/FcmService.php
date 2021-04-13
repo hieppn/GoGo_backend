@@ -73,7 +73,7 @@
 							// Ví dụ:
 							'status' => $data['status'] ?? null,
 							'type' => $data['type'] ?? null,
-							'orderId' => $data['orderId'] ?? null,
+							'value' => $data['value'] ?? null,
 						],	
 						'apns' => [
 							'payload' => [
