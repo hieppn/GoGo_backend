@@ -54,7 +54,7 @@ class BillController extends Controller
        
     }
     public function getLocationById(Request $request,$id){
-       $location =  Location::where('id_user',$id)->get();
+       $location =  Location::where('id_user',$id)->first();
        return response()->json( $location,200);
     }
     public function getLocationList(){
