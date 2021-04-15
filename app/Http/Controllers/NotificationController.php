@@ -71,5 +71,14 @@ class NotificationController extends Controller
         ]);
         return response()->json('success',200);
     }
-    
+    public function pushNotificationByTopic ($topic, $title, $body) {
+        PushNotificationJob::dispatch('sendTopicNotification', [
+            [
+                'title' => $title,
+                'body' => $body,
+                'topicName' => $topic,
+            ],
+        ]);
+        return response()->json('success',200);
+    }
 }

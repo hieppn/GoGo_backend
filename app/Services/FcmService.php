@@ -22,6 +22,12 @@
 					self::sendNotificationByToken($data, $deviceTokens);
 					//self::unsubscribeTopic($deviceTokens, $data['topicName']);
 				}
+				public function sendTopicNotification($data)
+				{
+					// self::subscribeTopic($deviceTokens, $data['topicName']);
+					self::sendNotification($data,  $data['topicName']);
+					// self::unsubscribeTopic($deviceTokens, $data['topicName']);
+				}
 
 				/**
 				 * @param $data

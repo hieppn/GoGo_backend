@@ -48,6 +48,7 @@ class OrderController extends Controller
             $notification->save();
             $value = Notification::where('id_user', $request->id_user)->where('isRead', false)->count();
             app('App\Http\Controllers\NotificationController')->pushNotification('order',$value,$title, $body, $devices->token); 
+            app('App\Http\Controllers\NotificationController')->pushNotificationByTopic('new-order','Đơn hàng mới', 'Khách hàng vừa đăng đơn mới. Vào nhận liền thôi'); 
             $data = array(
                 "order"=>$order->id,
             );
