@@ -53,4 +53,11 @@ class BillController extends Controller
         }
        
     }
+    public function getLocationById(Request $request,$id){
+       $location =  Location::where('id_user',$id)->get();
+       return response()->json( $location,200);
+    }
+    public function getLocationList(){
+        return response()->json(Location::all(),200);
+    }
 }
