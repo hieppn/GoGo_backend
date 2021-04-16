@@ -101,6 +101,7 @@ Route::get('bill/trucker/complete/{id}',[BillController::class,'getCompleteBillT
 Route::post('bill/location',[BillController::class,'addLocation']);
 Route::get('bill/location/{id}',[BillController::class,'getLocationById']);
 Route::get('bill/location/list',[BillController::class,'getLocationList']);
+Route::get('bill/process',[BillController::class,'getBillProcess']);
 //Search History
 Route::post('search-history/create',[SearchHistoryController::class,'create']);
 Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);
