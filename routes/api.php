@@ -75,7 +75,7 @@ Route::post('trucker/register/{id}',[TruckerController::class,'acceptTrucker']);
 Route::delete('trucker/refuse/{id}',[TruckerController::class,'refuseTrucker']);
 Route::put('user/updateImage/{id}',[LoginController::class,'updateImage']);
 Route::put('user/update/{id}',[LoginController::class,'updateUser']);
-
+Route::put('user/amount/{id}',[TruckerController::class,'updateAmount']);
 //countDashBoard
 Route::get('count-user',[DashboardController::class,'countUser']);
 Route::get('count-order',[DashboardController::class,'countOrder']);

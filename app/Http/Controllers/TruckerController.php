@@ -73,6 +73,7 @@ class TruckerController extends Controller
         $user->password = $tempt->password;
         $user->phone = $tempt->phone;
         $user->birthday = $tempt->birthday;
+        $user->amount = 0;
         $user->address = $tempt->address;
         $user->id_card = $tempt->id_card;
         $user->id_role = $tempt->id_role;
@@ -106,5 +107,11 @@ class TruckerController extends Controller
         }
         $trucker->delete();
         return response()->json(null,204);
+    }
+    public function updateAmount(Request $request, $id){
+        $user = User::find($id);
+        $user->amount = $request->amount;
+        $user->save();
+        return response()->json($user,200);
     }
 }
