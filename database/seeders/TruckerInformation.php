@@ -15,23 +15,23 @@ class TruckerInformation extends Seeder
     {
         DB::table('trucker_information')->insert([
         'id_trucker' =>3 ,
-        'id_card_front' => 'https://xuatkhaulaodongdl.com/wp-content/uploads/2017/05/cmnd-hople-chua-hop-le.jpg',
-        'id_card_back' => 'https://i.pinimg.com/originals/0e/a6/07/0ea60749572d399218b842931f892f86.jpg',
-        'license_front' => 'https://timviec365.vn/pictures/images/giay-phep-lai-xe-hang-d1.jpg',
-        'license_back' => 'https://photo-cms-plo.zadn.vn/w653/Uploaded/2021/chuobun/2018_10_25/giay-phep-lai-xe-b1_qprp_thumb.png',
+        'id_card_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618993610-Ya6QMTH4UL607fe1ca59fd8',
+        'id_card_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994660-FtNzAahtNU607fe5e429659',
+        'license_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994744-Fl8YT1cAhy607fe6381dffc',
+        'license_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994835-AkQsbbgiZv607fe6934aefe',
         'license_plate' => '77 H1 5678',
-        'registration_paper'=>'https://img1.oto.com.vn/2019/03/21/2nYr5R9Z/dang-kiem-xe-oto-khi-mat-giay-chung-nhan-oto-com-v-cbbb.jpg',
+        'registration_paper'=>'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994877-6nRQeM1cen607fe6bd6a5f5',
         'car_type' =>'Xe 3 bánh',
         'payload' => 3.6
         ]);
         DB::table('trucker_information')->insert([
             'id_trucker' =>4 ,
-            'id_card_front' => 'https://xuatkhaulaodongdl.com/wp-content/uploads/2017/05/cmnd-hople-chua-hop-le.jpg',
-            'id_card_back' => 'https://i.pinimg.com/originals/0e/a6/07/0ea60749572d399218b842931f892f86.jpg',
-            'license_front' => 'https://timviec365.vn/pictures/images/giay-phep-lai-xe-hang-d1.jpg',
-            'license_back' => 'https://photo-cms-plo.zadn.vn/w653/Uploaded/2021/chuobun/2018_10_25/giay-phep-lai-xe-b1_qprp_thumb.png',
+            'id_card_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618993610-Ya6QMTH4UL607fe1ca59fd8',
+            'id_card_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994660-FtNzAahtNU607fe5e429659',
+            'license_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994744-Fl8YT1cAhy607fe6381dffc',
+            'license_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994835-AkQsbbgiZv607fe6934aefe',
             'license_plate' => '77 H1 5678',
-            'registration_paper'=>'https://img1.oto.com.vn/2019/03/21/2nYr5R9Z/dang-kiem-xe-oto-khi-mat-giay-chung-nhan-oto-com-v-cbbb.jpg',
+            'registration_paper'=>'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994877-6nRQeM1cen607fe6bd6a5f5',
             'car_type' =>'Xe 3 bánh',
             'payload' => 3.6
             ]);
