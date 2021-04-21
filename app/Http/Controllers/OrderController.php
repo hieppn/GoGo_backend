@@ -170,8 +170,8 @@ class OrderController extends Controller
             $notification->id_user = $request->id_trucker;
             $notification->save();
             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devices_2->token); 
-            // $amount = $order->price - $order->price* 0.05;
-            // app('App\Http\Controllers\TruckerController')->updateAmount($request->id_trucker,$amount); 
+            $amount = $order->price - $order->price* 0.05;
+            app('App\Http\Controllers\TruckerController')->updateAmount($request->id_trucker,$amount); 
             return response()->json('Success', 200);
         }
         return response()->json($order,200);
