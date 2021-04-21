@@ -161,7 +161,7 @@ class OrderController extends Controller
             //notify for trucker
             $devices_2 = TokenDevice::where('id_user',$request->id_trucker)->first();
             $title_2 = "Chúc mừng bạn đã giao đơn hàng thành công!";
-            $body_2 = "Tìm một đơn mới nữa đi nào";
+            $body_2 = "Tiền đã vào tài khoản của bạn. GoGo xin phép nhận 5% phí đơn hàng";
             $notification = new Notification;
             $notification->title = $title_2;
             $notification->message = $body_2;
@@ -169,7 +169,7 @@ class OrderController extends Controller
             $notification->type = 2;
             $notification->id_user = $request->id_trucker;
             $notification->save();
-            
+            app('App\Http\Controllers\TruckerController')->updateAmount($request->id_trucker,$order->price - ($order->price* 0.05)); 
             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devices_2->token); 
             return response()->json('Success', 200);
         }
