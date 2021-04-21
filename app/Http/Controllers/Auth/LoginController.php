@@ -124,6 +124,13 @@ class LoginController extends Controller
         $token = $request->token;
         $user = User::where('phone','=',$request->phone)->first();
         if(!$user){
+            $trucker= TruckerTempt::where('phone','=',$request->phone)->first();
+            if($trucker && Hash::check($request->password,$trucker->password)){
+                $data = array(
+                    "role"=>4,
+                );
+                return response()->json($data,200);
+            }
             $data = array(
                 "error"=> ' Not match with your phone!',
             );     

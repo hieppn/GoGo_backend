@@ -67,12 +67,8 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'timezone'  => env('APP_TIMEZONE', 'UTC'), 
     'timezone' => 'Asia/Ho_Chi_Minh',
-=======
-     'timezone' => 'Asia/Ho_Chi_Minh',
->>>>>>> b24012b99013b7daf8643dd89e331c40ffb2af1d
     
 
     /*
