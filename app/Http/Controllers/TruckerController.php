@@ -108,9 +108,9 @@ class TruckerController extends Controller
         $trucker->delete();
         return response()->json(null,204);
     }
-    public function updateAmount(Request $request, $id){
+    public function updateAmount($id, $amount){
         $user = User::find($id);
-        $user->amount = $request->amount;
+        $user->amount = $user->amount + $amount;
         $user->save();
         return response()->json($user,200);
     }
