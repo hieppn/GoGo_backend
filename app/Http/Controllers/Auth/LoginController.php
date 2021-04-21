@@ -124,6 +124,13 @@ class LoginController extends Controller
         $token = $request->token;
         $user = User::where('phone','=',$request->phone)->first();
         if(!$user){
+            $trucker= TruckerTempt::where('phone','=',$request->phone)->first();
+            if($trucker && Hash::check($request->password,$trucker->password)){
+                $data = array(
+                    "role"=>4,
+                );
+                return response()->json($data,200);
+            }
             $data = array(
                 "error"=> ' Not match with your phone!',
             );     
@@ -153,13 +160,6 @@ class LoginController extends Controller
         }
     }
     public function logout(Request $request, $id){
-        // $devices = TokenDevice::where('token', $request->token)->first();
-        // if(is_null($devices)){
-        //    return response()->json("Delete failed token", 400);
-        // }else{
-        //    TokenDevice::where('token', $request->token)->delete();
-        //     return response()->json("Delete success token", 200);
-        // }
         TokenDevice::where('id_user', $request->id)->delete();
         return response()->json("Delete success token", 200);
     }
