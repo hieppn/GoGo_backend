@@ -101,6 +101,7 @@ class LoginController extends Controller
             $user->address = $request->address;
             $user->id_card = $request->id_card;
             $user->id_role = $request->id_role;
+            $user->amount = 0;
             $user->avatar = "https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-4.png";
             $query = $user->save();
             if($query){
