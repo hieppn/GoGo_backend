@@ -7,17 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 class MessageController extends Controller
 {
-    function getAllMessageByUserId($userId){
-    $messages = Message::where('id_send',$userId)->orWhere('id_receive',$id)->get();
+    function getAllMessageByUserId($id){
+    $messages = Message::where('id_send',$id)->orWhere('id_receive',$id)->get();
     foreach($messages as $message){
         $message->user;
     }
-  $array = array("message" => $messages);
+    $array = array("message" => $messages);
     return response()->json($array,200);
     }
     public function create(Request $request){
-        $message = Message::create($request->all());
-        return response()->json($message,201);
+        $messages = new Message();
+        $messages->id_send = $request->id_send;
+        $messages->id_receive = $request->id_receive;
+        $messages->message = $request->message;
+        $messages->save();
+        return response()->json($messages,200);
     }
     public function index()
     {

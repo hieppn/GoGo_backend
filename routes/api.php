@@ -35,7 +35,8 @@ Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::delete('logout/{id}', [LoginController::class,'logout']);
 
 
-Route::get('get-all-message/{userId}', [MessageController::class,'getAllMessageByUserId']);
+Route::get('message/by/{id}', [MessageController::class,'getAllMessageByUserId']);
+Route::post('message/create', [MessageController::class,'create']);
 // Route::get('getMess', [MessageController::class,'index']);
 // Route::middleware('auth:api')->group(function () {
 //     Route::get('get-user', [PassportAuthController::class, 'userInfo']);
