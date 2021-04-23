@@ -40,6 +40,18 @@ class UserSeeder extends Seeder
             'id_role'=>'1',
         ]);
         DB::table('users')->insert([
+            'full_name' => 'Nguyễn Duy Ngọc',
+            'email' => 'ngoc.dev@gmail.com',
+            'password' => Hash::make('123456'),
+            'phone' => '0332450452',
+            'id_card' => '207832235',
+            'birthday' => '2000-01-04',
+            'amount'=> 0,
+            'address' => 'Thăng Bình, Bình Định',
+            'avatar' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994398-401v5qCA8I607fe4dec3cfd',
+            'id_role'=>'1',
+        ]);
+        DB::table('users')->insert([
             'full_name' => 'Cao Ngọc Tàu',
             'email' => 'trucker1@gmail.com',
             'password' => Hash::make('taucao12'),
