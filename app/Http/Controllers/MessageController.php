@@ -5,6 +5,7 @@ use App\Http\Controllers;
 // use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\TokenDevice;
 class MessageController extends Controller
 {
     function getAllMessageByUserId($id){
