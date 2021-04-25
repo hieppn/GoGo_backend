@@ -14,7 +14,7 @@ class TruckerInformation extends Seeder
     public function run()
     {
         DB::table('trucker_information')->insert([
-        'id_trucker' =>3 ,
+        'id_trucker' =>4 ,
         'id_card_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618993610-Ya6QMTH4UL607fe1ca59fd8',
         'id_card_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994660-FtNzAahtNU607fe5e429659',
         'license_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994744-Fl8YT1cAhy607fe6381dffc',
@@ -25,7 +25,7 @@ class TruckerInformation extends Seeder
         'payload' => 3.6
         ]);
         DB::table('trucker_information')->insert([
-            'id_trucker' =>4 ,
+            'id_trucker' =>5 ,
             'id_card_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618993610-Ya6QMTH4UL607fe1ca59fd8',
             'id_card_back' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994660-FtNzAahtNU607fe5e429659',
             'license_front' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994744-Fl8YT1cAhy607fe6381dffc',

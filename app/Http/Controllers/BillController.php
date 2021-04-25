@@ -23,7 +23,7 @@ class BillController extends Controller
         ORDER BY b.id DESC'),200);
     }
     public function getBillProcess(){
-        return response()->json(DB::select('SELECT o.*,u.full_name AS trucker_name,u.phone, 
+        return response()->json(DB::select('SELECT o.*,u.full_name AS trucker_name,u.phone, u.id as id_trucker,
         (SELECT t.name FROM trucks as t WHERE t.id = b.id_truck ) AS truck ,
         (SELECT t.license_plate FROM trucker_information AS t WHERE t.id_trucker = b.id_trucker ) AS plate 
         FROM bills AS b, orders AS o, users AS u 
