@@ -42,20 +42,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    public function existPhone(Request $request){
-        $phoneUser =User::where('phone','=',$request->phone)->first();
-        $phoneTrucker = TruckerTempt::where('phone','=',$request->phone)->first();
-        if($phoneTrucker||$phoneUser){
-            $data = array(
-                "error"=>$request->phone+' has already registered!!!!',
-            );
-            return response()->json($data, 400); 
-        }
-        $data = array(
-            "phone"=>$request->phone,
-        );
-        return response()->json($data,200);
-    }
     public function register(Request $request){
         //return $request->input();
         $request->validate([
@@ -115,6 +101,7 @@ class LoginController extends Controller
             $user->address = $request->address;
             $user->id_card = $request->id_card;
             $user->id_role = $request->id_role;
+            $user->amount = 0;
             $user->avatar = "https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-4.png";
             $query = $user->save();
             if($query){
@@ -204,5 +191,19 @@ class LoginController extends Controller
     }
     public function lockUser($id){  
         $user = User::find($id);
-}
+    }
+    public function existPhone(Request $request){
+        $phoneUser =User::where('phone','=',$request->phone)->first();
+        $phoneTrucker = TruckerTempt::where('phone','=',$request->phone)->first();
+        if($phoneTrucker||$phoneUser){
+            $data = array(
+                "error"=>"Phone number exist",
+            );
+            return response()->json($data, 400); 
+        }
+        $data = array(
+            "phone"=>$request->phone,
+        );
+        return response()->json($data,200);
+    }
 }
