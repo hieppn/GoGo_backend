@@ -191,5 +191,19 @@ class LoginController extends Controller
     }
     public function lockUser($id){  
         $user = User::find($id);
-}
+    }
+    public function existPhone(Request $request){
+        $phoneUser =User::where('phone','=',$request->phone)->first();
+        $phoneTrucker = TruckerTempt::where('phone','=',$request->phone)->first();
+        if($phoneTrucker||$phoneUser){
+            $data = array(
+                "error"=>"Phone number exist",
+            );
+            return response()->json($data, 400); 
+        }
+        $data = array(
+            "phone"=>$request->phone,
+        );
+        return response()->json($data,200);
+    }
 }
