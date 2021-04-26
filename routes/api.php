@@ -33,6 +33,7 @@ Route::post('register', [LoginController::class,'register'])->name('auth.registe
 Route::post('login', [LoginController::class,'login'])->name('auth.login');
 Route::get('profile/{id}', [LoginController::class,'profile']);
 Route::delete('logout/{id}', [LoginController::class,'logout']);
+Route::post('check', [LoginController::class,'existPhone']);
 
 
 Route::get('message/by/{id}', [MessageController::class,'getAllMessageByUserId']);
