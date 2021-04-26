@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\TokenDevice;
 use Illuminate\Http\Request;
 use App\Jobs\PushNotificationJob;
+use App\Models\Message;
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
@@ -172,6 +173,8 @@ class OrderController extends Controller
             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devices_2->token); 
             $amount = $order->price - $order->price* 0.05;
             app('App\Http\Controllers\TruckerController')->updateAmount($request->id_trucker,$amount); 
+            Message::where('id_send', $order->id_user)->where('id_receive', $order->id_user)->delete();
+            Message::where('id_send', $request->id_trucker)->where('id_receive', $request->id_trucker)->delete();
             return response()->json('Success', 200);
         }
         return response()->json($order,200);

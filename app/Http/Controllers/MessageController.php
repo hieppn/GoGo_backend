@@ -35,7 +35,7 @@ class MessageController extends Controller
     public function delete($id){
         $message = Message::find($id);
         if(is_null($message)){
-            return response()->json(["message"=>"Record Promotion not found!"],404);
+            return response()->json(["message"=>"Record message not found!"],404);
         }
         $message->delete();
         return response()->json(null,204);
