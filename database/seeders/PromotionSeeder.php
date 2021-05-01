@@ -20,8 +20,8 @@ class PromotionSeeder extends Seeder
             'code'=>'GOGO',
             'start_time'=>"2020-12-1 1:1:1",
             'end_time'=> "2021-1-1 18:50:00",
-            'min_value'=>100,
-            'max_value'=>200,
+            'min_value'=>100000,
+            'max_value'=>200000,
             'value'=>'60',
         ]);
 
@@ -31,8 +31,8 @@ class PromotionSeeder extends Seeder
             'code'=>'GOGOBEST',
             'start_time'=>"2021-1-1 12:11:11",
             'end_time'=>"2021-2-1 18:50:00",
-            'min_value'=>150,
-            'max_value'=>200,
+            'min_value'=>150000,
+            'max_value'=>200000,
             'value'=>'30',
         ]);
     }
