@@ -68,7 +68,7 @@
 				{
 					$url = 'https://fcm.googleapis.com/fcm/send';
 					$data = [
-						'to' => $deviceTokens,
+						'registration_ids' => $deviceTokens,
 						'notification' => [
 							'body' => $data['body'] ?? '',
 							'title' => $data['title'] ?? '',

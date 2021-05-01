@@ -160,8 +160,9 @@ class LoginController extends Controller
             }
         }
     }
-    public function logout(Request $request, $id){
-        TokenDevice::where('id_user', $request->id)->delete();
+    public function logout(Request $request){
+        $token = $request->bearerToken();
+        TokenDevice::where('token', $token)->delete();
         return response()->json("Delete success token", 200);
     }
     public function profile($id){

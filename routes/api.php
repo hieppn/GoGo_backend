@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('register', [LoginController::class,'register'])->name('auth.register');
 Route::post('login', [LoginController::class,'login'])->name('auth.login');
 Route::get('profile/{id}', [LoginController::class,'profile']);
-Route::delete('logout/{id}', [LoginController::class,'logout']);
+Route::delete('logout', [LoginController::class,'logout']);
 Route::post('phone-check', [LoginController::class,'existPhone']);
 
 

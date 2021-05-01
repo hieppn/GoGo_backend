@@ -22,10 +22,13 @@ class MessageController extends Controller
         $messages->id_receive = $request->id_receive;
         $messages->message = $request->message;
         $messages->save();
-        $devices = TokenDevice::where('id_user',$request->id_receive)->first();
+        $devices = TokenDevice::where('id_user', $order->id_user)->get();
+                foreach ($devices as $device) {
+                    $devicesId[] = $device->token;
+            }
         $title = "Tin nhắn";
         $body = $request->message;
-        app('App\Http\Controllers\NotificationController')->pushNotification('message','',$title, $body, $devices->token); 
+        app('App\Http\Controllers\NotificationController')->pushNotification('message','',$title, $body, $devicesId); 
         return response()->json($messages,200);
     }
     public function index()
