@@ -11,6 +11,7 @@ use App\Models\TokenDevice;
 use Illuminate\Http\Request;
 use App\Jobs\PushNotificationJob;
 use App\Models\Message;
+use App\Jobs\SendEmail;
 class OrderController extends Controller
 {
     public function addNewOrder( Request $request){
@@ -155,6 +156,23 @@ class OrderController extends Controller
         }else if($request->type == 3){
             $order->type = $request->type;
             $order->save();
+            //send mail to sender
+            $user = User::find($order->id_user);
+            $message = [
+                'id' => $order->id,
+                'name' => $order->name,
+                'insurance_fee' => "0",
+                'vat'=> $order->price * 10/100 ,
+                'total'=>$order->price+$order->price*10/100,
+                'price'=>$order->price,
+                'sender_name'=>$order->sender_info->name,
+                'sender_phone'=>$order->sender_info->phone,
+                'sender_address'=>$order->send_from->address,
+                'receiver_name'=>$order->receiver_info->name,
+                'receiver_phone'=>$order->receiver_info->phone,
+                'receiver_address'=>$order->send_to->address,
+            ];
+            SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
             //notify for user
             $devices = TokenDevice::where('id_user', $order->id_user)->get();
                 foreach ($devices as $device) {
