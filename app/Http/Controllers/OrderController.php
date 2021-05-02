@@ -158,6 +158,10 @@ class OrderController extends Controller
             $order->save();
             //send mail to sender
             $user = User::find($order->id_user);
+            $send_from = json_decode($order->send_from, TRUE);
+            $receiver_info = json_decode($order->receiver_info, TRUE);
+            $sender_info = json_decode($order->sender_info, TRUE);
+            $send_to = json_decode($order->send_to, TRUE);
             $message = [
                 'id' => $order->id,
                 'name' => $order->name,
@@ -165,12 +169,12 @@ class OrderController extends Controller
                 'vat'=> $order->price * 10/100 ,
                 'total'=>$order->price+$order->price*10/100,
                 'price'=>$order->price,
-                'sender_name'=>$order->sender_info->name,
-                'sender_phone'=>$order->sender_info->phone,
-                'sender_address'=>$order->send_from->address,
-                'receiver_name'=>$order->receiver_info->name,
-                'receiver_phone'=>$order->receiver_info->phone,
-                'receiver_address'=>$order->send_to->address,
+                'sender_name'=>$sender_info['name'],
+                'sender_phone'=>$sender_info['phone'],
+                'sender_address'=>$send_from['address'].', '.$send_from['city'],
+                'receiver_name'=>$sender_info['name'],
+                'receiver_phone'=>$sender_info['name'],
+                'receiver_address'=>$send_to['address'].', '.$to['city'],
             ];
             SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
             //notify for user
@@ -235,21 +239,24 @@ class OrderController extends Controller
         return response()->json($order,200);
     }
      public function sendingEmail(){
-        $user = User::find(2);
-        $message = [
-            'id' => 1,
-            'name' => "order->name",
-            'insurance_fee' => "0",
-            'vat'=> 100 ,
-            'total'=>100,
-            'price'=>1000,
-            'sender_name'=>'Dung',
-            'sender_phone'=>'0985555',
-            'sender_address'=>'$order->send_from->address',
-            'receiver_name'=>'Hiep',
-            'receiver_phone'=>'0123456',
-            'receiver_address'=>'$order->send_to->address',
-        ];
-        SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
+         $data = '{"lat":16.0590838,"long":108.2434123,"address":"99 Tô Hiến Thành, Sơn Trà","city":"Đà Nẵng"}';
+         $data = json_decode($data, TRUE);
+         echo $data['address'];
+        // $user = User::find(2);
+        // $message = [
+        //     'id' => 1,
+        //     'name' => "order->name",
+        //     'insurance_fee' => "0",
+        //     'vat'=> 100 ,
+        //     'total'=>100,
+        //     'price'=>1000,
+        //     'sender_name'=>'Dung',
+        //     'sender_phone'=>'0985555',
+        //     'sender_address'=>'$order->send_from->address',
+        //     'receiver_name'=>'Hiep',
+        //     'receiver_phone'=>'0123456',
+        //     'receiver_address'=>'$order->send_to->address',
+        // ];
+        // SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
      }
 }
