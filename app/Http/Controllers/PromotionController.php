@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Promotion;
-
+use App\Models\Discount;
 class PromotionController extends Controller
 {
     // Promotion
@@ -32,7 +32,6 @@ class PromotionController extends Controller
 
     public function PromotionSave( Request $request){
         $promotion = Promotion::create($request->all());
-
         return response()->json($promotion,200);
         
         }
@@ -44,14 +43,18 @@ class PromotionController extends Controller
         if(is_null($promotion)){
             return response()->json(["message"=>"Record not found!"],404);
         }
+
             $promotion->update($request->all());
         return response()->json($promotion,200);
     }
-    public function PromotionByCode(Request $request, $code){
-        $promotion = Promotion::where('code', $code)->get();
-        
+    public function PromotionByCode(Request $request){
+        $promotion = Promotion::where('code', $request->code)->get();
         if(is_null($promotion)){
             return response()->json(["message"=>"Record not found!"],404);
+        }
+        $discount = Discount::where('id_promotion',$promotion->id)->where('id_user',$request->id_user)->get();
+        if($discount){
+            return response()->json(["message"=>"You used this code!"],400);
         }
         return response()->json($promotion,200);
     }
