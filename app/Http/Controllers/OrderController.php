@@ -174,7 +174,7 @@ class OrderController extends Controller
                 'sender_address'=>$send_from['address'].', '.$send_from['city'],
                 'receiver_name'=>$sender_info['name'],
                 'receiver_phone'=>$sender_info['name'],
-                'receiver_address'=>$send_to['address'].', '.$to['city'],
+                'receiver_address'=>$send_to['address'].', '.$send_to['city'],
             ];
             SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
             //notify for user
