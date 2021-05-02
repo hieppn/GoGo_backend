@@ -234,4 +234,22 @@ class OrderController extends Controller
         $order->save();
         return response()->json($order,200);
     }
+     public function sendingEmail(){
+        $user = User::find(2);
+        $message = [
+            'id' => 1,
+            'name' => "order->name",
+            'insurance_fee' => "0",
+            'vat'=> 100 ,
+            'total'=>100,
+            'price'=>1000,
+            'sender_name'=>'Dung',
+            'sender_phone'=>'0985555',
+            'sender_address'=>'$order->send_from->address',
+            'receiver_name'=>'Hiep',
+            'receiver_phone'=>'0123456',
+            'receiver_address'=>'$order->send_to->address',
+        ];
+        SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
+     }
 }

@@ -51,6 +51,7 @@ Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
 Route::put('order/updateStatus/{id}',[OrderController::class,'updateStatus']);
 Route::get('order/new',[OrderController::class,'getOrderNew']);
 Route::post('get-price',[OrderController::class,'getPrice']);
+Route::get('send-email',[OrderController::class,'sendingEmail']);
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
