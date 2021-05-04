@@ -17,7 +17,7 @@ class ChartController extends Controller
      */
     public function index()
     {
-            $post=Order::select(Order::raw('MONTH(created_at) as month'),Order::raw('COUNT(id) as sum'))
+            $post=Order::select(Order::raw('extract(month from "created_at") as month'),Order::raw('COUNT(id) as sum'))
             ->whereYear('created_at', now()->year)
             ->groupBy('month')->get(); 
             $postmonth=[0,0,0,0,0,0,0,0,0,0,0,0];
@@ -33,7 +33,7 @@ class ChartController extends Controller
 
     public function getLineUser(){
       
-            $user=User::select(User::raw('MONTH(created_at) as month'),User::raw('COUNT(id) as sum'))
+            $user=User::select(User::raw('extract(month from "created_at") as month'),User::raw('COUNT(id) as sum'))
             ->whereYear('created_at', now()->year)
             ->where('id_role', 1)
             ->orWhere('id_role', 2)
