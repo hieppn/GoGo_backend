@@ -49,15 +49,11 @@ class PromotionController extends Controller
     }
     public function PromotionByCode(Request $request){
         $promotion = Promotion::where('code', $request->code)->get();
-        if(is_null($promotion)){
-            return response()->json(["message"=>"Record not found!"],404);
-        }else {
+        if(count($promotion) > 0){
             return response()->json($promotion,200);
+           
+        }else {
+             return response()->json(["message"=>"Record not found!"],404);
         }
-        $discount = Discount::where('id_promotion',$promotion->id)->where('id_user',$request->id_user)->get();
-        if($discount){
-            return response()->json(["message"=>"You used this code!"],400);
-        }
-        return response()->json($promotion,200);
     }
 }
