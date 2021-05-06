@@ -48,7 +48,7 @@ class PromotionController extends Controller
         return response()->json($promotion,200);
     }
     public function PromotionByCode(Request $request){
-        $promotion = Promotion::where('code', $request->code)->get();
+        $promotion = Promotion::where('code', $request->code)->first();
         if(count($promotion) > 0){
             return response()->json($promotion,200);
            
