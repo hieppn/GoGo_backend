@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('send_to');
             $table->string('time_send');
             $table->string('name');
-            $table->Integer('mass');
+            $table->float('mass');
             $table->longText('image');
             $table->integer('type')->default(1);
             $table->boolean('export_data')->default(false);
