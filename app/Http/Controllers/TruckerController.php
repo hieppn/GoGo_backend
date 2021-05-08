@@ -117,7 +117,7 @@ class TruckerController extends Controller
     public function profile($id){
         $profile = DB::select('SELECT u.full_name, u.birthday,u.address,u.amount,u.email,u.phone,u.avatar, i.* FROM trucker_information as i, users as u
         WHERE u.id = '.$id.' AND u.id = i.id_trucker');
-         $point = DB::select('select ROUND(AVG(point),1) as point from rates where id_trucker =5 GROUP BY id_trucker');
+         $point = DB::select('SELECT round( CAST(float8 '3.1415927' as numeric), 2) as point from rates where id_trucker =5 GROUP BY id_trucker');
         $data = array(
             "profile"=>$profile,
             "rate"=>$point
