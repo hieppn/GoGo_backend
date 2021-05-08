@@ -189,7 +189,7 @@ class OrderController extends Controller
             $notification->title =  $title;
             $notification->message = $body;
             $notification->isRead = false;
-            $notification->type = 2;
+            $notification->type = 3;
             $notification->id_user = $order->id_user;
             $notification->save();
             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devicesId); 
