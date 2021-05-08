@@ -172,7 +172,7 @@ class LoginController extends Controller
             WHERE u.id = '.$id.' AND u.id = i.id_trucker');
             $point = DB::select('SELECT AVG(point)::numeric(10,1) as point from rates where id_trucker ='.$id.' GROUP BY id_trucker');
             $data = array(
-                "profile"=>$profile,
+                "user"=>$profile,
                 "rate"=>$point
             );
             return response()->json($data ,200);
