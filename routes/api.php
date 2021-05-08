@@ -52,6 +52,7 @@ Route::put('order/updateStatus/{id}',[OrderController::class,'updateStatus']);
 Route::get('order/new',[OrderController::class,'getOrderNew']);
 Route::post('get-price',[OrderController::class,'getPrice']);
 Route::get('send-email',[OrderController::class,'sendingEmail']);
+Route::put('order/canceledOrder/{id}',[OrderController::class,'canceledOrder']);
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
@@ -71,6 +72,8 @@ Route::PUT('truck/edit/{id}',[TruckController::class,'updateTruck']);
 Route::get('sender/list',[SenderController::class,'getSender']);
 Route::get('trucker/list',[TruckerController::class,'getTrucker']);
 Route::get('trucker/tempt',[TruckerController::class,'truckerTempt']);
+Route::get('profile/trucker/{id}', [TruckerController::class,'profile']);
+Route::get('profile/trucker/rate/{id}', [TruckerController::class,'getRateByTruckerId']);
 Route::delete('sender/delete/{id}',[SenderController::class,'deleteSender']);
 Route::delete('trucker/delete/{id}',[TruckerController::class,'deleteTrucker']);
 Route::post('trucker/create',[TruckerController::class,'registerTruckerInfo']);
@@ -105,6 +108,7 @@ Route::post('bill/location',[BillController::class,'addLocation']);
 Route::get('bill/location/{id}',[BillController::class,'getLocationById']);
 Route::get('bill/location/list',[BillController::class,'getLocationList']);
 Route::get('bill/process',[BillController::class,'getBillProcess']);
+Route::post('comment',[BillController::class,'comment']);
 //Search History
 Route::post('search-history/create',[SearchHistoryController::class,'create']);
 Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);

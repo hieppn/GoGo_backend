@@ -155,7 +155,7 @@
                                 <tr bgcolor="#FF6702" style="color: #ffffff">
                                     <td align="left" width="75%"
                                     style="padding: 12px" class="customize">
-                                        <strong>Đơn hàng #</strong></td>
+                                        <strong>Đơn hàng</strong></td>
                                     <td align="left" width="25%"
                                     style="padding: 12px" class="customize">
                                         <strong>{{ $data['id'] }}</strong></td>
@@ -259,7 +259,7 @@
                     <tr>
                         <td align="center" bgcolor="#D2C7BA"
                             style="padding: 12px 24px; font-size: 12.5px; line-height: 20px; color: #666;">
-                            <p style="margin: 0;">Đây là email được gửi tự động từ GoGo Truck Delivery Service Partner!<br>Vui lòng liên hệ Admin thông qua email<a href="mailto:gogo.team2021@gmail.com">gogo.team2021@gmail.com</a></p>
+                            <p style="margin: 0;">Đây là email được gửi tự động từ GoGo Truck Delivery Service Partner!<br>Vui lòng liên hệ Admin thông qua email <a href="mailto:gogo.team2021@gmail.com">gogo.team2021@gmail.com</a></p>
                         </td>
                     </tr>
                 </table>

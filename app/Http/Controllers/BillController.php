@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Bill;
 use App\Models\Location;
+use App\Models\Rate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -67,5 +68,21 @@ class BillController extends Controller
     }
     public function getLocationList(){
         return response()->json(Location::all(),200);
+    }
+    public function comment(Request $request){
+        $id_bill = $request->id_bill;
+        $bill = Bill::find($id_bill);
+        $order = Rate::where('id_order',$bill->id_order)->first();
+        if($order){
+            return response()->json(["message"=>"You rated"],400);
+        }
+        $rate = new Rate;
+        $rate->id_order= $bill->id_order;
+        $rate->id_sender= $bill->id_sender;
+        $rate->id_trucker= $bill->id_trucker;
+        $rate->point  = $request->point;
+        $rate->comment = $request-> comment;
+        $rate->save();
+            return response()->json($rate, 200);
     }
 }

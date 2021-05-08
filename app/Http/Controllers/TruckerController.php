@@ -114,4 +114,26 @@ class TruckerController extends Controller
         $user->save();
         return response()->json($user,200);
     }
+    public function profile($id){
+        $profile = DB::select('SELECT u.full_name, u.birthday,u.address,u.amount,u.email,u.phone,u.avatar, i.* FROM trucker_information as i, users as u
+        WHERE u.id = '.$id.' AND u.id = i.id_trucker');
+         $point = DB::table('rates')
+         ->select(DB::raw('round(AVG(point),1) as point'))
+         ->where('id_trucker',$id)
+         ->groupBy('id_trucker')
+         ->get();
+        $data = array(
+            "profile"=>$profile,
+            "rate"=>$point
+        );
+        return response()->json($data ,200);
+    }
+    public function getRateByTruckerId($id){
+        $rate = DB::table('rates')
+                 ->select(DB::raw('round(AVG(point),1) as rate'))
+                 ->where('id_trucker',$id)
+                 ->groupBy('id_trucker')
+                 ->get();
+                 return $rate;
+    }
 }
