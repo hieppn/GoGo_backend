@@ -118,7 +118,7 @@ class TruckerController extends Controller
         $profile = DB::select('SELECT u.full_name, u.birthday,u.address,u.amount,u.email,u.phone,u.avatar, i.* FROM trucker_information as i, users as u
         WHERE u.id = '.$id.' AND u.id = i.id_trucker');
          $point = DB::table('rates')
-         ->select(DB::raw('round(AVG(point),1) as point'))
+         ->select(DB::raw('ROUND(AVG(point),1) as point'))
          ->where('id_trucker',$id)
          ->groupBy('id_trucker')
          ->get();
