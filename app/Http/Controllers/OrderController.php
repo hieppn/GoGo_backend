@@ -236,7 +236,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->type = 4;
         $order->save();
-        $devices = TokenDevice::where('id_user', $request->id_user)->get();
+        $devices = TokenDevice::where('id_user', $order->id_user)->get();
         foreach ($devices as $device) {
             $devicesId[] = $device->token;
             }
@@ -245,11 +245,11 @@ class OrderController extends Controller
         app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devicesId); 
         return response()->json($order,200);
     }
-    public function redOrder($id){
+    public function reOrder($id){
         $order = Order::find($id);
         $order->type = 1;
         $order->save();
-        $devices = TokenDevice::where('id_user', $request->id_user)->get();
+        $devices = TokenDevice::where('id_user', $order->id_user)->get();
         foreach ($devices as $device) {
             $devicesId[] = $device->token;
             }
