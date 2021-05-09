@@ -182,17 +182,11 @@ class OrderController extends Controller
                 foreach ($devices as $device) {
                     $devicesId[] = $device->token;
             }
-            $users = User::find($request->id_trucker);
-            $bill = Bill::where('id_order', $order->id)->first();
             $title = "Đơn hàng của bạn đã được giao thành công!";
-            $dataNoti = [
-                'text'=>$title,
-                'id_bill'=>$bill->id,
-                'id_trucker'=>$users->id,
-            ];
             $body = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
+            $users = User::find($request->id_trucker);
             $notification = new Notification;
-            $notification->title =  JSON_encode($dataNoti);
+            $notification->title =  $title;
             $notification->message = $body;
             $notification->isRead = false;
             $notification->type = 3;
@@ -244,5 +238,5 @@ class OrderController extends Controller
         $order->save();
         return response()->json($order,200);
     }
-     
+    
 }
