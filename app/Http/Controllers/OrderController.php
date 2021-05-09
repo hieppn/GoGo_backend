@@ -182,11 +182,17 @@ class OrderController extends Controller
                 foreach ($devices as $device) {
                     $devicesId[] = $device->token;
             }
-            $title = "Đơn hàng của bạn đã được giao thành công!";
-            $body = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
             $users = User::find($request->id_trucker);
+            $bill = Bill::where('id_order', $order->id)->first();
+            $title = "Đơn hàng của bạn đã được giao thành công!";
+            $dataNoti = [
+                'text'=>$title,
+                'id_bill'=>$bill->id,
+                'id_trucker'=>$users->id,
+            ];
+            $body = "GoGo rất hân hạnh phục vụ quý khách! Bạn cảm thấy tài xế như thế nào? Đánh gia tài xế ngay";
             $notification = new Notification;
-            $notification->title =  $title;
+            $notification->title =  JSON_encode($dataNoti);
             $notification->message = $body;
             $notification->isRead = false;
             $notification->type = 3;
@@ -238,25 +244,5 @@ class OrderController extends Controller
         $order->save();
         return response()->json($order,200);
     }
-     public function sendingEmail(){
-         $data = '{"lat":16.0590838,"long":108.2434123,"address":"99 Tô Hiến Thành, Sơn Trà","city":"Đà Nẵng"}';
-         $data = json_decode($data, TRUE);
-         echo $data['address'];
-        // $user = User::find(2);
-        // $message = [
-        //     'id' => 1,
-        //     'name' => "order->name",
-        //     'insurance_fee' => "0",
-        //     'vat'=> 100 ,
-        //     'total'=>100,
-        //     'price'=>1000,
-        //     'sender_name'=>'Dung',
-        //     'sender_phone'=>'0985555',
-        //     'sender_address'=>'$order->send_from->address',
-        //     'receiver_name'=>'Hiep',
-        //     'receiver_phone'=>'0123456',
-        //     'receiver_address'=>'$order->send_to->address',
-        // ];
-        // SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
-     }
+     
 }
