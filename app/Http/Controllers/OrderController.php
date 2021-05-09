@@ -236,6 +236,26 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->type = 4;
         $order->save();
+        $devices = TokenDevice::where('id_user', $request->id_user)->get();
+        foreach ($devices as $device) {
+            $devicesId[] = $device->token;
+            }
+        $title = "Huỷ đơn hàng thành công";
+        $body = "Đơn hàng #".$order->id." được hủy thành công";
+        app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devicesId); 
+        return response()->json($order,200);
+    }
+    public function redOrder($id){
+        $order = Order::find($id);
+        $order->type = 1;
+        $order->save();
+        $devices = TokenDevice::where('id_user', $request->id_user)->get();
+        foreach ($devices as $device) {
+            $devicesId[] = $device->token;
+            }
+        $title = "Đặt lại đơn hàng thành công";
+        $body = "GoGo đang tìm tài xế cho đơn hàng #".$order->id ." của bạn. Đợi một tí nha!";
+        app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title, $body, $devicesId); 
         return response()->json($order,200);
     }
     

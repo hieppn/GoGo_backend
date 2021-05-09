@@ -45,7 +45,7 @@ Route::post('message/create', [MessageController::class,'create']);
 
 //ORDER 
 Route::post('order/create', [OrderController::class,'addNewOrder']);
- Route::get('order/list',[OrderController::class,'getOrder']);
+Route::get('order/list',[OrderController::class,'getOrder']);
 Route::delete('order/delete/{id}',[OrderController::class,'deleteOrder']);
 Route::get('order/by/{id}',[OrderController::class,'getOrderByIdUser']);
 Route::put('order/updateStatus/{id}',[OrderController::class,'updateStatus']);
@@ -53,6 +53,7 @@ Route::get('order/new',[OrderController::class,'getOrderNew']);
 Route::post('get-price',[OrderController::class,'getPrice']);
 Route::get('send-email',[OrderController::class,'sendingEmail']);
 Route::put('order/canceledOrder/{id}',[OrderController::class,'canceledOrder']);
+Route::put('order/reOrder/{id}',[OrderController::class,'reOrder']);
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
