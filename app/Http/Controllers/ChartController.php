@@ -19,6 +19,9 @@ class ChartController extends Controller
     {
             $post=Order::select(Order::raw('extract(month from "created_at") as month'),Order::raw('COUNT(id) as sum'))
             ->whereYear('created_at', now()->year)
+            ->where('type',1)
+            ->orWhere('type',2)
+            ->orWhere('type',3)
             ->groupBy('month')->get(); 
             $postmonth=[0,0,0,0,0,0,0,0,0,0,0,0];
             foreach($post as $post){
