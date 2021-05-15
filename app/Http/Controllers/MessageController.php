@@ -22,7 +22,7 @@ class MessageController extends Controller
         $messages->id_receive = $request->id_receive;
         $messages->message = $request->message;
         $messages->save();
-        $devices = TokenDevice::where('id_user', $order->id_user)->get();
+        $devices = TokenDevice::where('id_user', $request->id_receive)->get();
                 foreach ($devices as $device) {
                     $devicesId[] = $device->token;
             }
