@@ -103,7 +103,7 @@ class BillController extends Controller
             "partnerCode"=>"MOMOWF3W20210504",
             "customerNumber"=> "0919100100",
             "partnerRefId"=> "15",
-            "appData"=> "v2/pFA6+7aSB0Ckpkc3AR8mJIqYofuffS0gktahHxHkcBfYHqfoeWeH2rdX4G56e7O7UIKNnK0PbfpoUSCU5atb2mcuiPkM24WEWWn42KcxUwv3bpKkkKVIGkVSb2oAiq9HBuI/sKY5ryfAYLkau+G8TdkiJ+EA6PYBBLy4shsruiovlXEoweMgATJghTJKh46mnoLflVx+EFwcZwwGj95q5/kiFjtC7FTaxOP7eYgNXWl7MlItmc0GhsMRir0wWUVUVPlt52E2kKFOPf3ZUHnZ4pFEixxBp4Yk8ulYo/O3s3x5OZiyyd1hwBbYGybqxnyB5kCWZjJqtrooEHDLrR6RQKWvhC2bWfjaBvrozAg8Jz2aOBmkQSwvbggs7MSBXzUmfbs/4dMZhDl8P6W4DIF/W/4KgfWRxieKx9eAw31YAtVSAU8ODzRglTQ+u8/+lC+vV2g2XbHREJfn+FD/2khd89d9+rVbsGpf6CtwDz+uHF3fPDdEo/jD5Qa+7gs0uPv+9DTj8LG6ry8Kggrn7kHJTgA4Q/QpuzCkuwZR3T27Oi/lXVFd+x6Hk4aA905mjBHBpWFKqbnLbBZqIGY/2WFacUxae9nOzUlvqdp9nEs0/cJaww1jpU4UMWhvW6jVN4NtrgQKVx6Z9XKsVLB6K9wiltr1d7cZAEC9PI6/i+g5Zw5+eZpBy1P9abkIbV9UMXe5X0GkkU0XDUpSq5qZGj5RnxzfUVFMwvN61mcS2L2FD4VuTNZ+GNvNdfD+X5sYNS6MZXvJQvEDJ8dHLto/EZaDcjq+j8RcWIyIb7NepAP6sg4tiVtNXrb/y+Pe8T4l04boaVe3AdbBeksndGVDe63bL3fYQGUziWYIHF9O+Nyo+U2aMLTrifySwKFifX5YRlre8JtRFHs+iCkeOHTzya7iTwfAg9ztWTDfTQJdLreR8mB2+CzIxgJL0dVIC8EtHwfse+AczbTFjcT+t7PeOSPwCznj4LA9fuYXqFRJ5Fb1koitS5HCdyo3JwnXEtuopON9tGzy76wtc0PBQIp3e9XbVNEZAjyHqtXABMdqVMiBZiF2dT5OtBiAjQ458g4bitPQb9udUEE2+rFk2G2NVcN92Hw/j8r3hJqLsz6KfavHe0OAcv9anTeqikwFPk+FQtvx0rXmtueCXAMCF2NTyEiYaBGfEzLBgoJFNL0EoAZiG/5N1ytKWv0kZwaz9iydJtN1aDrufuM/T+O52WrPYSJRakaO+wNLU6fWPfdP6Xqq9CPL3vvLAsxVf5u2+tmp/KRgDXYbwN7ZxaR4WjCDjec2ew8YMAAeR/OVRq0rK9OdfaJO4IJr8F7iwitskVwJlZOxzrWqrvbih4ftaaTWL4Sns+jPeNLMMyxkor+RgUatPWZUeORDFJP/KN+ZizXBnmOsYIthps0ObYBHTkk1tWhVXO8FkXWP71LfsLVF3l1yUEH/JiO0wewnc/Q2U7Md2leC",
+            "appData"=> "v2/6VBqPxqjsQxPQbnzg/9gb6WocVbYf4Xh+43niSyMz0VNqdxAoNwhbEqAsoJPHOxs5MfytEzS4YrPMIMEu9t1/GWg+nsMRMmIDtqO5Qu4AlmpQxRXvGu6vRVTxG1yTtSx8+rvqlcxfIotfKW6VZ5BhAX4GbHaeg6d6V4gSo8ZfTF/cyUvn/Dd/scl9HnFtp6QgfLW8g2Uf2sz0qhXzQWwB/WH88JTpabwR4E1lO+APWIgDE7SklnD6ChUnCUlyT0KJGIN7Piq/0tOkexjgZPKGwZAozs04Rd1U65StxxETmy8sARAntZ+56Ony2y5Vgfri/3HV1phUuUGrYZ3rgciUiN3P/szsRGzSK8Zrgz+XvvEfvqsIl5MEL7+Pllg0c/pEl11wiN6oG+LFJxxthcb5/On6sqNVzl6MSM0XGAZ0BZdtH5/fDmzHFjVJbVOo1trnDRBbkcml4cExk67Z4tkhpR1q5hBAbYXnE/KW6FnPNIJfd9rnYDca7L3cgnfH4XZLXDhw5/Z/RJZrdxTsp5TtPecDY1NFsCjfn0lsUdMrb7L+pm+hwSV1T1EjaYPyF7RDJ1in5CJtrsBfjNjNUAkL53KSLaXXGOnxjRX/SAGSyXcvwij/KqP2rv2ULHNyUbjRjo67hDx9bEwrQC2W3ZjI+VhkT12m9Ke6O5AmxiP+ksnJ00sPwnRply1hTCrI+A7T6/Q1mm7ZH6urXR5E2T5q5GWawH0kakq66XAxUodRQ9ILkFTtBdj2a9hi1qV2AiMae00H86svye58OHNee6D7T4EBB01BEaZoteA/pS22fBiGjHl4B/T+2T98wmYKoopJePBSq6xsRpb+bHFLZEk3lSLRAP0QDLIoWridQA7+Kv3tEeQHdYaGHZ1iPDMatKSmEgaXR6CTXdIlVTCLVynZtUX42Cfqmw5oWForCavYHh6heyKXnsUVcSW1TEsG2CsGkRRKrMHuhUUfH3dc3YcwfS6Y57CVWJxMY2Ldl8Nvl/oj51Guw6HeA+EBKdlu0Z517zeY5LsO7lcr+9RQmAy2NCpzxP6/w4TOWfNI7VRuLawp0pNAorV2RjXnOF5AfF4Jvf3YWIFR4d3j+VSp6OufOgpN+xptmAbYSXlmsIDglcm2oWwX+xDIVT+JwI0+mFhWaiSEbVnYIlM4nbayIBhgzKBuz/W4zBfUuZ4tBJm6OEAJgN8AjZQ6eZkTt9Od+gBE9ssmIzfYso0KDeczSlmb3Hm4hxZvUSvWaIF57+wbcgntzfKf5LC5qMTaBZ9grwbpOUjW6mQ6+Fi8QbuQkGOGw7gchYSJpTztG75bnwCGKxPz+uIBTsXfsVFhzmUaG0QV7zUW09dzaolhdJbkE8YK9fliZW36kZhf0uixEPKfnY/IzWp0kUEsYdwlBBVyZGokWlEVQR3IS5zwKeJYxFbJ2q3rIFMikF5NDYHhBId+a/Rn8nrPrHTAUhkEU7sz/xM",
             "hash"=>$hash,
             "description"=> "Thanh toan cho don hang Merchant123556666 qua MoMo",
             "version"=> 2,
@@ -114,50 +114,51 @@ class BillController extends Controller
     }
 
     public function momoCallBack(Request $request) {
-        $user = new User();
-        $user->full_name=$request->accessKey;
-        $user->id_card=rand(1000000000,9999999999);
-        $user->birthday='2000-01-03';
-        $user->address=$request->partnerCode;
-        $user->amount=$request->amount;
-        $user->email=$request->responseTime.rand(10,2000);
-        $user->phone=rand(1000000000,9999999999);
-        $user->password='123456';
-        $user->id_role=1;
-        $user->avatar='';
-        $user->save();
+        // $user = new User();
+        // $user->full_name=$request->accessKey;
+        // $user->id_card=rand(1000000000,9999999999);
+        // $user->birthday='2000-01-03';
+        // $user->address=$request->partnerCode;
+        // $user->amount=$request->amount;
+        // $user->email=$request->responseTime.rand(10,2000);
+        // $user->phone=rand(1000000000,9999999999);
+        // $user->password='123456';
+        // $user->id_role=1;
+        // $user->avatar='';
+        // $user->save();
 
-        $publicKey ="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlMwuxob0ikOunHuE641vBb49GvZ7JzM1skx+wA6sZeZ59XIEFub6C+zBQs4nO8ERIn7LtbE9adcpCAPBobIQ7Jd46irVg+tUaPlICHJsI0unRLMX22vgDvDn7V+CidmxvKG3Yzw4A2hqBPhI9fklRsWtu083YqFnJ0v20eXCQhXU2Txzwo+5CybSs0gOW46d5h+uQBIiIJGVtvA09I2y88ErS9ZLp8ocuDkI6DvLyjlfmoBqcB8u8yPp6gZPyK5ILRep5IGHksipGPiU35ZyzSq9YA/U/cl207Rq/LP5CqHTJATfxn4DlwCBftSlwcuE09Q5mNopP3AWySA3xGwiM6H598Hg/I7e8DSyyQpDIDA09Hhw+JSsJU6JFbdxTM6OEsPU88RHBOgxHPOXFQ4vFgwNVkoX0NajXHVztvPnpqs5yVW7xXsNsmfRuU7Sc27xAfOvnQUfv+CgIGoWU2JS9FURRHpYCReHmwfzHnF9U3o3Xad33PnEaWqyjqIXeRWy4X/Qx9H3OLLUtgrOxlXj5577Bi1Tjvc/bSVJfufK6abemBAKzBoPxtwRwOvFxZtjzRQzfNsl4WvYarfgaBVgs2EiLDPMmcBLvnGD+HPNCuKGJbz2PY0VMh9NgeN6scUP3VEDcrz7fZlyfbNx8SgU26whB17LQBtfpzxNIA+Y6ocCAwEAAQ==-----END PUBLIC KEY-----";
+        // $publicKey ="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlMwuxob0ikOunHuE641vBb49GvZ7JzM1skx+wA6sZeZ59XIEFub6C+zBQs4nO8ERIn7LtbE9adcpCAPBobIQ7Jd46irVg+tUaPlICHJsI0unRLMX22vgDvDn7V+CidmxvKG3Yzw4A2hqBPhI9fklRsWtu083YqFnJ0v20eXCQhXU2Txzwo+5CybSs0gOW46d5h+uQBIiIJGVtvA09I2y88ErS9ZLp8ocuDkI6DvLyjlfmoBqcB8u8yPp6gZPyK5ILRep5IGHksipGPiU35ZyzSq9YA/U/cl207Rq/LP5CqHTJATfxn4DlwCBftSlwcuE09Q5mNopP3AWySA3xGwiM6H598Hg/I7e8DSyyQpDIDA09Hhw+JSsJU6JFbdxTM6OEsPU88RHBOgxHPOXFQ4vFgwNVkoX0NajXHVztvPnpqs5yVW7xXsNsmfRuU7Sc27xAfOvnQUfv+CgIGoWU2JS9FURRHpYCReHmwfzHnF9U3o3Xad33PnEaWqyjqIXeRWy4X/Qx9H3OLLUtgrOxlXj5577Bi1Tjvc/bSVJfufK6abemBAKzBoPxtwRwOvFxZtjzRQzfNsl4WvYarfgaBVgs2EiLDPMmcBLvnGD+HPNCuKGJbz2PY0VMh9NgeN6scUP3VEDcrz7fZlyfbNx8SgU26whB17LQBtfpzxNIA+Y6ocCAwEAAQ==-----END PUBLIC KEY-----";
 
-        $data = 'accessKey='.$request->accessKey
-        .'&'.
-        'amount='.$request->amount
-        .'&'.
-        'message='.$request->message
-        .'&'.
-        'momoTransId='.$request->momoTransId
-        .'&'.
-        'partnerCode='.$request->partnerCode
-        .'&'.
-        'partnerRefId='.$request->partnerRefId
-        .'&'.
-        'partnerTransId='.$request->partnerTransId
-        .'&'.
-        'responseTime='.$request->responseTime
-        .'&'.
-        'status='.$request->status
-        .'&'.
-        "storeId=".$request->storeId
-        .'&'.
-        "transType=momo_wallet";
-        $myPublicKey = new PublicKey($publicKey);
-        $signature =  EasyRSA::encrypt($data, $myPublicKey);
-        // echo $signature;
-        if($signature==$request->signature){
-            echo 'true';
-        }else {
-            echo 'false';
-        }
+        // $data = 'accessKey='.$request->accessKey
+        // .'&'.
+        // 'amount='.$request->amount
+        // .'&'.
+        // 'message='.$request->message
+        // .'&'.
+        // 'momoTransId='.$request->momoTransId
+        // .'&'.
+        // 'partnerCode='.$request->partnerCode
+        // .'&'.
+        // 'partnerRefId='.$request->partnerRefId
+        // .'&'.
+        // 'partnerTransId='.$request->partnerTransId
+        // .'&'.
+        // 'responseTime='.$request->responseTime
+        // .'&'.
+        // 'status='.$request->status
+        // .'&'.
+        // "storeId=".$request->storeId
+        // .'&'.
+        // "transType=momo_wallet";
+        // $myPublicKey = new PublicKey($publicKey);
+        // $signature =  EasyRSA::encrypt($data, $myPublicKey);
+        // // echo $signature;
+        // if($signature==$request->signature){
+        //     echo 'true';
+        // }else {
+        //     echo 'false';
+        // }
+        return $request->all();
        
     }
     public function encryptRSA(array $rawData, $publicKey)
