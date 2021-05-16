@@ -102,9 +102,9 @@ class BillController extends Controller
         $response = Http::post('https://test-payment.momo.vn/pay/app',
         [  
             "partnerCode"=>"MOMOWF3W20210504",
-            "customerNumber"=> "0919100100",
+            "customerNumber"=> "0918002200",
             "partnerRefId"=> "15",
-            "appData"=> "v2/6VBqPxqjsQxPQbnzg/9gb6WocVbYf4Xh+43niSyMz0VNqdxAoNwhbEqAsoJPHOxs5MfytEzS4YrPMIMEu9t1/GWg+nsMRMmIDtqO5Qu4AlmpQxRXvGu6vRVTxG1yTtSx8+rvqlcxfIotfKW6VZ5BhAX4GbHaeg6d6V4gSo8ZfTF/cyUvn/Dd/scl9HnFtp6QgfLW8g2Uf2sz0qhXzQWwB/WH88JTpabwR4E1lO+APWIgDE7SklnD6ChUnCUlyT0KJGIN7Piq/0tOkexjgZPKGwZAozs04Rd1U65StxxETmy8sARAntZ+56Ony2y5Vgfri/3HV1phUuUGrYZ3rgciUiN3P/szsRGzSK8Zrgz+XvvEfvqsIl5MEL7+Pllg0c/pEl11wiN6oG+LFJxxthcb5/On6sqNVzl6MSM0XGAZ0BZdtH5/fDmzHFjVJbVOo1trnDRBbkcml4cExk67Z4tkhpR1q5hBAbYXnE/KW6FnPNIJfd9rnYDca7L3cgnfH4XZLXDhw5/Z/RJZrdxTsp5TtPecDY1NFsCjfn0lsUdMrb7L+pm+hwSV1T1EjaYPyF7RDJ1in5CJtrsBfjNjNUAkL53KSLaXXGOnxjRX/SAGSyXcvwij/KqP2rv2ULHNyUbjRjo67hDx9bEwrQC2W3ZjI+VhkT12m9Ke6O5AmxiP+ksnJ00sPwnRply1hTCrI+A7T6/Q1mm7ZH6urXR5E2T5q5GWawH0kakq66XAxUodRQ9ILkFTtBdj2a9hi1qV2AiMae00H86svye58OHNee6D7T4EBB01BEaZoteA/pS22fBiGjHl4B/T+2T98wmYKoopJePBSq6xsRpb+bHFLZEk3lSLRAP0QDLIoWridQA7+Kv3tEeQHdYaGHZ1iPDMatKSmEgaXR6CTXdIlVTCLVynZtUX42Cfqmw5oWForCavYHh6heyKXnsUVcSW1TEsG2CsGkRRKrMHuhUUfH3dc3YcwfS6Y57CVWJxMY2Ldl8Nvl/oj51Guw6HeA+EBKdlu0Z517zeY5LsO7lcr+9RQmAy2NCpzxP6/w4TOWfNI7VRuLawp0pNAorV2RjXnOF5AfF4Jvf3YWIFR4d3j+VSp6OufOgpN+xptmAbYSXlmsIDglcm2oWwX+xDIVT+JwI0+mFhWaiSEbVnYIlM4nbayIBhgzKBuz/W4zBfUuZ4tBJm6OEAJgN8AjZQ6eZkTt9Od+gBE9ssmIzfYso0KDeczSlmb3Hm4hxZvUSvWaIF57+wbcgntzfKf5LC5qMTaBZ9grwbpOUjW6mQ6+Fi8QbuQkGOGw7gchYSJpTztG75bnwCGKxPz+uIBTsXfsVFhzmUaG0QV7zUW09dzaolhdJbkE8YK9fliZW36kZhf0uixEPKfnY/IzWp0kUEsYdwlBBVyZGokWlEVQR3IS5zwKeJYxFbJ2q3rIFMikF5NDYHhBId+a/Rn8nrPrHTAUhkEU7sz/xM",
+            "appData"=> "v2/E9GGlHD7+0V1cOg3w6N5Wm9M9sE22/3ffVzCw9fZ7PLKbumk5Jdts7KE/cqT7KQR5wJJN9OaSZoyIz/XCAnYhC6XLpMduITRMSZzVeHHjeRyxlljNz7BfTWqCTKDBVho5bp/yHjyZjH9yL9fApRjoRX3//sqJamfh8HjBuub0i2G1tZ4WVsBzgnMhGJthyrt+qXV5iJNse1D9znnRKxFXOz6iUtjjM+mJd39VXDFqMHB/aL8W7M8N4buIa1sdCTDSkHeIPV6d7nrwJh266uJourB4TgiKy3mjg3hsu0zGoz2PnORwTyZA7Dir9eibZap04DjsdBylVPXjJ360N2LP5BVhtb/tQH0RqAt59kOGKQktkbrgPcCNbT8M9CKKohSmQypmk2bngr2zVcPTwBdqGrCT+tQh15IvT9a+nFFOKnQ26CWQatqMrYb3zt1HJ0pUq0yWdkwvO2s8qsImnI/wEzzcnpynlLlRVT5iP0Fd192V5OINc1EotNk004WepRIKqLjZQMezAIfX+etdAiSEpr68l4JkmXmhq8/x7uAMfcTK9Da8z6qtduhsVFwrFrE9+dl90yW7eb9wVfBSw7VXWiVdyAC4ISAGndZAuwUZdgtxaqZL86pqIODkokbH1osk+yTzJqUYB0aK/UPokyMua9cJcU8O2+HPpqUnVSI1BfomOz0R8H53swWzQSfXLdq/AjP6tJX9QftE+pP7o1A661Hpo7zovpr6TI0oUBxSB92dNKRREWLawIyprWD6I3UYjhdG0cBIcgBVGt7Nqq8nFjCrZkJmpGC7JhIQTfklXeyUY6JjmqpqMhq1z4qqRKE4YI/8gXsmXvinAlDQKdWP1XzKVWo3riwAN3DHLUDsSMbHOMHH16dueybXeYVpRdVrFHuKnoduEGsMGMUVTBClP66Xwgf2ZBhjK4iffFhbO274lTb77DpqgDX9ucP1xHTWS0n8IIf+ONY36yXDUSIEy6fM1o0xwre6dwYyFBoJK2MEUjp3gHViQ7AQ7ldBnCW8D6bxF//z4IJ0+ozpXmTYlD1PCEoCoiI4NI9WuSN9Xvb/7dmbyLrz/7spINy15i2kCwOtvIwM2iJVwJtYXc203AJ5RZQhIcW72ecqw7YCyH/wHVWiXQdq5bsAS3jt4hMQJIUkNhbayK9xZdaTOohWv79VU2psmy0cfM41fQOwCsu/AMSw8AmmlhV3b0s9mMWAZyiVZD6H1PENPaQr2H1QAqSlO2u/ZP2H83260MrED4L/sTynIGELufPAi6QUt6q4dcZsNkT3kXkYCIUoGnkXTYYxP/ufzCfU5XjV0/SLJzldlGcmX5rAFt5CHXbCVudXZSbI3SLZ2hFR2hC7EQpwgP/hKGCAflitN/E1fwTBrxUUhtNsnPHmazbB3Dr3mzVU6z6l9sA+s5+oxImDQX9JSdOg8XzJIi/MdQ++RkHyo4VIA+77F1Y3lSprLuu4t5z",
             "hash"=>$hash,
             "description"=> "Thanh toan cho don hang Merchant123556666 qua MoMo",
             "version"=> 2,
@@ -115,42 +115,27 @@ class BillController extends Controller
     }
 
     public function momoCallBack(Request $request) {
+
+
+        $data = 
+        'partnerCode='.$request->partnerCode
+        .'&'.
+        'partnerRefId='.$request->partnerRefId
+        .'&'.
+        'requestType='.$request->requestType
+        .'&'.
+        'requestId='.$request->requestId
+        .'&'.
+        'momoTransId='.$request->momoTransId;
+
+        $secret=$request->accessKey;
+        $signature = hash_hmac('sha256',$data,$secret);
         $user = new TokenDevice();
         $user->id_user = 1;
-        $user->token='12333333333333333';
+        $user->token=$data;
         $user->save();
-        // $publicKey ="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlMwuxob0ikOunHuE641vBb49GvZ7JzM1skx+wA6sZeZ59XIEFub6C+zBQs4nO8ERIn7LtbE9adcpCAPBobIQ7Jd46irVg+tUaPlICHJsI0unRLMX22vgDvDn7V+CidmxvKG3Yzw4A2hqBPhI9fklRsWtu083YqFnJ0v20eXCQhXU2Txzwo+5CybSs0gOW46d5h+uQBIiIJGVtvA09I2y88ErS9ZLp8ocuDkI6DvLyjlfmoBqcB8u8yPp6gZPyK5ILRep5IGHksipGPiU35ZyzSq9YA/U/cl207Rq/LP5CqHTJATfxn4DlwCBftSlwcuE09Q5mNopP3AWySA3xGwiM6H598Hg/I7e8DSyyQpDIDA09Hhw+JSsJU6JFbdxTM6OEsPU88RHBOgxHPOXFQ4vFgwNVkoX0NajXHVztvPnpqs5yVW7xXsNsmfRuU7Sc27xAfOvnQUfv+CgIGoWU2JS9FURRHpYCReHmwfzHnF9U3o3Xad33PnEaWqyjqIXeRWy4X/Qx9H3OLLUtgrOxlXj5577Bi1Tjvc/bSVJfufK6abemBAKzBoPxtwRwOvFxZtjzRQzfNsl4WvYarfgaBVgs2EiLDPMmcBLvnGD+HPNCuKGJbz2PY0VMh9NgeN6scUP3VEDcrz7fZlyfbNx8SgU26whB17LQBtfpzxNIA+Y6ocCAwEAAQ==-----END PUBLIC KEY-----";
+        return $signature;
 
-        // $data = 'accessKey='.$request->accessKey
-        // .'&'.
-        // 'amount='.$request->amount
-        // .'&'.
-        // 'message='.$request->message
-        // .'&'.
-        // 'momoTransId='.$request->momoTransId
-        // .'&'.
-        // 'partnerCode='.$request->partnerCode
-        // .'&'.
-        // 'partnerRefId='.$request->partnerRefId
-        // .'&'.
-        // 'partnerTransId='.$request->partnerTransId
-        // .'&'.
-        // 'responseTime='.$request->responseTime
-        // .'&'.
-        // 'status='.$request->status
-        // .'&'.
-        // "storeId=".$request->storeId
-        // .'&'.
-        // "transType=momo_wallet";
-        // $myPublicKey = new PublicKey($publicKey);
-        // $signature =  EasyRSA::encrypt($data, $myPublicKey);
-        // // echo $signature;
-        // if($signature==$request->signature){
-        //     echo 'true';
-        // }else {
-        //     echo 'false';
-        // }
-        return $request->all();
        
     }
     public function encryptRSA(array $rawData, $publicKey)
