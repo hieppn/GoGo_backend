@@ -110,6 +110,8 @@ Route::get('bill/location/{id}',[BillController::class,'getLocationById']);
 Route::get('bill/location/list',[BillController::class,'getLocationList']);
 Route::get('bill/process',[BillController::class,'getBillProcess']);
 Route::post('comment',[BillController::class,'comment']);
+Route::post('momo',[BillController::class,'handleMomoPayment']);
+Route::post('momo/confirm',[BillController::class,'momoCallBack']);
 //Search History
 Route::post('search-history/create',[SearchHistoryController::class,'create']);
 Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);

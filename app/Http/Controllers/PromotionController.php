@@ -32,8 +32,7 @@ class PromotionController extends Controller
     public function PromotionSave( Request $request){
         $promotion = Promotion::create($request->all());
         return response()->json($promotion,200);
-        
-        }
+    }
             
     public function PromotionUpdate(Request $request,$id){
         
