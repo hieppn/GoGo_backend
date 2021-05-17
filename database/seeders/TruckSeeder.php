@@ -69,7 +69,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín - Kích thước thùng xe: D4.3m x R 1.8m x C 2m",
             'unit_price' =>800000,
             'bonus_price' =>23000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1617870227-wUtMHewEVp606ebd9395df7",
+            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620753364-luGJOx2miA609abbd44c8c3",
             'payload' =>"2500",
             'isCheck' => false
         ]);
@@ -79,7 +79,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng bạt- Kích thước thùng xe: D6m x R 2.2mx C 2.2m",
             'unit_price' =>1000000,
             'bonus_price' =>25000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1617870255-I0CqmEIaIa606ebdafea652",
+            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620752630-jSsvXOMUhP609ab8f646bc7",
             'payload' =>"5000",
             'isCheck' => false
         ]);
@@ -89,7 +89,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng bạt- Kích thước thùng xe: D9m x R 2.6mx C 2.3m",
             'unit_price' =>1800000,
             'bonus_price' =>28000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1617870270-8VYS3l4uLz606ebdbe913c6",
+            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620753391-3qRfTsiZTx609abbefc2d1d",
             'payload' =>"8000",
             'isCheck' => false
         ]);

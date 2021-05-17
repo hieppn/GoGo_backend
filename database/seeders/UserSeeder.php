@@ -87,5 +87,29 @@ class UserSeeder extends Seeder
             'avatar' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994090-dFKdW03ync607fe3aa9bc7d',
             'id_role'=>'3',
         ]);
+        DB::table('users')->insert([
+            'full_name' => 'Trần Công Dũng',
+            'email' => 'tracongdungdev@gmail.com',
+            'password' => Hash::make('admin'),
+            'phone' => '0585058709',
+            'id_card' => '215485719',
+            'amount'=> 0,
+            'birthday' => '2000-06-25',
+            'address' => '101B Lê Hữu Trác, Phước Mỹ, Sơn Trà, Đà Nẵng',
+            'avatar' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994090-dFKdW03ync607fe3aa9bc7d',
+            'id_role'=>'3',
+        ]);
+         DB::table('users')->insert([
+            'full_name' => 'Anh Ngọc',
+            'email' => 'ngocduy12@gmail.com',
+            'password' => Hash::make('123456'),
+            'phone' => '0332450453',
+            'id_card' => '215498725',
+            'amount'=> 0,
+            'birthday' => '2000-01-01',
+            'address' => 'Lệ Thủy, Quảng Bình',
+            'avatar' => 'https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/images/1618994220-9O5uj0QPMl607fe42c2468c',
+            'id_role'=>'2',
+        ]);
     }
 }

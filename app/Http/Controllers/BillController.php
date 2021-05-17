@@ -8,6 +8,12 @@ use App\Models\Location;
 use App\Models\Rate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use ParagonIE\EasyRSA\PublicKey;
+use ParagonIE\EasyRSA\EasyRSA;
+use phpseclib\Crypt\RSA;
+use Illuminate\Support\Facades\Http;
+use App\Models\TokenDevice;
+
 
 class BillController extends Controller
 {
@@ -16,7 +22,7 @@ class BillController extends Controller
         return response()->json(Bill::all(),200);
     }
     public function getBillById(Request $request,$id){
-        return response()->json(DB::select('SELECT o.*,u.full_name AS trucker_name,u.phone , u.id as id_trucker,  u.avatar as trucker_avt,
+        return response()->json(DB::select('SELECT o.*,b.id as id_bill,u.full_name AS trucker_name,u.phone , u.id as id_trucker,  u.avatar as trucker_avt,
         (SELECT t.name FROM trucks as t WHERE t.id = b.id_truck ) AS truck ,
         (SELECT t.license_plate FROM trucker_information AS t WHERE t.id_trucker = b.id_trucker ) AS plate 
         FROM bills AS b, orders AS o, users AS u 
@@ -84,5 +90,67 @@ class BillController extends Controller
         $rate->comment = $request-> comment;
         $rate->save();
             return response()->json($rate, 200);
+    }
+    public function handleMomoPayment(Request $request) {
+        $token = $request->bearerToken();
+        $amount = $request->amount;
+        $orderId =$request->orderId; 
+        $customerNumber =$request->customerNumber; 
+
+        $publicKey ="-----BEGIN PUBLIC KEY-----MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAlMwuxob0ikOunHuE641vBb49GvZ7JzM1skx+wA6sZeZ59XIEFub6C+zBQs4nO8ERIn7LtbE9adcpCAPBobIQ7Jd46irVg+tUaPlICHJsI0unRLMX22vgDvDn7V+CidmxvKG3Yzw4A2hqBPhI9fklRsWtu083YqFnJ0v20eXCQhXU2Txzwo+5CybSs0gOW46d5h+uQBIiIJGVtvA09I2y88ErS9ZLp8ocuDkI6DvLyjlfmoBqcB8u8yPp6gZPyK5ILRep5IGHksipGPiU35ZyzSq9YA/U/cl207Rq/LP5CqHTJATfxn4DlwCBftSlwcuE09Q5mNopP3AWySA3xGwiM6H598Hg/I7e8DSyyQpDIDA09Hhw+JSsJU6JFbdxTM6OEsPU88RHBOgxHPOXFQ4vFgwNVkoX0NajXHVztvPnpqs5yVW7xXsNsmfRuU7Sc27xAfOvnQUfv+CgIGoWU2JS9FURRHpYCReHmwfzHnF9U3o3Xad33PnEaWqyjqIXeRWy4X/Qx9H3OLLUtgrOxlXj5577Bi1Tjvc/bSVJfufK6abemBAKzBoPxtwRwOvFxZtjzRQzfNsl4WvYarfgaBVgs2EiLDPMmcBLvnGD+HPNCuKGJbz2PY0VMh9NgeN6scUP3VEDcrz7fZlyfbNx8SgU26whB17LQBtfpzxNIA+Y6ocCAwEAAQ==-----END PUBLIC KEY-----";
+        $message = [
+            "partnerCode"=> "MOMOWF3W20210504",
+            "partnerRefId"=> $orderId,
+            "amount"=> $amount,
+        ];
+        $hash = $this->encryptRSA($message,$publicKey);
+        $response = Http::post('https://test-payment.momo.vn/pay/app',
+        [  
+            "partnerCode"=>"MOMOWF3W20210504",
+            "customerNumber"=> $customerNumber,
+            "partnerRefId"=> $orderId,
+            "appData"=> $token,
+            "hash"=>$hash,
+            "description"=> "Thanh toan cho don hang GoGo qua MoMo",
+            "version"=> 2,
+            "payType"=>3,
+        ]
+    );
+       return $response;
+    }
+
+    public function momoCallBack(Request $request) {
+        $data = 
+        'partnerCode='.$request->partnerCode
+        .'&'.
+        'partnerRefId='.$request->partnerRefId
+        .'&'.
+        'requestType=capture'
+        .'&'.
+        'requestId='.$request->requestId
+        .'&'.
+        'momoTransId='.$request->momoTransId;
+
+        $secret=$request->accessKey;
+        $signature = hash_hmac('sha256',$data,$secret);
+        $user = new TokenDevice();
+        $user->id_user = 1;
+        $user->token=$data;
+        $user->save();
+        return $signature;
+
+       
+    }
+    public function encryptRSA(array $rawData, $publicKey)
+    {
+
+        $rawJson = json_encode($rawData, JSON_UNESCAPED_UNICODE);
+
+        $rsa = new RSA();
+        $rsa->loadKey($publicKey);
+        $rsa->setEncryptionMode(RSA::ENCRYPTION_PKCS1);
+
+        $cipher = $rsa->encrypt($rawJson);
+        return base64_encode($cipher);
     }
 }
