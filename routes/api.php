@@ -15,6 +15,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TruckController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\SearchHistoryController;
+use App\Http\Controllers\RevenueController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -92,6 +93,7 @@ Route::get('count-trucker',[DashboardController::class,'countTrucker']);
 //Chart
 Route::get('chart',[ChartController::class,'index']);
 Route::get('chart/line/user',[ChartController::class,'getLineUser']);
+Route::get('revenue',[RevenueController::class,'getRevenue']);
 ///Notification
 Route::get('notification/list',[NotificationController::class,'getNotification']);
 Route::get('notification/{id}',[NotificationController::class,'getNotificationById']);

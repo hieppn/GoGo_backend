@@ -129,7 +129,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td align="left" bgcolor="#ffffff" style="padding: 24px" class="customize">
-                            <h1 class="primary-title">Đơn hàng của bạn đã được giao thành công</h1>
+                            <h3 class="primary-title">Đơn hàng của bạn đã được giao thành công</h1>
                         </td>
                     </tr>
                 </table>
