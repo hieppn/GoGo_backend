@@ -174,7 +174,7 @@
                                         Phí vận chuyển</td>
                                     <td align="left" width="25%"
                                     style="padding: 6px 12px" class="customize">
-                                    {{ $data['price'] }}</td>
+                                    {{ number_format($data['price'], 0, ',', '.') . "đ" }}</td>
                                 </tr>
                                 <tr>
                                     <td align="left" width="75%"
@@ -182,7 +182,8 @@
                                         Phí bảo hiểm</td>
                                     <td align="left" width="25%"
                                     style="padding: 6px 12px" class="customize">
-                                    {{ $data['insurance_fee'] }}</td>
+                                    {{ number_format($data['insurance_fee'], 0, ',', '.') . "đ" }}
+                                   </td>
                                 </tr>
                                 <tr>
                                     <td align="left" width="75%"
@@ -190,7 +191,8 @@
                                         Thuế VAT (10%)</td>
                                     <td align="left" width="25%"
                                     style="padding: 6px 12px" class="customize">
-                                    {{ $data['vat'] }}</td>
+                                    {{ number_format($data['vat'], 0, ',', '.') . "đ" }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td align="left" width="75%"
@@ -198,7 +200,7 @@
                                         <strong>Tổng</strong></td>
                                     <td align="left" width="25%"
                                         class="total-style">
-                                        <strong>{{ $data['total'] }}</strong></td>
+                                        <strong>{{ number_format($data['total'], 0, ',', '.') . "đ" }}</strong></td>
                                 </tr>
                             </table>
                         </td>
