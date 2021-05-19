@@ -12,7 +12,10 @@ class DashboardController extends Controller
     // Count in DASHBOARD
 
     public function countOrder(){
-        return Order::count();
+        return Order::where('type',1)
+        ->orWhere('type',2)
+        ->orWhere('type',3)
+        ->count();
     }
 
     public function countUser(){
