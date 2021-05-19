@@ -112,6 +112,8 @@ Route::get('bill/process',[BillController::class,'getBillProcess']);
 Route::post('comment',[BillController::class,'comment']);
 Route::post('momo',[BillController::class,'handleMomoPayment']);
 Route::post('momo/confirm',[BillController::class,'momoCallBack']);
+Route::post('momo/web',[BillController::class,'momoWebPayment']);
+
 //Search History
 Route::post('search-history/create',[SearchHistoryController::class,'create']);
 Route::get('search-history/by/{id}',[SearchHistoryController::class,'getSearchByIdUser']);
