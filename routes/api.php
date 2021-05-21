@@ -55,6 +55,7 @@ Route::post('get-price',[OrderController::class,'getPrice']);
 Route::get('send-email',[OrderController::class,'sendingEmail']);
 Route::put('order/canceledOrder/{id}',[OrderController::class,'canceledOrder']);
 Route::put('order/reOrder/{id}',[OrderController::class,'reOrder']);
+Route::put('order/config/{id}',[OrderController::class,'config']);
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);

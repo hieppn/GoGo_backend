@@ -14,6 +14,12 @@ use App\Models\Message;
 use App\Jobs\SendEmail;
 class OrderController extends Controller
 {
+    public function config($id, Request $request){
+        $order = Order::find($id);
+        $order->created_at = $request->time;
+        $order->save();
+        return response()->json($order, 200);
+    }
     public function addNewOrder( Request $request){
         $request->validate([
             "send_from"=> "required",
