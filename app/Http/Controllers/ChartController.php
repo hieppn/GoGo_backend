@@ -15,10 +15,10 @@ class ChartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
             $post=Order::select(Order::raw('extract(month from "created_at") as month'),Order::raw('COUNT(id) as sum'))
-            ->whereYear('created_at', now()->year)
+            ->whereYear('created_at', $request->year)
             ->where('type',1)
             ->orWhere('type',2)
             ->orWhere('type',3)
@@ -34,7 +34,7 @@ class ChartController extends Controller
             return $postmonth;
     }
 
-    public function getLineUser(){
+    public function getLineUser(Request $request){
       
             $user=User::select(User::raw('extract(month from "created_at") as month'),User::raw('COUNT(id) as sum'))
             ->whereYear('created_at', now()->year)
