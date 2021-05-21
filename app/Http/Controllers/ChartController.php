@@ -37,7 +37,7 @@ class ChartController extends Controller
     public function getLineUser(Request $request){
       
             $user=User::select(User::raw('extract(month from "created_at") as month'),User::raw('COUNT(id) as sum'))
-            ->whereYear('created_at', now()->year)
+            ->whereYear('created_at', $request->year)
             ->where('id_role', 1)
             ->orWhere('id_role', 2)
             ->groupBy('month')->get();   
