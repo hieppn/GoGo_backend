@@ -162,10 +162,15 @@ class OrderController extends Controller
             $receiver_info = json_decode($order->receiver_info, TRUE);
             $sender_info = json_decode($order->sender_info, TRUE);
             $send_to = json_decode($order->send_to, TRUE);
+            if($order->insurance_fee==true){
+                $insurance_fee = (($order->price-$order->price*0.1)/1.25)*0.25;
+            }else{
+                $insurance_fee =0;
+            }
             $message = [
                 'id' => $order->id,
                 'name' => $order->name,
-                'insurance_fee' => "0",
+                'insurance_fee' => $insurance_fee,
                 'vat'=> $order->price * 10/100 ,
                 'total'=>$order->price+$order->price*10/100,
                 'price'=>$order->price,

@@ -15,6 +15,9 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\TruckController;
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\SearchHistoryController;
+use App\Http\Controllers\RevenueController;
+use App\Http\Controllers\ConfigChartController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,6 +57,9 @@ Route::post('get-price',[OrderController::class,'getPrice']);
 Route::get('send-email',[OrderController::class,'sendingEmail']);
 Route::put('order/canceledOrder/{id}',[OrderController::class,'canceledOrder']);
 Route::put('order/reOrder/{id}',[OrderController::class,'reOrder']);
+Route::put('order/configOrder/{id}',[ConfigChartController::class,'configOrder']);
+Route::put('user/configUser/{id}',[ConfigChartController::class,'configUser']);
+
 //promotion
 Route::get('promotion/list',[PromotionController::class,'getPromotion']);
 Route::delete('promotion/delete/{id}',[PromotionController::class,'deletePromotion']);
@@ -92,6 +98,7 @@ Route::get('count-trucker',[DashboardController::class,'countTrucker']);
 //Chart
 Route::get('chart',[ChartController::class,'index']);
 Route::get('chart/line/user',[ChartController::class,'getLineUser']);
+Route::get('revenue',[RevenueController::class,'getRevenue']);
 ///Notification
 Route::get('notification/list',[NotificationController::class,'getNotification']);
 Route::get('notification/{id}',[NotificationController::class,'getNotificationById']);
