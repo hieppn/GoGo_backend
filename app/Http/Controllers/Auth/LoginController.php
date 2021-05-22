@@ -169,7 +169,7 @@ class LoginController extends Controller
         $user=User::find($id);
         if($user->id_role == 2){
             $profile = DB::select('SELECT u.id, u.full_name, u.birthday,u.address,u.amount,u.email,u.phone,u.avatar, i.* FROM trucker_information as i, users as u
-            WHERE u.id = '.$id.' AND u.id = i.id_trucker');
+            WHERE u.id = '.$id.' AND i.id_trucker = '.$id);
             $point = DB::select('SELECT AVG(point)::numeric(10,1) as point from rates where id_trucker ='.$id.' GROUP BY id_trucker');
             $data = array(
                 "user"=>$profile,
