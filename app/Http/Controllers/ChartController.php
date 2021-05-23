@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Bill;
 use Illuminate\Http\Request;
 use DB;
 
@@ -15,9 +16,23 @@ class ChartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function revenue(){
+      $revenues=Order::select(Order::raw('extract(month from "created_at") as month'),Order::raw('SUM(price) as sum'))
+      ->whereYear('created_at', date('Y'))
+      ->where('type',3)
+      ->groupBy('month')->get(); 
+      $revenuePerMonth=[0,0,0,0,0,0,0,0,0,0,0,0];
+      foreach($revenues as $revenue){
+      for($i=1;$i<=12;$i++){
+        if($i==$revenue["month"]){
+          $revenuePerMonth[$i-1]=$revenue["sum"];
+        }
+      } 
+      }   
+      return $revenuePerMonth;
+}
     public function index(Request $request)
     {
-      echo($request->year);
             $post=Order::select(Order::raw('extract(month from "created_at") as month'),Order::raw('COUNT(id) as sum'))
             ->whereYear('created_at', date('Y'))
             ->where('type',1)

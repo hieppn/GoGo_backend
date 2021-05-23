@@ -97,6 +97,7 @@ Route::get('count-trucker',[DashboardController::class,'countTrucker']);
 
 //Chart
 Route::get('chart',[ChartController::class,'index']);
+Route::get('chart/income',[ChartController::class,'revenue']);
 Route::get('chart/line/user',[ChartController::class,'getLineUser']);
 Route::get('revenue',[RevenueController::class,'getRevenue']);
 ///Notification
