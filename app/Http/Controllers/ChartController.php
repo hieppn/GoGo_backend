@@ -25,7 +25,7 @@ class ChartController extends Controller
       foreach($revenues as $revenue){
       for($i=1;$i<=12;$i++){
         if($i==$revenue["month"]){
-          $revenuePerMonth[$i-1]=$revenue["sum"]*0.05;
+          $revenuePerMonth[$i-1]=$revenue["sum"];
         }
       } 
       }   
