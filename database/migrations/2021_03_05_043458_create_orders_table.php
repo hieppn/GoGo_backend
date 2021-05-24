@@ -31,7 +31,7 @@ class CreateOrdersTable extends Migration
             $table->integer('id_user')->unsigned()->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_truck')->references('id')->on('trucks')->onDelete('cascade');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

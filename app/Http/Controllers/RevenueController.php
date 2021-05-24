@@ -11,10 +11,10 @@ class RevenueController extends Controller
         $revenue = 0;
         foreach($orders as $order){
             if($order->insurance_fee==true){
-                $revenue +=  ($order->price-$order->price*0.25)*0.05+$order->price*0.25;
+                $revenue +=  ($order->price/1.35)*0.4;
             }
             else{
-                $revenue +=  ($order->price)*0.05;
+                $revenue +=  ($order->price/1.1)*0.15;
             }
         }
         return response()->json($revenue, 200);

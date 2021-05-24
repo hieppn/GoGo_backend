@@ -30,6 +30,9 @@ class PromotionController extends Controller
     }
 
     public function PromotionSave( Request $request){
+        $request->validate([
+            'code'=>'required|unique:promotions',
+        ]);
         $promotion = Promotion::create($request->all());
         return response()->json($promotion,200);
     }

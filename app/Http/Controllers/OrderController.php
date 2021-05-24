@@ -163,24 +163,38 @@ class OrderController extends Controller
             $sender_info = json_decode($order->sender_info, TRUE);
             $send_to = json_decode($order->send_to, TRUE);
             if($order->insurance_fee==true){
-                $insurance_fee = (($order->price-$order->price*0.1)/1.25)*0.25;
+                $insurance_fee = ($order->price/1.35)*0.25;
+                $message = [
+                    'id' => $order->id,
+                    'name' => $order->name,
+                    'insurance_fee' => $insurance_fee,
+                    'vat'=> ($order->price/1.35)*0.1 ,
+                    'total'=>$order->price,
+                    'price'=>$order->price/1.35,
+                    'sender_name'=>$sender_info['name'],
+                    'sender_phone'=>$sender_info['phone'],
+                    'sender_address'=>$send_from['address'].', '.$send_from['city'],
+                    'receiver_name'=>$receiver_info['name'],
+                    'receiver_phone'=>$receiver_info['phone'],
+                    'receiver_address'=>$send_to['address'].', '.$send_to['city'],
+                ];
             }else{
-                $insurance_fee =0;
+                $insurance_fee = 0;
+                $message = [
+                    'id' => $order->id,
+                    'name' => $order->name,
+                    'insurance_fee' => $insurance_fee,
+                    'vat'=> ($order->price/1.1)*0.1 ,
+                    'total'=>$order->price,
+                    'price'=>$order->price/1.1,
+                    'sender_name'=>$sender_info['name'],
+                    'sender_phone'=>$sender_info['phone'],
+                    'sender_address'=>$send_from['address'].', '.$send_from['city'],
+                    'receiver_name'=>$receiver_info['name'],
+                    'receiver_phone'=>$receiver_info['phone'],
+                    'receiver_address'=>$send_to['address'].', '.$send_to['city'],
+                ];
             }
-            $message = [
-                'id' => $order->id,
-                'name' => $order->name,
-                'insurance_fee' => $insurance_fee,
-                'vat'=> $order->price * 10/100 ,
-                'total'=>$order->price+$order->price*10/100,
-                'price'=>$order->price,
-                'sender_name'=>$sender_info['name'],
-                'sender_phone'=>$sender_info['phone'],
-                'sender_address'=>$send_from['address'].', '.$send_from['city'],
-                'receiver_name'=>$receiver_info['name'],
-                'receiver_phone'=>$receiver_info['phone'],
-                'receiver_address'=>$send_to['address'].', '.$send_to['city'],
-            ];
             SendEmail::dispatch($message, $user)->delay(now()->addMinute(1));
             //notify for user
             $devices = TokenDevice::where('id_user', $order->id_user)->get();
