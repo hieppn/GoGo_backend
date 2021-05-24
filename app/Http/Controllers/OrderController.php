@@ -227,7 +227,10 @@ class OrderController extends Controller
             $notification->id_user = $request->id_trucker;
             $notification->save();
             app('App\Http\Controllers\NotificationController')->pushNotification('order','',$title_2, $body_2, $devicesId_2); 
-            $amount = $order->price - $order->price* 0.05;
+            if($order->insurance_fee==true)
+            $amount = ($order->price/1.35)*095;
+            else
+            $amount = ($order->price/1.1)*095;
             app('App\Http\Controllers\TruckerController')->updateAmount($request->id_trucker,$amount); 
             Message::where('id_send', $order->id_user)->delete();
             Message::where('id_send', $request->id_trucker)->delete();
