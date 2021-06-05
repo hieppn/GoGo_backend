@@ -20,7 +20,7 @@ class CreatePromotionsTable extends Migration
             $table->timestamp('start_time');
             $table->timestamp('end_time')->nullable();
             $table->Integer('min_value');
-            $table->Integer('max_value');
+            $table->Integer('max_value')->nullable();
             $table->Integer('value');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

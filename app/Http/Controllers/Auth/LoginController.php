@@ -204,14 +204,9 @@ class LoginController extends Controller
         $user = User::find($id);
     }
     public function existPhone(Request $request){
-        $phoneUser =User::where('phone','=',$request->phone)->first();
-        $phoneTrucker = TruckerTempt::where('phone','=',$request->phone)->first();
-        if($phoneTrucker||$phoneUser){
-            $data = array(
-                "error"=>"Phone number exist",
-            );
-            return response()->json($data, 400); 
-        }
+        $request->validate([
+            'phone'=>'required|regex:/[0-9]{10}/|digits:10|unique:users|unique:trucker_tempts',
+        ]);
         $data = array(
             "phone"=>$request->phone,
         );
