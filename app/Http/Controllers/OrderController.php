@@ -106,7 +106,7 @@ class OrderController extends Controller
     public function updateStatus(Request $request,$id){
         $order = Order::find($id);
         if($request->type == 2){
-            $billTrucker = DB::select('SELECT * FROM bills,orders WHERE bills.is_order = orders.id and orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
+            $billTrucker = DB::select('SELECT * FROM bills,orders WHERE bills.id_order = orders.id and orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
             if($billTrucker){
                 return response()->json('Trucker exist', 400);
           }else {
