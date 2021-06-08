@@ -42,6 +42,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function existPhone(Request $request){
+        $request->validate([
+            'phone'=>'required|regex:/[0-9]{10}/|digits:10|unique:users|unique:trucker_tempts',
+        ]);
+        $data = array(
+            "phone"=>$request->phone,
+        );
+        return response()->json($data,200);
+    }
     public function register(Request $request){
         //return $request->input();
         $request->validate([
@@ -92,6 +101,11 @@ class LoginController extends Controller
                 return response()->json($data, 400);  
             }
         }else{
+            if($request->avatar){
+                $avatar =$request->avatar; 
+            }else{
+                $avatar = "https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-4.png";
+            }
             $user = new User;
             $user->full_name = $request->full_name;
             $user->email = $request->email;
@@ -102,7 +116,7 @@ class LoginController extends Controller
             $user->id_card = $request->id_card;
             $user->id_role = $request->id_role;
             $user->amount = 0;
-            $user->avatar = "https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-4.png";
+            $user->avatar = $avatar;
             $query = $user->save();
             if($query){
                 $data = array(
@@ -202,14 +216,5 @@ class LoginController extends Controller
     }
     public function lockUser($id){  
         $user = User::find($id);
-    }
-    public function existPhone(Request $request){
-        $request->validate([
-            'phone'=>'required|regex:/[0-9]{10}/|digits:10|unique:users|unique:trucker_tempts',
-        ]);
-        $data = array(
-            "phone"=>$request->phone,
-        );
-        return response()->json($data,200);
     }
 }

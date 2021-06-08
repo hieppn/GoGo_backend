@@ -106,10 +106,10 @@ class OrderController extends Controller
     public function updateStatus(Request $request,$id){
         $order = Order::find($id);
         if($request->type == 2){
-            $billTrucker = DB::select('SELECT COUNT(*) as count FROM bills, orders WHERE orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
+            $billTrucker = DB::select('SELECT COUNT(*) as count FROM bills,orders WHERE bills.is_order = orders.id,orders.type = 2 and bills.id_trucker = '.$request->id_trucker);
             if($billTrucker[0]->count !== 0){
                 return response()->json('Trucker exist', 400);
-            }else {
+          }else {
             $bill = new Bill;
             $bill->id_order = $order->id;
             $bill->id_sender = $order->id_user;
@@ -118,8 +118,6 @@ class OrderController extends Controller
             $bill->save();
             $order->type = $request->type;
             $order->save();
-            //notify for user
-            
             $users = User::find($request->id_trucker);
             $devices = TokenDevice::where('id_user', $order->id_user)->get();
                 foreach ($devices as $device) {
@@ -248,7 +246,7 @@ class OrderController extends Controller
     }
 
     public function getOrderByIdUser($id){
-        return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id) ,200);
+        return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id.'orderBy desc') ,200);
     }
     public function acceptOrder($id){
         $order = Order::find($id);
