@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->boolean('export_data')->default(false);
             $table->text('sender_info');
             $table->text('receiver_info');
-            $table->integer('price');
+            $table->decimal('price',11);
             $table->boolean('insurance_fee');
             $table->integer('id_truck')->unsigned();
             $table->integer('id_user')->unsigned()->onDelete('cascade');

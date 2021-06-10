@@ -246,7 +246,7 @@ class OrderController extends Controller
     }
 
     public function getOrderByIdUser($id){
-        return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id.'order by created_at desc') ,200);
+        return response()->json(Db::select('select o.*, t.name as truck from orders as o, trucks as t where o.id_truck = t.id and o.id_user = '.$id.' order by created_at desc') ,200);
     }
     public function acceptOrder($id){
         $order = Order::find($id);
