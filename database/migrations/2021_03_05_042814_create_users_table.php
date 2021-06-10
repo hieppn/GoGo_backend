@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('id_card')->unique();
             $table->date('birthday')->format('Y/m/d');
             $table->string('address');
-            $table->decimal('amount',11);
+            $table->decimal('amount',11,0);
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('password');
