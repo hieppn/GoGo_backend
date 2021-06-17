@@ -19,7 +19,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín - Kích thước thùng xe: D 2m x R 1.4m x C1.5m",
             'unit_price' =>300000,
             'bonus_price' =>15000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617867833-cZCbrKKQY9606eb439d5b2d",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"650",
             'isCheck' => false
         ]);
@@ -29,7 +29,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín  - Kích thước thùng xe: D2.1m x R 1.5mx C 1.5m",
             'unit_price' =>350000,
             'bonus_price' =>18000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617867868-yNnFvKCrUy606eb45c94118",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"750",
             'isCheck' => false
         ]);
@@ -39,7 +39,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín - KTTX: D3m x R 1.6mx C 1.6m",
             'unit_price' =>400000,
             'bonus_price' =>20000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617867833-cZCbrKKQY9606eb439d5b2d",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"1000",
             'isCheck' => false
         ]);
@@ -49,7 +49,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín- KTTX: D4m x R 1.7mx C 1.7m",
             'unit_price' =>500000,
             'bonus_price' =>20000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/avatars/1617868850-sSmwCndoBt606eb8328f9f6",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"1400",
             'isCheck' => false
         ]);
@@ -59,7 +59,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín - Kích thước thùng xe: D4.3m x R 1.8m x C 1.8m",
             'unit_price' =>600000,
             'bonus_price' =>22000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1617870207-zSZAq7ObGg606ebd7fed8a2",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"1900",
             'isCheck' => false
         ]);
@@ -69,7 +69,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng kín - Kích thước thùng xe: D4.3m x R 1.8m x C 2m",
             'unit_price' =>800000,
             'bonus_price' =>23000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620753364-luGJOx2miA609abbd44c8c3",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"2500",
             'isCheck' => false
         ]);
@@ -79,7 +79,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng bạt- Kích thước thùng xe: D6m x R 2.2mx C 2.2m",
             'unit_price' =>1000000,
             'bonus_price' =>25000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620752630-jSsvXOMUhP609ab8f646bc7",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"5000",
             'isCheck' => false
         ]);
@@ -89,7 +89,7 @@ class TruckSeeder extends Seeder
             'description' =>"Thùng bạt- Kích thước thùng xe: D9m x R 2.6mx C 2.3m",
             'unit_price' =>1800000,
             'bonus_price' =>28000,
-            'image' => "https://dev-dtravel-data.s3.ap-northeast-1.amazonaws.com/trucks/1620753391-3qRfTsiZTx609abbefc2d1d",
+            'image' => "https://mk0saloodoi0q2rtgmna.kinstacdn.com/wp-content/uploads/2020/04/truck.png",
             'payload' =>"8000",
             'isCheck' => false
         ]);
